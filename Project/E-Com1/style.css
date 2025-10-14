@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* * Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+header form {
+  width: 30%;
+}
+
+header form input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #eee;
+  border-radius: 10px;
+  transition: outline-offset 0.2s ease;
+}
+
+header form input:focus {
+  outline: solid 1px blue;
+  outline-offset: 2px;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+header nav ul li {
+  cursor: pointer;
+}
+
+header .cart-icon li{
+  cursor: pointer;
+}
+
+/* * Header */
+
+/* * Shop */
+
+#shop .card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+#shop .card-container figure{
+  height: 70vh;
+}
+
+#shop .card-container figure table th{
+  text-align: start;
+  display: inline-block;
+  padding: 5px;
+}
+
+#shop .card-container figure table td:has(button) button{
+  width: 100%;
+  padding: 5px;
+  border: none;
+  border-radius: 20px;
+}
+
+#shop .card-container figure table td:has(button) .add-to-cart{
+  outline: solid 1px greenyellow;
+  color: greenyellow;
+  background: #fff;
+  cursor: pointer;
+
+  &:hover{
+    background: greenyellow;
+    color: #fff;
+  }
+}
+
+#shop .card-container figure table td:has(button) .view-details{
+  outline: solid 1px orangered;
+  color: orangered;
+  background: #fff;
+  cursor: pointer;
+  margin: 0 10px;
+
+  &:hover{
+    background: orangered;
+    color: #fff;
+  }
+}
+
+/* * Cart */
+#cart{
+  position: fixed;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 0 10px 10px rgba(0,0,0,.5);
+  display: none;
+  padding: 5px;
+}
+
+#cart table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#cart table th, #cart table td{
+  padding: 5px;
+}
+
+/* #cart table img{
+  width: 100%;
+} */
+
+#cart table thead th{
+  width: 100%;
+}
+
+#cart table thead th:nth-child(1){
+  text-align: start;
+}
+
+#cart table tbody,
+#cart table thead{
+  display: block;
+}
+
+#cart table tbody{
+  height: 85vh;
+  overflow-y: auto;
+}
+
+#cart table tbody td{
+  width: 50%;
+}
+

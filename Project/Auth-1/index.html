@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      a{
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body style="height: 100vh" class="d-flex flex-column">
+    <header>
+      <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" id="userProfile">Navbar</a>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          <div id="profile">
+            <button class="btn btn-outline-success">Sign Up</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main
+      id="home"
+      class="border flex-grow-1 d-flex align-items-center justify-content-center"
+    >
+      <h1 class="">Home</h1>
+    </main>
+
+    <section
+      id="register"
+      class="flex-grow-1 d-none flex-column align-items-center justify-content-center gap-3 border"
+    >
+      <h1 class="fw-bold">Register</h1>
+      <form class="form-floating d-flex flex-column gap-3 w-25">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            id="floatingInput"
+            placeholder="username"
+          />
+          <label for="floatingInput">User name</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="">
+          <input
+            type="submit"
+            value="Register"
+            class="btn btn-outline-primary"
+          />
+        </div>
+      </form>
+    </section>
+    <section
+      id="login"
+      class="flex-grow-1 d-none flex-column align-items-center justify-content-center gap-3"
+    >
+      <h1 class="fw-bold">Login</h1>
+      <form class="form-floating d-flex flex-column gap-3 w-25">
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="">
+          <input type="submit" value="Login" class="btn btn-outline-primary" />
+        </div>
+      </form>
+    </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const profile = document.querySelector("#profile");
+      const signUp = profile.querySelector("button");
+      const homeEl = document.querySelector("#home");
+      const homeNavigate = document.querySelector("#userProfile");
+      const registerSection = document.querySelector("#register");
+      const registerForm = registerSection.querySelector("form");
+      const loginSection = document.querySelector("#login");
+      const loginForm = loginSection.querySelector("form");
+      const userObj = {};
+
+      signUp.addEventListener("click", () => {
+        registerSection.classList.remove("d-none");
+        homeEl.classList.add("d-none");
+        registerSection.classList.add("d-flex");
+        loginSection.classList.add("d-none");
+      });
+
+      homeNavigate.addEventListener("click", () => {
+        registerSection.classList.add("d-none");
+        loginSection.classList.add("d-none");
+        homeEl.classList.remove("d-none");
+      });
+
+      registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // FormData Constructor
+        const registerFn = new FormData(registerForm);
+
+        // Empty Obj
+        for (let [key, value] of registerFn.entries()) {
+          userObj[key] = value;
+        }
+        // Stored in localstorage
+        localStorage.setItem("User", JSON.stringify(userObj));
+        alert("Register successfully");
+
+        if (registerSection.classList.contains("d-flex")) {
+          registerSection.classList.add("d-none");
+          loginSection.classList.remove("d-none");
+          loginSection.classList.add("d-flex");
+        }
+      });
+
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const loginFn = new FormData(loginForm);
+        const enteredUser = Object.fromEntries(loginFn.entries());
+        console.log(enteredUser);
+
+        const storedUser = JSON.parse(localStorage.getItem("User"));
+
+        if (
+          storedUser.email === enteredUser.email &&
+          storedUser.password === enteredUser.password
+        ) {
+          alert("Successfully logged in");
+          homeNavigate.textContent = storedUser.name;
+        } else {
+          alert("User does not founded!");
+        }
+      });
+
+      // console.log(Object.fromEntries());
+    </script>
+  </body>
+</html>

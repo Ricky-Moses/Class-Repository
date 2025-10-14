@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title-bars">
+        <div class="head-logo">
+          <h1>Company Name</h1>
+        </div>
+        <div id="clickBar">📊</div>
+      </div>
+      <nav>
+        <ul id="menu">
+          <li data-id="home">Home</li>
+          <li data-id="shop">Shop</li>
+          <li data-id="profile">Profile</li>
+        </ul>
+        <ul id="cart">
+          <li>Cart</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="home">Home</section>
+      <section id="shop">
+        <main class="card-container">
+          <figure>
+            <div class="img-container">
+                <img src="https://picsum.photos/500/300?random=0" alt="" />
+            </div>
+            <figcaption>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td>Samsung</td>
+                        </tr>
+                        <tr>
+                            <th>Brand</th>
+                            <td>Samsung</td>
+                        </tr>
+                        <tr>
+                            <th>Stock</th>
+                            <td>In Stock</td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td>₹17000/-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </figcaption>
+          </figure>
+        </main>
+      </section>
+      <section id="profile">Profile</section>
+    </main>
+    <section id="cartContainer" style="display: none"></section>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

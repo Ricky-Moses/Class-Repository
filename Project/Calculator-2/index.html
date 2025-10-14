@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body class="h-dvh grid place-items-center relative">
+    <div
+      class="absolute w-[600px] h-4/5 bg-blue-600 rounded-full top-1/2 left-1/2 -translate-1/2 -z-1"
+    ></div>
+    <!-- ? Calculator -->
+    <main
+      class="w-100 h-5/6 flex flex-col items-center rounded-4xl backdrop-blur-lg shadow-2xl !p-3"
+    >
+      <section class="grid place-items-end w-full h-3/6 rounded-t-3xl">
+        <fieldset class="w-full text-white flex flex-col items-end justify-end">
+          <legend class="px-3 text-lg">Calculator Expression</legend>
+
+          <div
+            class="flex flex-col items-end justify-end h-full !m-1 overflow-hidden"
+          >
+            <p
+              class="text-5xl font-mono max-w-[350px] overflow-x-auto overflow-y-hidden"
+            >
+              0
+            </p>
+          </div>
+        </fieldset>
+      </section>
+      <section class="grid grid-cols-4 gap-5 w-full h-full rounded-b-3xl !p-3">
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          AC
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          X
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          /
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          *
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          7
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          8
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          9
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          -
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          4
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          5
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          6
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          +
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          1
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          2
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          3
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90 row-span-2"
+        >
+          =
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90 col-span-2"
+        >
+          0
+        </div>
+        <div
+          class="rounded-2xl grid place-items-center text-2xl text-white bg-[linear-gradient(to_top,black,transparent)] cursor-pointer transition-transform hover:scale-90"
+        >
+          .
+        </div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
