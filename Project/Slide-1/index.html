@@ -146,10 +146,12 @@
         scrollContainer(index);
       }
 
-      setInterval(nextFn, 3000);
+      //   setInterval(nextFn, 3000);
 
       prevBtn.addEventListener("click", prevFn);
       nextBtn.addEventListener("click", nextFn);
+
+      window.addEventListener("keyup", prevFn);
 
       console.group("Data");
       console.info("Total figure: ", total);
