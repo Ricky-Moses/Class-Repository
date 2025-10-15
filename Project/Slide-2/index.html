@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      main {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+        overflow: hidden;
+      }
+
+      main figure {
+        min-width: 40%;
+      }
+
+      main button {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        background: transparent;
+
+        border-radius: 50%;
+        border: none;
+        outline: solid 1px #fff;
+        color: #fff;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+      }
+
+      main button:hover {
+        background: #fff;
+        color: #000;
+        outline-offset: 2px;
+      }
+
+      main button:first-child {
+        top: 23%;
+        left: 3%;
+      }
+
+      main button:last-child {
+        top: 23%;
+        left: 97%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button>←</button>
+      <figure><img src="../../assets/Nature-1.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-2.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-3.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-4.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-5.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-6.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-7.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-8.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-9.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-10.jpg" alt="" /></figure>
+      <figure><img src="../../assets/Nature-11.jpg" alt="" /></figure>
+      <button>→</button>
+    </main>
+
+    <script>
+      const main = document.querySelector("main");
+      const figure = main.querySelectorAll("figure");
+      const prevBtn = main.querySelector("button:first-child");
+      const nextBtn = main.querySelector("button:last-child");
+
+      let index = 0;
+      const totalFigure = figure.length;
+      const figureWidth = figure[0].offsetWidth + 10;
+
+      function scrollContainer(i) {
+        main.scrollTo({
+          left: i * figureWidth,
+        });
+      }
+
+      function prevFn() {
+        index = (index - 1 + totalFigure) % totalFigure;
+        scrollContainer(index);
+
+        console.group("Previous Slide");
+        console.info("Index: ", index);
+        console.info("Figure width: ", index * figureWidth);
+      }
+
+      function nextFn() {
+        index = (index + 1) % totalFigure;
+        scrollContainer(index);
+
+        console.group("Next Slide");
+        console.info("Index: ", index);
+        console.info("Figure width: ", index * figureWidth);
+      }
+
+      prevBtn.addEventListener("click", prevFn);
+      nextBtn.addEventListener("click", nextFn);
+
+    //   setInterval(nextFn, 3000)
+
+      console.group("Slide Data");
+      console.info("Length Of figure: ", totalFigure);
+      console.info("Figure Width: ", figureWidth);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
