@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+    //   "use strict"
+
+    //   let x = 10
+    //   y = 10
+    //   console.log(x + y);
+
+    // Regex - Regular Expression
+
+    const str = "Hello World! hello Friends."
+
+    console.info("Insensitive: ", /hello/i.test(str))
+
+    console.info("Global Insensitive: ", str.replace(/hello/i, "Hi!"))
+
+    const str1 = "message=test"
+
+    console.info("Split: ", str1.split("="))
+
+    console.info("Match: ", str.match(/h\w*/ig))
+    </script>
+  </body>
+</html>
