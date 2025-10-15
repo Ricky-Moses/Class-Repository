@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Student {
+        constructor(stuName, age, section) {
+          this.stuName = stuName;
+          this.age = age;
+          this.section = section;
+        }
+        getData() {
+          console.group("Class Method");
+          console.info(`Name: ${this.stuName}`)
+          console.info(`Age: ${this.age}`)
+          console.info(`Section: ${this.section}`)
+        }
+      }
+
+      const User = [
+        new Student("Ricky", 21, "A"),
+        new Student("Ricky", 21, "B"),
+        new Student("Ricky", 21, "C"),
+        new Student("Ricky", 21, "D")
+      ]
+      User.map((data) => {
+        data.getData()
+      })
+    </script>
+  </body>
+</html>
