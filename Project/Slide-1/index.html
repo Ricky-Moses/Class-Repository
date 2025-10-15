@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      main {
+        display: flex;
+        overflow: hidden;
+        padding: 10px;
+        gap: 20px;
+      }
+
+      figure {
+        min-width: 40%;
+      }
+
+      main button {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        border: none;
+        background: transparent;
+        outline: solid 1px #fff;
+        color: #fff;
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 10px orange;
+      }
+
+      main button:hover {
+        background: #fff;
+        color: #000;
+        outline-offset: 3px;
+      }
+
+      main button:first-child {
+        top: 23%;
+        left: 3%;
+      }
+
+      main button:last-child {
+        top: 23%;
+        left: 97%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <button>←</button>
+      <figure>
+        <img
+          src="../../assets/aerial_shot_of_a_winding_river_cutting_through_a_dense_rainforest_vibrant_green_tones_and_clear_water_visible_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/autumn_birch_leaves_layered_on_wet_pavement_golden_hour_light_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/beautiful_cherries_fruits_drops_dew_macro_red_wallpaper_blur_background_4k_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/beautifully_detailed_butterfly_rests_delicately_on_a_dewy_leaf_vibrant_patterns_and_fine_hairs_captured_in_stunning_macro_clarity_4k_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/close_up_of_a_small_brown_snail_with_a_spiral_shell_slowly_crawling_along_the_edge_of_a_dark_green_leaf_surrounded_by_soft_focus_foliage_4k_5k_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/crystal_clear_lake_reflecting_snow_capped_peaks_under_a_deep_blue_sky_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/golden_autumn_oak_leaves_scattered_on_a_rustic_wooden_surface_warm_sunlight_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/parrot_perched_on_a_jungle_branch_with_rain_droplets_around_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <figure>
+        <img
+          src="../../assets/tranquil_alpine_lake_reflecting_snow_capped_mountains_under_a_pastel_sunset_hd_photography.jpg"
+          alt=""
+        />
+      </figure>
+      <button>→</button>
+    </main>
+
+    <script>
+      const prevBtn = document.querySelector("main button:first-child");
+      const nextBtn = document.querySelector("main button:last-child");
+      const main = document.querySelector("main");
+      const figure = main.querySelectorAll("figure");
+
+      let index = 0;
+      const total = figure.length;
+      const figureWidth = figure[0].offsetWidth + 10;
+
+      function scrollContainer(i) {
+        main.scrollTo({
+          left: i * figureWidth,
+        });
+      }
+
+      function prevFn() {
+        index = (index - 1 + total) % total;
+        scrollContainer(index);
+      }
+
+      function nextFn() {
+        index = (index + 1) % total;
+        scrollContainer(index);
+      }
+
+      setInterval(nextFn, 3000);
+
+      prevBtn.addEventListener("click", prevFn);
+      nextBtn.addEventListener("click", nextFn);
+
+      console.group("Data");
+      console.info("Total figure: ", total);
+      console.info("Figure width: ", figureWidth);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
