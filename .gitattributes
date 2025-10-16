@@ -1,2 +1,12 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Project initialization
+    # git init
+    # git add .
+    # git commit -m "First Commit"
+    # git branch -M main
+    # git remote (Your repository link)
+    # git push -u origin main
+
+# Update project
+    # git add .
+    # git commit -m "Second commit"
+    # git push origin main

@@ -1,0 +1,35 @@
+:root {
+  --main-first-theme: #6610f250;
+  --main-second-theme: #d6338450;
+  --main-third-theme: #fd7e1450;
+}
+
+main section {
+  display: none;
+}
+
+main #home article {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 10px;
+}
+
+main #home article > div {
+  /* Accessing the direct child of 'home' */
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+}
+
+main #home article div:first-child {
+  grid-row: span 2;
+  background-color: var(--main-first-theme);
+}
+
+main #home article div:nth-child(2) {
+  background-color: var(--main-second-theme);
+}
+main #home article div:last-child {
+  background-color: var(--main-third-theme);
+}
