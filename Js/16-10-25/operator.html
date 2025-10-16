@@ -14,8 +14,8 @@
 
       let i = 1;
       i++;
-      let d = 2
-      d--
+      let d = 2;
+      d--;
       console.info("Increment: ", i);
       console.info("Decrement: ", d);
       console.groupEnd();
@@ -24,6 +24,36 @@
       let a = 5;
       a += 5;
       console.info("Plus: ", a);
+      console.groupEnd();
+
+      console.group("Comparison operator");
+      console.info("Loose equality: ", 2 == "2"); // ✅ Value ❌ Type
+      console.info("Strict equality: ", "2" === 2); // ✅ Value ✅ Type
+
+      console.info("Loose not equality: ", 2 != "2");
+      console.info("Strict not equality: ", 2 !== "2");
+
+      /*
+
+            == -> Loose equality
+            === -> Strict equality
+            != -> Not loose equality
+            !== -> Not Strict equality
+
+            2 == 2 -> true
+            2 == "2" -> true
+
+            2 === 3 -> false
+            2 === "2" -> false
+
+            2 != 1 -> true
+            2 != 2 -> false
+            2 != "2" -> false
+
+            2 !== 2 -> false
+            2 !== "2" -> true
+            2 !== 1 -> true
+        */
     </script>
   </body>
 </html>
