@@ -7,7 +7,7 @@ const products = {
       price: 145999,
       image: [
         {
-          url: "https://res.cloudinary.com/dxnm1pn5s/image/upload/v1760593415/filip-baotic-DV0mB2uJM34-unsplash_rv5kbl.jpg",
+          url: "https://picsum.photos/500/300?random=1",
           urlName: "iPhone 15 Pro",
         },
       ],
