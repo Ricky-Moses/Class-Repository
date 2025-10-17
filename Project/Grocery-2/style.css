@@ -5,37 +5,37 @@
   list-style-type: none;
 }
 
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-header figure {
-  display: flex;
-  align-items: center;
-}
-
-header figure .img-container {
-  width: 10%;
-}
-
-header figure figcaption {
-  /* border: solid; */
+  padding: 10px;
 }
 
 header form {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  width: 40%;
 }
-header nav {
-    width: 100%;
+header form input {
+  width: 80%;
+  height: 5vh;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: solid 1px #000;
+  border-right: none;
 }
+
+header form button {
+  flex-grow: 1;
+  height: 5vh;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: solid 1px #000;
+  border-left: none;
+}
+
 header nav ul {
   display: flex;
+  gap: 30px;
 }
