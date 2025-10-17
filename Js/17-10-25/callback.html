@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* // Callstack (FILO)
+      function first() {
+        second();
+        console.info("First");
+      }
+      function second() {
+        console.info("second");
+      }
+
+      first(); */
+
+      // callback queue
+      /*
+            setTimeout()
+            setInterval()
+            addEventListener()
+            Promise()
+        */
+
+      /*  console.info("One") // Call stack
+        setTimeout(() => console.info("Two"), 0) // Callback queue
+        console.info("Three") */
+
+      // Callback hell
+      /* setTimeout(() => {
+        console.info(1);
+        setTimeout(() => {
+          console.info(2);
+          setTimeout(() => {
+            console.info(3);
+            setTimeout(() => {
+              console.info(4);
+              setTimeout(() => {
+                console.info(5);
+                setTimeout(() => {
+                  console.info("Boom");
+                }, 1000);
+              }, 1000);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }, 1000); */
+
+      function registerFunc(name, pwd, callback) {
+        console.info("Registration Function");
+        setTimeout(() => {
+          callback(name, pwd);
+        }, 1000);
+      }
+      function loginFunc(pwd, loginPwd, callback) {
+        console.info("Login function");
+        setTimeout(() => {
+          if (pwd === loginPwd) {
+            callback();
+          } else {
+            console.error("Invalid credentials");
+          }
+        }, 1000);
+      }
+      function profileFunc(name) {
+        console.info("Profile Function");
+        setTimeout(() => {
+          document.querySelector("body").innerHTML = `
+                <h1 className="">User name: ${name}</h1>
+            `;
+        }, 1000);
+      }
+
+      registerFunc("Ricky", "123", (name, pwd) => {
+        loginFunc(pwd, "123", () => {
+          profileFunc(name);
+        });
+      });
+    </script>
+  </body>
+</html>
