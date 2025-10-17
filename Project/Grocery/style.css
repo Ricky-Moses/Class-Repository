@@ -17,6 +17,12 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 button,
 li,
 input,
@@ -113,7 +119,7 @@ main #home {
   gap: 20px;
 }
 
-main #home div {
+main #home > div {
   box-shadow: var(--box-shadow-five);
   border-radius: 10px;
 }
@@ -123,11 +129,52 @@ main #home .main-box {
   background-color: var(--main-box-theme);
 }
 
-main #home div:nth-child(2){
+main #home div:nth-child(2) {
   background-color: var(--sub-box-one);
 }
 
-main #home div:nth-child(3){
+main #home div:nth-child(3) {
   background-color: var(--sub-box-two);
+}
+
+main #home .main-box figure {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+main #home .main-box figure .img-container{
+  width: 90%;
+}
+
+main #home .main-box figure figcaption{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+
+main #home .main-box figure figcaption h1{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: orange;
+}
+
+main #home .main-box figure figcaption h2{
+  font-size: 2.5em;
+}
+
+main #home .main-box figure figcaption button{
+  border: none;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background-color: transparent;
+  outline: solid 1px var(--sub-box-two);
+  color: var(--sub-box-two);
+}
+
+main #home .main-box figure figcaption button:hover{
+  background-color: var(--sub-box-two);
+  color: #fff;
+  outline-offset: 2px;
 }
 /* Home */
