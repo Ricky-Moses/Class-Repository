@@ -89,6 +89,7 @@ header nav ul {
 
 #openCart {
   display: none;
+  /* accent-color: red; */
 }
 
 header aside {
