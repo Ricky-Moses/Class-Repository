@@ -5,6 +5,14 @@
   list-style-type: none;
 }
 
+:root {
+  --main-box-theme: #0dcaf050;
+  --sub-box-one: #20c99750;
+  --sub-box-two: #fd7e1450;
+
+  --box-shadow-five: 0 0 10px #00000050;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
 }
@@ -21,7 +29,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  position: relative;
+  /* position: relative; */
 }
 
 header .head-logo h1 {
@@ -48,7 +56,7 @@ header form input[type="search"] {
   border: none;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  box-shadow: 0 0 10px #00000050;
+  box-shadow: var(--box-shadow-five);
 }
 
 header form input[type="search"]:focus {
@@ -77,16 +85,49 @@ header nav ul {
   display: none;
 }
 
-aside {
+header aside {
   position: fixed;
   top: 0;
-  left: 0;
-  background: #fff;
-  box-shadow: 0 0 10px #00000050;
+  left: -40%;
+  box-shadow: var(--box-shadow-five);
   width: 400px;
   height: 100vh;
-  display: none;
+  z-index: 1000;
+  background-color: #fff;
+  transition: left 0.5s ease;
 }
+
 #openCart:checked + label + aside {
-  display: block;
+  left: 0;
 }
+
+/* Main pages */
+
+/* Home */
+main #home {
+  /* border: solid red 10px; */
+  height: 90vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px;
+  gap: 20px;
+}
+
+main #home div {
+  box-shadow: var(--box-shadow-five);
+  border-radius: 10px;
+}
+
+main #home .main-box {
+  grid-row: span 2;
+  background-color: var(--main-box-theme);
+}
+
+main #home div:nth-child(2){
+  background-color: var(--sub-box-one);
+}
+
+main #home div:nth-child(3){
+  background-color: var(--sub-box-two);
+}
+/* Home */
