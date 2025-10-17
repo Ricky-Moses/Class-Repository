@@ -4,6 +4,12 @@
   --main-third-theme: #fd7e1450;
 }
 
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 main section {
   display: none;
 }
@@ -32,4 +38,11 @@ main #home article div:nth-child(2) {
 }
 main #home article div:last-child {
   background-color: var(--main-third-theme);
+}
+
+main #shop > div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 10px;
 }

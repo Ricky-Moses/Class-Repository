@@ -14,7 +14,7 @@ function showPages(pageID = "home") {
   });
 }
 
-showPages("home");
+showPages("shop");
 
 // Navigate to 'home'
 homeEl.addEventListener("click", () => {
