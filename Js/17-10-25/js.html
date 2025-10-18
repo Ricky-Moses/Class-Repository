@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script>
+          window.addEventListener("DOMContentLoaded", () => {
+            console.log(document.querySelector("h1"));
+          });
+
+    </script> -->
+    <!-- <script defer src="js.js"></script> -->
+  </head>
+  <body>
+    <script>
+      // Global scope
+      let globalScope = "This is global Scope";
+
+      function scope() {
+        // Functional scope (var)
+        var functionalScope = "This is functional scope";
+
+        if (true) {
+          var functionalScope2 = "This is functional scope 2";
+          let blockScopeLet = "This is block scope - let";
+          const blockScopeConst = "This is block scope - const";
+        }
+
+        
+        console.group("Inside the function");
+        console.info(globalScope);
+        console.info(functionalScope);
+        console.info(functionalScope2);
+        // console.info(blockScopeLet)
+        // console.info(blockScopeConst);
+        console.groupEnd();
+        return functionalScope
+      }
+
+      const l = scope();
+      console.group("Outside the function");
+      console.info(globalScope);
+      console.info(l)
+      // console.info(functionalScope)
+    </script>
+  </body>
+</html>

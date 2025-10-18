@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let count = 0;
+
+      //   setTimeout(() => {
+      //     console.info(++count);
+      //     setTimeout(() => {
+      //       console.info(++count);
+      //       setTimeout(() => {
+      //         console.info(++count);
+      //         setTimeout(() => {
+      //           console.info("Boom");
+      //         }, 1000);
+      //       }, 1000);
+      //     }, 1000);
+      //   }, 1000);
+
+      function register(name, pwd, callback) {
+        console.info("Register function");
+        setTimeout(() => {
+          callback(name, pwd);
+        }, 1000);
+      }
+
+      function login(pwd, loginPwd, callback) {
+        console.info("Login function");
+        setTimeout(() => {
+          if (pwd === loginPwd) {
+            callback();
+          } else {
+            console.error("Invalid credential");
+          }
+        }, 1000);
+      }
+
+      function profile(name) {
+        console.info("Profile function");
+        setTimeout(() => {
+          document.querySelector("body").innerHTML = `
+                <h1 className="">User name: ${name}</h1>
+            `;
+        }, 1000);
+      }
+
+      register("Ricky", "123", (name, pwd) => {
+        login(pwd, "123", () => {
+          profile(name);
+        });
+      });
+    </script>
+  </body>
+</html>
