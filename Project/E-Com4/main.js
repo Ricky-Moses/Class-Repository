@@ -33,11 +33,15 @@ menuList.forEach((list) => {
   });
 });
 
-// Card container
-const shop = main.querySelector("#shop > div");
+let selectedProducts = products;
 
-shop.innerHTML = `
-  ${products.mobile
+// Card container
+const shop = main.querySelector("#shop");
+const shopCard = shop.querySelector(".card-container");
+
+function selectedCardContainer(products) {
+  shopCard.innerHTML = `
+  ${products
     .map(
       (item) => `
       <figure class="card h-auto">
@@ -73,3 +77,21 @@ shop.innerHTML = `
     )
     .join("")}
 `;
+}
+selectedCardContainer(selectedProducts.mobile);
+
+const asideLi = shop.querySelectorAll("aside ul li");
+
+function listItemToSelect() {
+  asideLi.forEach((li) => {
+    li.addEventListener("click", () => {
+      // console.info(li.dataset.item);
+      const itemId = li.dataset.item;
+      selectedCardContainer(selectedProducts[itemId]);
+
+      li.querySelector("span").textContent = selectedProducts[itemId].length;
+    });
+  });
+}
+
+listItemToSelect();

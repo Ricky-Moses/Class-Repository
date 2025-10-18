@@ -1354,6 +1354,21 @@ const products = {
       availability: "In stock",
       country: "Taiwan",
     },
+    {
+      id: 31,
+      name: "Asus TUF Gaming F15",
+      brand: "Asus",
+      price: 89999,
+      image: [
+        {
+          url: "https://picsum.photos/500/300?random=41",
+          urlName: "TUF Gaming F15",
+        },
+      ],
+      inStock: true,
+      availability: "In stock",
+      country: "Taiwan",
+    },
   ],
 };
 export default products;

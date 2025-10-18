@@ -27,7 +27,6 @@
           const blockScopeConst = "This is block scope - const";
         }
 
-        
         console.group("Inside the function");
         console.info(globalScope);
         console.info(functionalScope);
@@ -35,14 +34,23 @@
         // console.info(blockScopeLet)
         // console.info(blockScopeConst);
         console.groupEnd();
-        return functionalScope
+        return functionalScope;
       }
 
-      const l = scope();
-      console.group("Outside the function");
-      console.info(globalScope);
-      console.info(l)
+      //   scope();
+      //   console.group("Outside the function");
+      //   console.info(globalScope);
       // console.info(functionalScope)
+
+      //   Hosting
+      console.info(var1);
+      var var1 = "This is var";
+      //   console.info(var1)
+
+      // TDZ
+      console.info(let1);
+      let let1 = "This is let";
+      //   console.info(let1)
     </script>
   </body>
 </html>
