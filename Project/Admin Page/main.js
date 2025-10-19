@@ -11,7 +11,7 @@ function showPages(pageId = "home") {
   });
 }
 
-showPages("shop");
+showPages("home");
 
 const menuList = headerEl.querySelectorAll("nav ul li");
 
