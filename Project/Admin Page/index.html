@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="body">
+    <header class="header">
+      <div>
+        <h1 class="header-title">Admin Pages</h1>
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li class="nav-item" data-id="home">Home</li>
+          <li class="nav-item" data-id="shop">Shop</li>
+          <li class="nav-item" data-id="profile">Profile</li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main">
+      <section id="home" class="section">Home</section>
+      <section id="shop" class="section-shop"></section>
+      <section id="profile" class="section-profile">
+        <form id="register" class="form">
+          <h1 class="form-title">Register</h1>
+          <div>
+            <input
+              type="text"
+              class="form-input"
+              placeholder="User name"
+              name="name"
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              class="form-input"
+              placeholder="User email"
+              name="email"
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              class="form-input"
+              placeholder="User password"
+              name="password"
+            />
+          </div>
+          <div class="form-button-container">
+            <input
+              type="submit"
+              class="form-submit"
+              value="Register"
+            />
+            <input
+              type="button"
+              class="form-button"
+              value="Login"
+            />
+          </div>
+        </form>
+        <form class="form hidden" id="login">
+          <h1 class="form-title">Login</h1>
+          <div>
+            <input
+              type="email"
+              class="form-input"
+              placeholder="User email"
+              name="email"
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              class="form-input"
+              placeholder="User password"
+              name="password"
+            />
+          </div>
+          <div>
+            <input
+              type="submit"
+              class="form-submit"
+              value="Login"
+            />
+          </div>
+        </form>
+      </section>
+      <section id="admin" class="section-profile">
+        <fieldset class="fieldset">
+          <legend class="legend">Add Product</legend>
+          <form class="form-product">
+            <div class="form-row">
+              <input
+                type="text"
+                class="form-input-product"
+                placeholder="Enter a product name"
+                name="name"
+              />
+              <input
+                type="text"
+                class="form-input-product"
+                placeholder="Enter a product brand"
+                name="brand"
+              />
+            </div>
+            <div class="form-row">
+              <select name="stock" class="form-select">
+                <option disabled selected>Select stock option</option>
+                <option value="true">In stock</option>
+                <option value="false">Out of stock</option>
+              </select>
+              <select name="country" class="form-select">
+                <option disabled selected>Select Country</option>
+                <option value="IN">India</option>
+                <option value="JP">Japan</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <input
+                type="tel"
+                placeholder="Product price"
+                maxlength="7"
+                name="price"
+                class="form-input-product"
+              />
+            </div>
+            <div class="form-row">
+              <textarea
+                name="description"
+                class="form-textarea"
+                placeholder="Product description"
+              ></textarea>
+            </div>
+            <div class="form-row">
+              <input
+                type="text"
+                name="images"
+                placeholder="place image link"
+                class="form-input-product"
+              />
+            </div>
+            <div class="form-row">
+              <input
+                type="submit"
+                value="Submit product"
+                class="form-submit-product"
+              />
+            </div>
+          </form>
+        </fieldset>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>
