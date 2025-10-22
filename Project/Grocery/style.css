@@ -144,27 +144,27 @@ main #home .main-box figure {
   height: 100%;
 }
 
-main #home .main-box figure .img-container{
+main #home .main-box figure .img-container {
   width: 90%;
 }
 
-main #home .main-box figure figcaption{
+main #home .main-box figure figcaption {
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 10px;
 }
 
-main #home .main-box figure figcaption h1{
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+main #home .main-box figure figcaption h1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: orange;
 }
 
-main #home .main-box figure figcaption h2{
+main #home .main-box figure figcaption h2 {
   font-size: 2.5em;
 }
 
-main #home .main-box figure figcaption button{
+main #home .main-box figure figcaption button {
   border: none;
   padding: 5px 20px;
   border-radius: 10px;
@@ -173,9 +173,39 @@ main #home .main-box figure figcaption button{
   color: var(--sub-box-two);
 }
 
-main #home .main-box figure figcaption button:hover{
+main #home .main-box figure figcaption button:hover {
   background-color: var(--sub-box-two);
   color: #fff;
   outline-offset: 2px;
 }
 /* Home */
+
+/* Fruit slide */
+main #fruitSlide {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 10px;
+  gap: 20px;
+}
+
+#fruitSlide figure {
+  height: 45vh;
+  min-width: 40%;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+#fruitSlide figure:hover figcaption {
+  position: absolute;
+  /* top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: #00000050;
+  color: #fff;
+}
+/* Fruit slide */
