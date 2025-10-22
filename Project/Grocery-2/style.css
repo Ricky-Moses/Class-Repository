@@ -39,3 +39,33 @@ header nav ul {
   display: flex;
   gap: 30px;
 }
+
+/* Main -> Home */
+main #home {
+  height: 90vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 10px;
+  gap: 10px;
+}
+
+#home > div {
+  /* > - Direct child (combinator)*/
+  /* border: solid; */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+#home > div:nth-child(1) {
+  grid-row: span 2;
+  background-color: #ff000050;
+}
+
+#home > div:nth-child(2){
+  background-color: #00800050;
+}
+
+#home > div:nth-child(3){
+  background-color: #0000ff50;
+}
+/* Main -> Home */
