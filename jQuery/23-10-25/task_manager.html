@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="flex flex-col gap-5 items-center justify-center p-2">
+      <fieldset class="w-5/6 p-3">
+        <legend class="mx-3 px-3">Task Manager</legend>
+        <form action="" class="flex items-center">
+          <input
+            type="text"
+            class="flex-1 h-10 px-3 shadow-lg"
+            placeholder="Enter a task"
+          />
+          <input
+            type="submit"
+            value="Submit"
+            class="h-10 px-3 shadow-lg hover:bg-black hover:text-white transition-colors duration-500 cursor-pointer"
+          />
+        </form>
+      </fieldset>
+      <ul class="w-5/6 h-150 p-5 overflow-y-auto flex flex-col gap-5"></ul>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      const taskArray = [];
+      $("main form").submit((e) => {
+        e.preventDefault();
+
+        const inputVal = $(e.target).find("input[type='text']").val();
+
+        taskArray.push(inputVal);
+        displayTask(taskArray);
+      });
+
+      function displayTask(taskArray) {
+        $("ul").html(`
+          ${taskArray.map(
+            (task, idx) => `
+            <li class="flex items-center shadow-2xl rounded-xl p-3 gap-3">
+              <div>${idx + 1}</div>
+              <div class="flex-1">${task}</div>
+              <div>
+                <button
+                  class="px-5 py-1 border text-green-600 hover:bg-green-600 hover:text-white cursor-pointer"
+                >
+                  Edit
+                </button>
+              </div>
+              <div>
+                <button
+                  class="px-5 py-1 border text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          `
+          ).join("")}
+        `);
+      }
+    </script>
+  </body>
+</html>
