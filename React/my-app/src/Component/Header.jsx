@@ -1,11 +1,12 @@
 import React from "react";
 
-const Header = () => {
+const Header = (props) => {
+    // props = {title: "React"} - props.title
   return (
     <>
       <header>
         <div class="head-logo">
-          <h1>React</h1>
+          <h1>{props.headTitle}</h1>
         </div>
         <nav>
           <ul>
