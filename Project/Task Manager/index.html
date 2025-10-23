@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="flex flex-col items-center justify-center gap-5">
+      <fieldset class="w-5/6 border p-4">
+        <!-- 5/6 * 100 =  -->
+        <legend class="px-3">Task Manager</legend>
+        <form action="" class="flex items-center">
+          <input
+            type="text"
+            placeholder="Enter a task"
+            class="border flex-1 h-10 px-3"
+          />
+          <input
+            type="submit"
+            value="Submit"
+            class="border h-10 px-3 cursor-pointer hover:bg-black hover:text-white"
+          />
+        </form>
+      </fieldset>
+      <ul class="border w-5/6 h-150 p-2 overflow-y-auto"></ul>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"
+      integrity="sha512-MSOo1aY+3pXCOCdGAYoBZ6YGI0aragoQsg1mKKBHXCYPIWxamwOE7Drh+N5CPgGI5SA9IEKJiPjdfqWFWmZtRA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      let taskArr = [];
+      let editIdx = null;
+
+      function showToast(msg, color = "white") {
+        const $toast = $("<div>").text(msg).css({
+          position: "fixed",
+          bottom: "20px",
+          right: "0px",
+          color: "#fff",
+          backgroundColor: color,
+          zIndex: "1000",
+          padding: "10px 20px",
+          boxShadow: "0 0 10px rgba(0,0,0,.5)",
+          opacity: "0",
+          borderRadius: "20px",
+        });
+
+        $("body").append($toast);
+
+        $toast
+          .animate({
+            opacity: "1",
+            right: "20px",
+          })
+          .delay(1000)
+          .fadeOut(400, function () {
+            $(this).remove();
+          });
+      }
+
+      $("main form").submit((e) => {
+        e.preventDefault();
+
+        const inputVal = $(e.target).find("input[type='text']").val();
+        if (editIdx !== null) {
+          taskArr = taskArr.map((task, idx) =>
+            idx === editIdx ? inputVal : task
+          );
+          editIdx = null;
+          showToast("Task updated", "cyan");
+        } else {
+          taskArr.push(inputVal);
+          showToast("New Task Added", "pink");
+        }
+        displayTask(taskArr);
+      });
+
+      function displayTask(task) {
+        $("ul").html(`
+            ${task
+              .map(
+                (item, idx) => `
+                    <li class="flex items-center gap-3 p-3 shadow-lg">
+                        <div>${idx + 1}</div>
+                        <div class="flex-1">${item}</div>
+                        <div>
+                            <button onclick="handleEdit(${idx})"
+                            class="border px-3 text-green-600 hover:bg-green-600 hover:text-white cursor-pointer"
+                            >
+                            Edit
+                            </button>
+                        </div>
+                        <div>
+                            <button onclick="handleDelete(${idx})"
+                            class="border px-3 text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer"
+                            >
+                            Delete
+                            </button>
+                        </div>
+                    </li>
+            `
+              )
+              .join("")}
+        
+        `);
+      }
+
+      function handleEdit(idx) {
+        const findIdx = taskArr[idx];
+
+        $("main form input[type='text']").val(findIdx);
+        editIdx = idx;
+      }
+
+      function handleDelete(idx) {
+        taskArr = taskArr.filter((_, index) => index !== idx);
+        displayTask(taskArr);
+        showToast("Task Deleted", "orangered");
+      }
+    </script>
+  </body>
+</html>
