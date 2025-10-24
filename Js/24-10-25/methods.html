@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        let str = "I am Learning JavaScript"
+        console.group('String Methods')
+        console.info(str)
+        console.info("Length: ", str.length)
+        console.info("cartAt: ", str.charAt(1))
+        console.info("charCodeAt: ", str.charCodeAt(0))
+        console.info("indexOf: ", str.indexOf("a"))
+        console.info("lastIndexOf: ", str.lastIndexOf("a"))
+        console.info("includes: ", str.includes("I am"))
+        console.info("slice: ", str.slice(2, 6))
+        console.info("startsWith: ", str.startsWith("I am"))
+        console.info("endsWith: ", str.endsWith("Script"))
+        console.info("toUpperCase: ", str.toUpperCase())
+        console.info("toLowerCase: ", str.toLowerCase())
+        console.groupEnd();
+
+        // let user = prompt("Enter a name")
+
+        // console.info(user.charAt(0).toUpperCase() + user.slice(1))
+
+        let num = 123456789
+        console.group('Number methods')
+        console.info("parseInt: ", parseInt("123.54654"))
+        console.info("parseFloat: ", parseFloat("123.564"))
+        console.info("toFixed: ", 12.123548654513521.toFixed(5))
+        console.info("toString: ", num.toString())
+        console.info("isFinite: ", isFinite(1354354))
+        console.groupEnd();
+
+        console.group('Math Method')
+        console.info("Math round: ", Math.round(2.5))
+        console.info("Math floor: ", Math.floor(1.9))
+        console.info("Math Ceil: ", Math.ceil(1.9))
+        console.info("Math trunc: ", Math.trunc(1.5))
+        console.info("Math min: ", Math.min(10, 20, 30))
+        console.info("Math max: ", Math.max(10, 20, 30))
+        console.info("Math random: ", Math.random() * 100 + 1)
+        console.groupEnd();
+    </script>
+</body>
+</html>
