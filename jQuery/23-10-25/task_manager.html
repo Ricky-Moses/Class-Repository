@@ -31,10 +31,42 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"
+      integrity="sha512-MSOo1aY+3pXCOCdGAYoBZ6YGI0aragoQsg1mKKBHXCYPIWxamwOE7Drh+N5CPgGI5SA9IEKJiPjdfqWFWmZtRA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <script>
       let taskArray = [];
       let editIdx = null;
+
+      function showToast(msg, color = "#fff") {
+        const $toast = $("<div>").text(msg).css({
+          position: "fixed",
+          top: "10px",
+          right: "0px",
+          zIndex: "1000",
+          borderRadius: "10px",
+          backgroundColor: color,
+          color: "#fff",
+          padding: "10px 20px",
+          opacity: "0",
+        });
+
+        $("body").append($toast);
+
+        $toast
+          .animate({
+            opacity: "1",
+            right: "20px",
+          })
+          .delay(1000)
+          .fadeOut(500, function () {
+            $(this).remove();
+          });
+      }
       $("main form").submit((e) => {
         e.preventDefault();
 
@@ -46,9 +78,11 @@
             index === editIdx ? inputVal : task
           );
           editIdx = null;
+          showToast("Task Updated", "magenta");
         } else {
           // New task function
           taskArray.push(inputVal);
+          showToast("New Task Added", "greenyellow");
         }
 
         displayTask(taskArray);
@@ -59,7 +93,7 @@
           ${taskArray
             .map(
               (task, idx) => `
-            <li class="flex items-center shadow-2xl rounded-xl p-3 gap-3">
+            <li class="flex items-center shadow-2xl rounded-xl p-3 gap-3" style="display: none">
               <div>${idx + 1}</div>
               <div class="flex-1">${task}</div>
               <div>
@@ -81,6 +115,8 @@
             )
             .join("")}
         `);
+
+        $("ul li").show("drop", { direction: "up" }, 100);
       }
 
       // Edit function
@@ -90,6 +126,8 @@
         $("main form input[type='text']").val(findValue);
         editIdx = idx;
 
+        showToast("Edit Mode", "cyan");
+
         console.group("Edit function");
         console.info("Index: ", idx);
         console.info("Value: ", findValue);
@@ -97,8 +135,14 @@
       }
 
       function handleDelete(idx) {
-        taskArray = taskArray.filter((_, index) => index !== idx);
-        displayTask(taskArray);
+        const $li = $("ul li").eq(idx);
+        // console.info($li)
+
+        $li.effect("slide", { direction: "right", mode: "hide" }, 500, () => {
+          taskArray = taskArray.filter((_, index) => index !== idx);
+          displayTask(taskArray);
+          showToast("Task Deleted", "orangered");
+        });
       }
     </script>
   </body>
