@@ -5,6 +5,12 @@
   list-style-type: none;
 }
 
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -61,11 +67,32 @@ main #home {
   background-color: #ff000050;
 }
 
-#home > div:nth-child(2){
+#home > div:nth-child(2) {
   background-color: #00800050;
 }
 
-#home > div:nth-child(3){
+#home > div:nth-child(3) {
   background-color: #0000ff50;
 }
 /* Main -> Home */
+
+/* Main - fruitSlide */
+#fruitSlide {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+#fruitSlide figure{
+  min-width: 40%;
+}
+
+#fruitSlide figure .img-container {
+  height: 50vh;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Main - fruitSlide */
