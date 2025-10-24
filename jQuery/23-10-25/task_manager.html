@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <main class="flex flex-col gap-5 items-center justify-center p-2">
+    <main class="flex flex-col gap-5 items-center justify-center p-5">
       <fieldset class="w-5/6 p-3">
         <legend class="mx-3 px-3">Task Manager</legend>
         <form action="" class="flex items-center">
@@ -33,32 +33,44 @@
     ></script>
 
     <script>
-      const taskArray = [];
+      let taskArray = [];
+      let editIdx = null;
       $("main form").submit((e) => {
         e.preventDefault();
 
         const inputVal = $(e.target).find("input[type='text']").val();
 
-        taskArray.push(inputVal);
+        if (editIdx !== null) {
+          // Edit function
+          taskArray = taskArray.map((task, index) =>
+            index === editIdx ? inputVal : task
+          );
+          editIdx = null;
+        } else {
+          // New task function
+          taskArray.push(inputVal);
+        }
+
         displayTask(taskArray);
       });
 
       function displayTask(taskArray) {
         $("ul").html(`
-          ${taskArray.map(
-            (task, idx) => `
+          ${taskArray
+            .map(
+              (task, idx) => `
             <li class="flex items-center shadow-2xl rounded-xl p-3 gap-3">
               <div>${idx + 1}</div>
               <div class="flex-1">${task}</div>
               <div>
-                <button
+                <button onclick="handleEdit(${idx})"
                   class="px-5 py-1 border text-green-600 hover:bg-green-600 hover:text-white cursor-pointer"
                 >
                   Edit
                 </button>
               </div>
               <div>
-                <button
+                <button onclick="handleDelete(${idx})"
                   class="px-5 py-1 border text-orange-600 hover:bg-orange-600 hover:text-white cursor-pointer"
                 >
                   Delete
@@ -66,8 +78,27 @@
               </div>
             </li>
           `
-          ).join("")}
+            )
+            .join("")}
         `);
+      }
+
+      // Edit function
+      function handleEdit(idx) {
+        const findValue = taskArray[idx];
+
+        $("main form input[type='text']").val(findValue);
+        editIdx = idx;
+
+        console.group("Edit function");
+        console.info("Index: ", idx);
+        console.info("Value: ", findValue);
+        console.groupEnd();
+      }
+
+      function handleDelete(idx) {
+        taskArray = taskArray.filter((_, index) => index !== idx);
+        displayTask(taskArray);
       }
     </script>
   </body>
