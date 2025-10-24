@@ -1,10 +1,10 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ year }) => {
   return (
     <>
-      <footer style={{ textAlign: "center" }}>
-        <p>&copy; React App; Private Limited.</p>
+      <footer>
+        <p>&copy; React class; Since {year}</p>
       </footer>
     </>
   );

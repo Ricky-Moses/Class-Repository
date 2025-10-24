@@ -1,20 +1,18 @@
 import React from "react";
 
-const Header = (props) => {
-    // props = {title: "React"} - props.title
+const Header = ({ menuList }) => {
+  const title = "React Class";
   return (
     <>
       <header>
-        <div class="head-logo">
-          <h1>{props.headTitle}</h1>
+        <div className="head-logo">
+          <h1>{title}</h1>
         </div>
         <nav>
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Skill</li>
-            <li>Project</li>
-            <li>Contact</li>
+            {menuList.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </nav>
       </header>

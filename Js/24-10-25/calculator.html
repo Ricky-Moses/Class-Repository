@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-
+  </head>
+  <body>
     <script>
-        
-        // Prompt - Data from user
-       const num1 = parseInt(prompt("Enter a number 1"))
-       const num2 = parseInt(prompt("Enter a number 2"))
+      // Prompt - Data from user
+      const num1 = parseInt(prompt("Enter a number 1"));
+      const num2 = parseInt(prompt("Enter a number 2"));
 
-        
+      const op = prompt("Enter a operator (+, -, * , /)");
 
-        console.group('Calculator')
-        console.info("num1: ", num1)
-        console.info("num2: ", num2)
-        console.info("Addition: ", num1 + num2)
-        // console.info(num1 + num2)
-        // console.info(12, typeof 12)
-        // console.info(num, typeof num)
-        console.groupEnd();
+      let result;
+
+      if (op === "+") {
+        result = `Addition: ${num1 + num2}`; // Template literals
+      }
+      else if(op === "-"){
+        result = `Subtraction: ${num1 - num2}`
+      }
+      else if(op === "*"){
+        result = `Multiplication: ${num1 * num2}`
+      }
+
+      console.group("Calculator");
+      console.info(result);
+      // console.info("num1: ", num1)
+      // console.info("num2: ", num2)
+      // console.info("Addition: ", num1 + num2)
+      // console.info(num1 + num2)
+      // console.info(12, typeof 12)
+      // console.info(num, typeof num)
+      console.groupEnd();
     </script>
-</body>
+  </body>
 </html>
