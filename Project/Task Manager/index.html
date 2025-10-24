@@ -24,7 +24,7 @@
           />
         </form>
       </fieldset>
-      <ul class="border w-5/6 h-150 p-2 overflow-y-auto"></ul>
+      <ul class="border w-5/6 h-150 p-2 overflow-y-auto flex flex-col gap-5"></ul>
     </main>
 
     <script
@@ -92,7 +92,7 @@
             ${task
               .map(
                 (item, idx) => `
-                    <li class="flex items-center gap-3 p-3 shadow-lg">
+                    <li class="flex items-center gap-3 p-3 shadow-lg" style="display: none";>
                         <div>${idx + 1}</div>
                         <div class="flex-1">${item}</div>
                         <div>
@@ -115,6 +115,8 @@
               .join("")}
         
         `);
+
+        $("ul li").show("drop", { direction: "up" }, 500);
       }
 
       function handleEdit(idx) {
@@ -122,12 +124,17 @@
 
         $("main form input[type='text']").val(findIdx);
         editIdx = idx;
+        showToast("Edit Mode", "goldenrod")
       }
 
       function handleDelete(idx) {
-        taskArr = taskArr.filter((_, index) => index !== idx);
-        displayTask(taskArr);
-        showToast("Task Deleted", "orangered");
+        const $li = $("main ul li").eq(idx);
+
+        $li.effect("slide", { direction: "down", mode: "hide" }, 500, () => {
+          taskArr = taskArr.filter((_, index) => index !== idx);
+          displayTask(taskArr);
+          showToast("Task Deleted", "orangered");
+        });
       }
     </script>
   </body>
