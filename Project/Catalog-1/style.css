@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+:root {
+  --text-color: #7fffd4;
+}
+
+button,
+label {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  position: relative;
+}
+
+header .head-logo {
+  display: flex;
+  align-items: center;
+  color: var(--text-color);
+}
+
+header .head-logo i {
+  font-size: 2em;
+}
+
+header .head-logo h1 {
+  font-variant: small-caps;
+}
+
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.active {
+  border-bottom: 2px solid brown;
+}
+
+#click,
+header label {
+  display: none;
+}
+
+/* Home */
+#home {
+  background-image: linear-gradient(to top, #000, transparent),
+    url("./asset/Nature-4.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 35vh;
+  display: grid;
+  place-items: center;
+}
+
+#home form {
+  display: flex;
+  align-items: center;
+}
+
+#home form input {
+  width: 300px;
+  height: 4vh;
+  border: none;
+  padding: 0 10px;
+  color: var(--text-color);
+}
+
+#home form button {
+  width: 50px;
+  height: 4vh;
+  border: none;
+  background-color: var(--text-color);
+  color: #fff;
+}
+
+#card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+  gap: 10px;
+}
+
+/* Media Query */
+@media (max-width: 992px) {
+  #card {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  header label {
+    display: flex;
+  }
+
+  header nav {
+    position: absolute;
+    top: 0%;
+    left: -100%;
+    transition: left 0.5s ease-in-out;
+    background-color: #fff;
+    width: 30%;
+    height: 41vh;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 20px 0;
+  }
+
+  header nav ul {
+    flex-direction: column;
+  }
+
+  #click:checked + label + nav {
+    left: 0%;
+  }
+
+  #card {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  #home form input {
+    width: 200px;
+  }
+}
