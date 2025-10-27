@@ -1,8 +1,7 @@
 import React from "react";
 
-const Header = () => {
-  const title = "React Class";
-  const menuList = ["Home", "About", "Skill", "Project", "Contact", "Blog"];
+const Header = ({ title, menuList }) => {
+  console.info(title);
   return (
     <>
       <header>
