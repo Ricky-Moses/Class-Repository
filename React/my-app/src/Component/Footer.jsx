@@ -1,10 +1,10 @@
 import React from "react";
 
-const Footer = ({ year }) => {
+const Footer = () => {
   return (
     <>
       <footer>
-        <p>&copy; React class; Since {year}</p>
+        <h4>&copy; React class</h4>
       </footer>
     </>
   );

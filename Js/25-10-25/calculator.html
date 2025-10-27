@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let num1 = parseInt(prompt("Enter a number 1"));
+      let num2 = parseInt(prompt("Enter a number 2"));
+
+      let op = prompt("Enter a operator (+, -, *, /)");
+
+      let result;
+
+      if (op === "+") {
+        result = `Addition: ${num1 + num2}`;
+      } else if (op === "-") {
+        result = `Subtraction: ${num1 - num2}`;
+      } else if (op === "*") {
+        result = `Multiplication: ${num1 * num2}`;
+      } else if (op === "/") {
+        result = `Division: ${num1 / num2}`;
+      } else if (op === "%") {
+        result = `Modules: ${num1 % num2}`;
+      } else {
+        result = "Invalid operator";
+      }
+
+      console.group("Calculation");
+      console.info(`Result: ${result}`);
+      console.groupEnd();
+    </script>
+  </body>
+</html>

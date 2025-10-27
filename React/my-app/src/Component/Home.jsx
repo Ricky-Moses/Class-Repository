@@ -1,12 +1,10 @@
 import React from "react";
 
-const Home = ({ desc }) => {
-  console.info(desc);
+const Home = () => {
   return (
     <>
       <section id="home">
         <h1>Home Page</h1>
-        <p>{desc}</p>
       </section>
     </>
   );
