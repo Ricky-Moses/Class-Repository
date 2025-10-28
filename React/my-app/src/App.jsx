@@ -1,15 +1,16 @@
 import React from "react";
-import Header from "./Component/Header";
-import Home from "./Component/Home";
-import Footer from "./Component/Footer";
-import ClassComponent from "./Class Component/ClassComponent";
-import FuncComponent from "./Functional Component/FuncComponent";
-import GrandParent from "./Prop drilling/ClassOne/GrandParent";
-import GrandChild from "./Prop drilling/ClassOne/GrandChild";
-import ClassComponentOne from "./Class Component/ClassComponentOne";
-import FuncComponentOne from "./Functional Component/FuncComponentOne";
-import GrandParentTwo from "./Prop drilling/ClassTwo/GrandParentTwo";
-import ConditionalRenderingOne from "./Conditional Rendering/ConditionalRenderingOne";
+// import Header from "./Component/Header";
+// import Home from "./Component/Home";
+// import Footer from "./Component/Footer";
+// import ClassComponent from "./Class Component/ClassComponent";
+// import FuncComponent from "./Functional Component/FuncComponent";
+// import GrandParent from "./Prop drilling/ClassOne/GrandParent";
+// import GrandChild from "./Prop drilling/ClassOne/GrandChild";
+// import ClassComponentOne from "./Class Component/ClassComponentOne";
+// import FuncComponentOne from "./Functional Component/FuncComponentOne";
+// import GrandParentTwo from "./Prop drilling/ClassTwo/GrandParentTwo";
+// import ConditionalRenderingOne from "./Conditional Rendering/ConditionalRenderingOne";
+import ConditionalRenderingTwo from "./Conditional Rendering/ConditionalRenderingTwo";
 
 const App = () => {
   const headerTitle = "React Class";
@@ -32,7 +33,8 @@ const App = () => {
       {/* <FuncComponentOne /> */}
 
       {/* <GrandParentTwo drill={propDrill} /> */}
-      <ConditionalRenderingOne />
+      {/* <ConditionalRenderingOne /> */}
+      <ConditionalRenderingTwo />
     </>
   );
 };
