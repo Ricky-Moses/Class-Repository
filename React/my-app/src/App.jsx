@@ -9,6 +9,7 @@ import GrandChild from "./Prop drilling/ClassOne/GrandChild";
 import ClassComponentOne from "./Class Component/ClassComponentOne";
 import FuncComponentOne from "./Functional Component/FuncComponentOne";
 import GrandParentTwo from "./Prop drilling/ClassTwo/GrandParentTwo";
+import ConditionalRenderingOne from "./Conditional Rendering/ConditionalRenderingOne";
 
 const App = () => {
   const headerTitle = "React Class";
@@ -30,8 +31,8 @@ const App = () => {
       {/* <ClassComponentOne /> */}
       {/* <FuncComponentOne /> */}
 
-
-      <GrandParentTwo drill={propDrill} />
+      {/* <GrandParentTwo drill={propDrill} /> */}
+      <ConditionalRenderingOne />
     </>
   );
 };

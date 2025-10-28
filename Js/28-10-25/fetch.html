@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table cellpadding="5px" border=""></table>
+    <script>
+      //   const pro = new Promise((res, rej) => {
+      //     rej()
+      //   });
+      //   console.info(pro);
+      //   console.info(fetch())
+
+      const fetchData = fetch("https://mimic-server-api.vercel.app/quotes");
+      fetchData
+        .then((data) => {
+          console.info("Then: ", data);
+          return data.json();
+        })
+        .then((actualData) => {
+          console.info("Actual Data", actualData);
+          displayData(actualData);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => console.info("Process is finalized"));
+
+      function displayData(data) {
+        console.table(data);
+        document.querySelector("table").innerHTML = `
+            ${
+              data.length > 0 &&
+              `
+                ${data.map(
+                  (list) => `
+                    <tbody>
+                        <tr>
+                            <th>${list.id}</th>
+                            <th>${list.author}</th>
+                            <td>${list.quote}</td>
+                        </tr>
+                    </tbody>
+                `
+                ).join("")}
+            `
+            }
+        `;
+      }
+      console.info(fetchData);
+    </script>
+  </body>
+</html>
