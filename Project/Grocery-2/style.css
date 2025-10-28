@@ -85,7 +85,7 @@ main #home {
   overflow-x: auto;
 }
 
-#fruitSlide figure{
+#fruitSlide figure {
   min-width: 40%;
   overflow: hidden;
   height: 50vh;
@@ -98,7 +98,7 @@ main #home {
   overflow: hidden;
 }
 
-#fruitSlide figure:hover figcaption{
+#fruitSlide figure:hover figcaption {
   position: absolute;
   top: 0;
   width: 100%;
@@ -111,3 +111,14 @@ main #home {
 }
 
 /* Main - fruitSlide */
+
+/* Main - fruitCard */
+#fruitCard {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 10px;
+  gap: 20px;
+}
+#fruitCard figure {
+  border: solid;
+}
