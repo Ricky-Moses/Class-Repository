@@ -122,3 +122,27 @@ main #home {
 #fruitCard figure {
   border: solid;
 }
+
+/* Main - KeyWord */
+#keyWord {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#keyWord button {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 30px;
+  background-color: transparent;
+  outline: solid 1px gold;
+  color: gold;
+  cursor: pointer;
+}
+
+#keyWord button:hover{
+  background-color: gold;
+  color: #000;
+  outline-offset: 2px;
+}
