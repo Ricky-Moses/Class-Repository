@@ -11,6 +11,7 @@ import React from "react";
 // import GrandParentTwo from "./Prop drilling/ClassTwo/GrandParentTwo";
 // import ConditionalRenderingOne from "./Conditional Rendering/ConditionalRenderingOne";
 import ConditionalRenderingTwo from "./Conditional Rendering/ConditionalRenderingTwo";
+import Business from "./Project/Business/Business";
 
 const App = () => {
   const headerTitle = "React Class";
@@ -34,7 +35,8 @@ const App = () => {
 
       {/* <GrandParentTwo drill={propDrill} /> */}
       {/* <ConditionalRenderingOne /> */}
-      <ConditionalRenderingTwo />
+      {/* <ConditionalRenderingTwo /> */}
+      <Business />
     </>
   );
 };
