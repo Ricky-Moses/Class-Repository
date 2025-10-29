@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let user = 17;
+
+      // Ternary Operator
+      const isEligible = user >= 18 ? "Eligible" : "Not Eligible";
+      // console.info(isEligible)
+
+      // Control Flow
+      // 1. for loop
+      /*
+            for(initialState; condition; increment or decrement){
+                ...code
+            }
+
+            for(let i = 1; i <= 5; i++){
+                console.log(i)
+            }
+                *
+                **
+                ***
+                ****
+                *****
+        */
+
+      //   for (let i = 1; i <= 5; i++) {
+      //     console.log(i);
+      //   }
+
+      // for(let i = 5; i >= 1; i--){
+      //     console.info(i)
+      // }
+
+      //   Forward star
+      for (let i = 1; i <= 5; i++) {
+        let star = "";
+        for (let j = 1; j <= i; j++) {
+          star += "*";
+        }
+        console.info(star);
+      }
+      console.info()
+
+      //   Backward star
+      for (let i = 5; i >= 1; i--) {
+        let star = "";
+        for (let j = 1; j <= i; j++) {
+          star += "*";
+        }
+        console.info(star);
+      }
+    </script>
+  </body>
+</html>
