@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      div {
+        width: 100px;
+        height: 100px;
+        background: #000;
+        margin: 50px;
+        /* transform: translate(100px, 100px); */
+        transition: transform .5s linear;
+      }
+
+      div:hover {
+        /* transform: scale(2); */
+        transform: rotateX(90deg);
+        transform: rotateY(90deg);
+        transform: rotate(360deg);
+
+        transform: skewX(90deg);
+        transform: skewY(90deg);
+        transform: skew(90deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam velit et,
+      aspernatur unde rem recusandae repellendus nobis, laboriosam quis nesciunt
+      libero iure cum optio facere quam consectetur. Sed, odio id!
+    </p>
+  </body>
+</html>
