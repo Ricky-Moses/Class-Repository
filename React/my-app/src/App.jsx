@@ -12,6 +12,7 @@ import React from "react";
 // import ConditionalRenderingOne from "./Conditional Rendering/ConditionalRenderingOne";
 import ConditionalRenderingTwo from "./Conditional Rendering/ConditionalRenderingTwo";
 import Business from "./Project/Business/Business";
+import BusinessTwo from "./Project/BusinessTwo/BusinessTwo";
 
 const App = () => {
   const headerTitle = "React Class";
@@ -36,7 +37,9 @@ const App = () => {
       {/* <GrandParentTwo drill={propDrill} /> */}
       {/* <ConditionalRenderingOne /> */}
       {/* <ConditionalRenderingTwo /> */}
-      <Business />
+      {/* <Business /> */}
+
+      <BusinessTwo />
     </>
   );
 };
