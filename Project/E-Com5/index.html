@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./assets/Icon/shop.png"
+      type="image/x-icon"
+    />
+    <title>AliBaBa</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      .small-caps {
+        font-variant: small-caps;
+      }
+
+      li,
+      button,
+      i,
+      a {
+        cursor: pointer;
+      }
+
+    </style>
+  </head>
+  <body class="flex flex-col h-dvh">
+    <!-- Header -->
+    <header
+      class="flex items-center justify-between px-5 py-3 bg-rose-300 shadow-2xl text-white"
+    >
+      <div>
+        <h1 data-pageId="home" class="text-2xl small-caps font-bold cursor-pointer">
+          AliBaBa
+        </h1>
+      </div>
+      <form class="w-3/6">
+        <input
+          type="search"
+          class="w-full border h-10 px-4 rounded-2xl focus:outline-0"
+          placeholder="Enter a product name"
+        />
+      </form>
+      <nav>
+        <ul class="flex items-center gap-5">
+          <li data-page="shop">Shop</li>
+          <li data-page="profile">Profile</li>
+        </ul>
+      </nav>
+      <div>
+        <i class="fa-solid fa-cart-shopping"></i>
+      </div>
+    </header>
+    <!-- Header -->
+
+    <!-- Main -->
+    <main class="flex-1">
+      <!-- Home -->
+      <section id="home" class="border h-full flex justify-center items-center">Home</section>
+      <!-- Home -->
+      <!-- Shop -->
+      <section id="shop">Shop</section>
+      <!-- Shop -->
+      <!-- Profile -->
+      <section id="profile">Profile</section>
+      <!-- Profile -->
+    </main>
+    <!-- Main -->
+
+    <!-- Cart -->
+    <aside id="cart" class="hidden">Cart</aside>
+    <!-- Cart -->
+
+    <script src="main.js"></script>
+  </body>
+</html>
