@@ -23,9 +23,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-
- First: npm create vite@latest
-
-*/

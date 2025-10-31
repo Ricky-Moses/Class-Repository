@@ -3,9 +3,17 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
+        title ToDo List
         link(rel="stylesheet", href="style.css")
     body 
-        h1 This is PUG file
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat suscipit quibusdam veritatis deleniti nesciunt deserunt ad perferendis consectetur molestiae facere!
-        button Learn More
+        form(action="/new-task", method="POST")
+            input(type="text", placeholder="Enter a task", name="newTask")
+            input(type="submit", value="Add") 
+        ul 
+            li 
+                div 1
+                div Task Name
+                div 
+                    button Update 
+                div 
+                    button Delete

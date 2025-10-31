@@ -1,75 +1,66 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Card from "../../Component/Card";
 
 const menuList = [
   {
     id: 1,
-    label: "All work",
+    name: "All Work",
+    label: "allWork",
   },
   {
     id: 2,
-    label: "Branding",
+    name: "Branding",
+    label: "branding",
   },
   {
     id: 3,
-    label: "Marketing",
+    name: "Marketing",
+    label: "marketing",
   },
   {
     id: 4,
-    label: "Planning",
+    name: "Planning",
+    label: "planning",
   },
   {
     id: 5,
-    label: "Research",
+    name: "Research",
+    label: "research",
   },
 ];
 
-const portfolioObj = {
-  allWork: [
-    {
-      img: "https://picsum.photos/500/300?random=0",
-      desc: "Short description for the ones who look for something new. Awesome!",
-      name: "Graphics Design",
-    },
-    {
-      img: "https://picsum.photos/500/300?random=1",
-      desc: "Short description for the ones who look for something new. Awesome!",
-      name: "Graphics Design",
-    },
-    {
-      img: "https://picsum.photos/500/300?random=2",
-      desc: "Short description for the ones who look for something new. Awesome!",
-      name: "Graphics Design",
-    },
-    {
-      img: "https://picsum.photos/500/300?random=3",
-      desc: "Short description for the ones who look for something new. Awesome!",
-      name: "Graphics Design",
-    },
-    {
-      img: "https://picsum.photos/500/300?random=4",
-      desc: "Short description for the ones who look for something new. Awesome!",
-      name: "Graphics Design",
-    },
-    {
-      img: "https://picsum.photos/500/300?random=5",
-      desc: "Short description for the ones who look for something new. Awesome!",
-      name: "Graphics Design",
-    },
-  ],
-};
-
 const PortfolioCard = () => {
+  const [data, setData] = useState({});
+  const [activeCategory, setActiveCategory] = useState("")
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch("./card.json");
+        const fetchedData = await response.json();
+        // console.info(fetchedData);
+        setData(fetchedData);
+        // console.info(data)
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <div className="flex justify-center ">
         <nav className="w-4/6">
           <ul className="flex items-center justify-around">
             {menuList?.map((li) => (
-              <li key={li.id}>{li.label}</li>
+              <li key={li.id}>{li.name}</li>
             ))}
           </ul>
         </nav>
       </div>
+      <Card />
     </>
   );
 };

@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Portfolio from "./Pages/Portfolio";
 
 const Business = () => {
+
   return (
     <>
       <Header />
