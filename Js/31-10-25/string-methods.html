@@ -8,12 +8,20 @@
   <body>
     <script>
       let str = "I am learning JavaScript";
+      let num = "123456"
       console.group("String Methods");
       // length (properties)
       console.info("length: ", str.length);
       console.info("charAt: ", str.charAt(24)) // Character At
       console.info("charCodeAt: ", str.charCodeAt(2)) 
-      console.info("indexOf: ", str.indexOf("a"))
+      console.info("indexOf: ", str.indexOf("a")) // a a a a
+      console.info("lastIndexOf: ", str.lastIndexOf("a")) // a a a a
+      console.info("includes: ", str.includes("I am"))
+      console.info("slice: ", str.slice(2, 4)) // Start(include), end(exclude)
+      console.info("sliceTwo: ", num.slice(0, 3))
+      console.info("toUpperCase: ", str.toUpperCase())
+      console.info("toLowerCase: ", str.toLowerCase())
+      console.info("startsWith: ", str.startsWith("I am learning Java"))
       console.groupEnd();
     </script>
   </body>

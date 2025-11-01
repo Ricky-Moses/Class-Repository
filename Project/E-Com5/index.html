@@ -33,17 +33,20 @@
   <body class="flex flex-col h-dvh">
     <!-- Header -->
     <header
-      class="flex items-center justify-between px-5 py-3 bg-rose-300 shadow-2xl text-white"
+      class="flex flex-col md:flex-row gap-4 items-center justify-between px-5 py-3 bg-rose-300 shadow-2xl text-white h-[53px] md:h-auto overflow-hidden"
     >
-      <div>
+      <div class="flex items-center justify-between w-full md:w-fit">
         <h1
           data-pageId="home"
           class="text-2xl small-caps font-bold cursor-pointer"
         >
           AliBaBa
         </h1>
+        <div class="md:hidden" id="toggleHeader">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </div>
       </div>
-      <form class="w-3/6">
+      <form class="w-5/6 sm:w-3/6">
         <input
           type="search"
           class="w-full border h-10 px-4 rounded-2xl focus:outline-0"
@@ -70,13 +73,16 @@
       </section>
       <!-- Home -->
       <!-- Shop -->
-      <section id="shop">
-        <select name="" id="">
+      <section id="shop" class="p-3">
+        <select name="" id="" class="bg-rose-300 text-white shadow-2xl w-70 px-3 py-2 rounded">
           <option value="">Mobiles</option>
           <option value="">Tablets</option>
           <option value="">Laptop</option>
           <option value="">Television</option>
         </select>
+        <div id="productCards">
+
+        </div>
       </section>
       <!-- Shop -->
       <!-- Profile -->
@@ -88,7 +94,7 @@
     <!-- Cart -->
     <aside
       id="cart"
-      class="w-100 h-dvh fixed top-0 left-0 bg-white shadow-2xl hidden"
+      class="w-100 h-dvh fixed top-0 -left-1/2 bg-white shadow-2xl transition-[left] duration-500"
     >
       Cart
     </aside>
