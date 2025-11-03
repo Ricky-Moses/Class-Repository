@@ -38,9 +38,9 @@ const App = () => {
       {/* <GrandParentTwo drill={propDrill} /> */}
       {/* <ConditionalRenderingOne /> */}
       {/* <ConditionalRenderingTwo /> */}
-      <Business />
+      {/* <Business /> */}
 
-      {/* <BusinessTwo /> */}
+      <BusinessTwo />
 
       {/* <BusinessThree /> */}
     </>

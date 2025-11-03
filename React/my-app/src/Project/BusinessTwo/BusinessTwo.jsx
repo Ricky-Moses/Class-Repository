@@ -1,12 +1,16 @@
-import React from 'react'
-import Header from './Layouts/Header'
+import React from "react";
+import Header from "./Layouts/Header";
+import Home from "./Pages/Home";
 
 const BusinessTwo = () => {
   return (
     <>
-      <Header  />
+      <Header />
+      <main>
+        <Home />
+      </main>
     </>
-  )
-}
+  );
+};
 
-export default BusinessTwo
+export default BusinessTwo;

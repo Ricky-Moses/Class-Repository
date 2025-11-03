@@ -15,21 +15,27 @@ const Header = () => {
   ];
   return (
     <>
-      <header className="flex items-center justify-between p-5! bg-blue-900 text-white">
-        <div className="flex items-center text-2xl font-bold">
-          <IoBusiness />
-          <h1>Business</h1>
+      <header
+        style={{ height: isOpen ? "fit-content" : "7vh" }}
+        className="bg-blue-600 text-white  flex flex-col md:flex-row items-center gap-5 justify-between p-3!"
+      >
+        <div className=" flex items-center justify-between w-full md:w-fit">
+          <div className="text-3xl flex items-center gap-2 ">
+            <IoBusiness />
+            <h1 className="font-bold">Business</h1>
+          </div>
+          <div className="flex md:hidden" onClick={() => setIsOpen(!isOpen)}>
+            <FaBars />
+          </div>
         </div>
-        <nav className="">
-          <ul className="flex items-center gap-10">
-            {menuList.length > 0 && menuList.map((li) => <li>{li}</li>)}
+        <nav>
+          <ul className="flex flex-col md:flex-row items-center gap-5">
+            {menuList.map((list) => (
+              <li key={list}>{list}</li>
+            ))}
           </ul>
         </nav>
-        <div>
-          <FaBars onClick={() => setIsOpen(!isOpen)} />
-        </div>
       </header>
-      {isOpen && <Aside setIsOpen={setIsOpen} />}
     </>
   );
 };

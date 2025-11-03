@@ -2,27 +2,95 @@
 const http = require("http");
 const URL = require("url");
 
+let data = [];
 // console.info(http);
 function rqListener(req, res) {
   const parsedURL = URL.parse(req.url, true);
   const pathName = parsedURL.pathname;
+  const query = parsedURL.query;
   // response.writeHead(200, {"content-type":"text/html"})
   // response.write(`<h1>This is response</h1>`)
   // response.end()
 
   if (pathName === "/") {
     res.writeHead(200, { "content-type": "text/html" });
-    res.write(`<form action="/msg">
-                <input type="text" placeholder="Enter a task" id="">
+    res.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Document</title>
+              <style>
+                  * {
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+                  list-style-type: none;
+                }
+
+                body{
+                  display: flex;
+                  flex-direction: column;
+                  gap: 30px;
+                  padding: 20px;
+                }
+                  li{
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                  }
+              </style>
+            </head>
+            <body>
+              <form action="/new-task">
+                <input type="text" placeholder="Enter a task" name="task">
                 <input type="submit" value="Submit">
-            </form>`);
+              </form>
+              <ul>
+                ${data
+                  .map(
+                    (list) => `
+                    <li>
+                      <div>${list.id}</div>
+                      <div>${list.task}</div>
+                      <div>
+                        <form action="/update-task">
+                          <input type="hidden" name="taskId" value="${list.id}">
+                          <input type="text" name="updatedTask" placeholder="Update">
+                          <input type="submit" value="Update">
+                        </form>
+                      </div>
+                    </li>
+                  `
+                  )
+                  .join("")}
+              </ul>
+            </body>
+            </html>
+            `);
     res.end();
-  } else if (pathName === "/msg") {
-    res.writeHead(200, { "content-type": "text/html" });
-    res.write(`<h1>This response of message</h1>`);
+  } else if (pathName === "/new-task") {
+    const newTask = query.task;
+    if (newTask) {
+      data.push({ id: data.length + 1, task: newTask });
+    }
+    res.writeHead(302, { location: "/" });
     res.end();
+  } else if (pathName === "/update-task") {
+    const taskId = query.taskId;
+    const updateTask = query.updatedTask;
+
+    data = data.map((task) => task.id === taskId ? {} : task)
+    res.writeHead(302, { location: "/" });
+    res.end();
+
+    console.group("Update task");
+    console.info("ID: ", taskId);
+    console.info("Updated Task: ", updateTask);
+    console.groupEnd();
   } else {
-    res.writeHead(404, { "content-type": "text/html" });
+    res.writeHead(404);
     res.write(`<h1>404 Not Found</h1>`);
     res.end();
   }
@@ -30,6 +98,8 @@ function rqListener(req, res) {
   console.group("Information");
   console.info("URL: ", parsedURL);
   console.info("Pathname: ", pathName);
+  console.info("Query: ", query);
+  console.info("Data: ", data);
   console.groupEnd();
 }
 

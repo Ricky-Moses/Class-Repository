@@ -18,6 +18,15 @@
       p {
         margin: 0;
       }
+      #details{
+        height: 80vh;
+      }
+
+      #details .card-box > div{
+        display: flex ;
+        flex-direction: column;
+      }
+      
     </style>
   </head>
   <body>
@@ -258,8 +267,13 @@
       <!-- Video -->
 
       <!-- Frameworks -->
-      <section id="frameworks" class="p-5 d-flex align-items-center justify-content-center">
-        <div class="bg-primary-subtle text-white w-75 p-5 d-flex align-items-center justify-content-between rounded">
+      <section
+        id="frameworks"
+        class="p-5 d-flex align-items-center justify-content-center"
+      >
+        <div
+          class="bg-primary-subtle text-white w-75 p-5 d-flex align-items-center justify-content-between rounded"
+        >
           <h1>deck</h1>
           <h1>TailGrids</h1>
           <h1>Lineicons</h1>
@@ -268,6 +282,101 @@
         </div>
       </section>
       <!-- Frameworks -->
+
+      <!-- Details -->
+      <section id="details" >
+        <figure class="d-flex border h-100">
+          <figcaption class="w-50 d-flex flex-column align-items-center justify-content-center">
+            <h1>Crafted for Startup, SaaS and Business Sites.</h1>
+            <h4>
+              The main ‘thrust’ is to focus on educating attendees on how to
+              best protect highly vulnerable business applications with
+              interactive panel discussions and roundtables.
+            </h4>
+            <div class="d-flex align-items-center gap-5 w-100">
+              <!-- Col - 1 -->
+              <div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name=""
+                    id="click1"
+                  />
+                  <label class="form-check-label" for="click1"
+                    >Premium quality</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name=""
+                    id="click2"
+                  />
+                  <label class="form-check-label" for="click2"
+                    >No code required</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name=""
+                    id="click3"
+                  />
+                  <label class="form-check-label" for="click3"
+                    >Use for lifetime</label
+                  >
+                </div>
+              </div>
+              <!-- Col - 2 -->
+              <div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name=""
+                    id="click4"
+                  />
+                  <label class="form-check-label" for="click4"
+                    >Regular updates</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name=""
+                    id="click5"
+                  />
+                  <label class="form-check-label" for="click5"
+                    >Rich documentation</label
+                  >
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name=""
+                    id="click6"
+                  />
+                  <label class="form-check-label" for="click6"
+                    >Developer friendly</label
+                  >
+                </div>
+              </div>
+            </div>
+          </figcaption>
+          <div class="w-50 card-box" >
+            <div class="border w-50 h-100 p-5">
+               <div class="border "></div>
+               <div class="border"></div>
+               <div class="border"></div>
+            </div>
+          </div>
+        </figure>
+      </section>
     </main>
 
     <script
