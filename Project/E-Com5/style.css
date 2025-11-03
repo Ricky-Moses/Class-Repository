@@ -1,0 +1,15 @@
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.small-caps {
+  font-variant: small-caps;
+}
+
+li,
+button,
+i,
+a {
+  cursor: pointer;
+}

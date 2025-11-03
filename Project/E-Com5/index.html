@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="shortcut icon"
       href="./assets/Icon/shop.png"
@@ -17,18 +18,6 @@
       referrerpolicy="no-referrer"
     />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-      .small-caps {
-        font-variant: small-caps;
-      }
-
-      li,
-      button,
-      i,
-      a {
-        cursor: pointer;
-      }
-    </style>
   </head>
   <body class="flex flex-col h-dvh">
     <!-- Header -->
@@ -59,7 +48,7 @@
           <li data-page="profile">Profile</li>
         </ul>
       </nav>
-      <div id="cartIcon">
+      <div id="openCart">
         <i class="fa-solid fa-cart-shopping"></i>
       </div>
     </header>
@@ -74,15 +63,26 @@
       <!-- Home -->
       <!-- Shop -->
       <section id="shop" class="p-3">
-        <select name="" id="" class="bg-rose-300 text-white shadow-2xl w-70 px-3 py-2 rounded">
-          <option value="">Mobiles</option>
-          <option value="">Tablets</option>
-          <option value="">Laptop</option>
-          <option value="">Television</option>
-        </select>
-        <div id="productCards">
-
+        <div class="flex items-center justify-between w-full">
+          <!-- Product category -->
+          <select
+            name=""
+            id="productCategory"
+            class="bg-rose-300 capitalize text-white shadow-2xl w-70 px-3 py-2 rounded"
+          >
+            
+          </select>
+          <div>
+            <h1>Product Name</h1>
+          </div>
+          <!-- Filter -->
+          <select
+            name=""
+            id=""
+            class="bg-rose-300 text-white shadow-2xl w-70 px-3 py-2 rounded"
+          ></select>
         </div>
+        <div id="productCards"></div>
       </section>
       <!-- Shop -->
       <!-- Profile -->
@@ -94,9 +94,11 @@
     <!-- Cart -->
     <aside
       id="cart"
-      class="w-100 h-dvh fixed top-0 -left-1/2 bg-white shadow-2xl transition-[left] duration-500"
+      class="w-100 h-dvh fixed top-0 -left-[200%] bg-white shadow-2xl transition-[left] duration-500 p-2"
     >
-      Cart
+      <div class="text-2xl" id="closeCart">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
     </aside>
     <!-- Cart -->
 

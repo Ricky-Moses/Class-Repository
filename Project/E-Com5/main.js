@@ -3,13 +3,34 @@ const headerEl = document.querySelector("header");
 // Main Element
 const mainEl = document.querySelector("main");
 // Cart or Aside Element
-const asideEl = document.querySelector("aside");
+const asideEl = document.querySelector("aside#cart");
 
+let products = {};
+
+// Fetch the data.json
+async function fetchData() {
+  try {
+    const res = await fetch("./assets/data.json");
+    const data = await res.json();
+    products = data;
+    // console.info(products);
+    renderProductName(products);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+fetchData();
+
+// Home
+const homeEl = mainEl.querySelector("#home");
+const shopEl = mainEl.querySelector("#shop");
+const profileEl = mainEl.querySelector("#profile");
 
 // Function to open header
 headerEl.querySelector("#toggleHeader").addEventListener("click", () => {
-  headerEl.classList.toggle("h-[53px]")
-})
+  headerEl.classList.toggle("h-[53px]");
+});
 
 // Function to navigate page
 function navigatePage(pageID = "home") {
@@ -35,6 +56,44 @@ headerEl.querySelectorAll("nav ul li").forEach((li) => {
 });
 
 // Cart click function
-headerEl.querySelector("#cartIcon").addEventListener("click", () => {
-  asideEl.style.left = asideEl.style.left === "-50%" ? "0%" : "-50%"
+
+const isOpenCart = headerEl.querySelector("#openCart");
+const isCloseCart = asideEl.querySelector("#closeCart");
+
+function toggleCart(actionType) {
+  asideEl.classList.toggle("left-0", actionType);
+}
+
+isOpenCart.addEventListener("click", (e) => {
+  e.stopPropagation();
+  toggleCart(true);
 });
+
+isCloseCart.addEventListener("click", (e) => {
+  e.stopPropagation();
+  toggleCart(false);
+});
+
+asideEl.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+document.addEventListener("click", (e) => {
+  toggleCart(false);
+});
+
+// Render product name
+function renderProductName(product) {
+  // console.info(product)
+  const selectCategory = shopEl.querySelector("#productCategory");
+
+  selectCategory.innerHTML = `<option disabled selected>Select a product</option>`;
+
+  selectCategory.innerHTML = `
+    ${Object.keys(product).map(
+      (key) => `
+        <option class="capitalize" value="${key}">${key}</option>
+      `
+    )}
+  `;
+}

@@ -1,37 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../Component/Card";
 
-const menuList = [
-  {
-    id: 1,
-    name: "All Work",
-    label: "allWork",
-  },
-  {
-    id: 2,
-    name: "Branding",
-    label: "branding",
-  },
-  {
-    id: 3,
-    name: "Marketing",
-    label: "marketing",
-  },
-  {
-    id: 4,
-    name: "Planning",
-    label: "planning",
-  },
-  {
-    id: 5,
-    name: "Research",
-    label: "research",
-  },
-];
-
 const PortfolioCard = () => {
   const [data, setData] = useState({});
-  const [activeCategory, setActiveCategory] = useState("")
+  const [activeCategory, setActiveCategory] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -49,18 +21,31 @@ const PortfolioCard = () => {
     fetchData();
   }, []);
 
+  const handleCategory = (key) => {
+    const selectedProduct = data[key];
+    console.info(key);
+    console.info(selectedProduct);
+    setActiveCategory(selectedProduct);
+  };
+
   return (
     <>
       <div className="flex justify-center ">
         <nav className="w-4/6">
           <ul className="flex items-center justify-around">
-            {menuList?.map((li) => (
-              <li key={li.id}>{li.name}</li>
+            {Object.keys(data).map((productKey) => (
+              <li
+                key={productKey}
+                onClick={() => handleCategory(productKey)}
+                className="capitalize"
+              >
+                {productKey}
+              </li>
             ))}
           </ul>
         </nav>
       </div>
-      <Card />
+      <Card category={activeCategory} />
     </>
   );
 };
