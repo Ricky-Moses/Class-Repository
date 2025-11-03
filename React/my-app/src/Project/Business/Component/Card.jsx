@@ -6,7 +6,7 @@ const Card = ({ category }) => {
       <section className="grid grid-cols-3 p-3 gap-3">
         {category.length > 0 &&
           category.map((item) => (
-            <figure className="">
+            <figure key={item.id} className="">
               <div>
                 <img src={item.img} alt="" />
               </div>

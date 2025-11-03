@@ -12,6 +12,10 @@ const PortfolioCard = () => {
         const fetchedData = await response.json();
         // console.info(fetchedData);
         setData(fetchedData);
+
+        const firstProduct = Object.keys(fetchedData)[0];
+        setActiveCategory(fetchedData[firstProduct]);
+        console.info(firstProduct);
         // console.info(data)
       } catch (err) {
         console.error(err);
