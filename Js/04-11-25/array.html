@@ -9,19 +9,28 @@
     <script>
       let num = [1, 2, 3, 4, 5];
       //   num.splice(0, 2)
-      const copy = num.slice(0, 3);
+      //   const copy = num.slice(0, 3);
 
-      num.forEach((currentItem, index, arr) => {
-        console.info(`${currentItem} : ${index}`);
+      //   num.forEach((currentItem, index, arr) => {
+      //     console.info(`${currentItem} : ${index}`);
+      //   });
+
+      //   num.map((currentItem, index) => {
+      //     console.info(`${currentItem} : ${index}`);
+      //   });
+
+      num.forEach((cur, idx, arr) => {
+        arr[idx] = cur + cur; // [1, 2, 3, 4, 5] arr[0] - 1 => 1 + 1 = 2
       });
 
-      num.map((currentItem, index) => {
-        console.info(`${currentItem} : ${index}`);
+      const copyMap = num.map((cur, idx) => {
+       return cur + cur;
       });
 
       console.group("Array methods");
       console.info("Original: ", num);
-      console.info("Copy: ", copy);
+      //   console.info("Copy: ", copy);
+      console.info("Map: ", copyMap);
       console.groupEnd();
     </script>
   </body>
