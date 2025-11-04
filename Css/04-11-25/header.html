@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style-type: none;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        position: relative;
+      }
+
+      header nav ul {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      #click,
+      header label {
+        display: none;
+      }
+
+      @media (max-width: 600px) {
+        header label {
+          display: flex;
+        }
+
+        header nav {
+            position: absolute;
+            top: 100%;
+            left: -100%;
+            transition: left .5s ease;
+        }
+
+        header nav ul{
+            flex-direction: column;
+        }
+
+        #click:checked + label + nav{
+            left: 5%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="head-logo">
+        <h1>Header Topic</h1>
+      </div>
+      <input type="checkbox" name="" id="click" />
+      <label for="click">Click</label>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Skill</li>
+          <li>Project</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>
