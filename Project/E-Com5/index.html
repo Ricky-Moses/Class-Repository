@@ -62,18 +62,16 @@
       </section>
       <!-- Home -->
       <!-- Shop -->
-      <section id="shop" class="p-3">
+      <section id="shop" class="p-3 flex-col">
         <div class="flex items-center justify-between w-full">
           <!-- Product category -->
           <select
             name=""
             id="productCategory"
             class="bg-rose-300 capitalize text-white shadow-2xl w-70 px-3 py-2 rounded"
-          >
-            
-          </select>
+          ></select>
           <div>
-            <h1>Product Name</h1>
+            <h1 class="capitalize font-bold" id="productName"></h1>
           </div>
           <!-- Filter -->
           <select
@@ -82,7 +80,10 @@
             class="bg-rose-300 text-white shadow-2xl w-70 px-3 py-2 rounded"
           ></select>
         </div>
-        <div id="productCards"></div>
+        <div id="productCards" class="p-2 grid grid-cols-4 gap-3">
+          
+          
+        </div>
       </section>
       <!-- Shop -->
       <!-- Profile -->

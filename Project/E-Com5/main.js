@@ -15,6 +15,11 @@ async function fetchData() {
     products = data;
     // console.info(products);
     renderProductName(products);
+
+    const firstProduct = Object.keys(data)[0];
+    // console.info(firstProduct);
+    renderTheProductName(firstProduct);
+    renderProducts(data[firstProduct]);
   } catch (err) {
     console.error(err);
   }
@@ -83,9 +88,9 @@ document.addEventListener("click", (e) => {
 });
 
 // Render product name
+const selectCategory = shopEl.querySelector("#productCategory");
 function renderProductName(product) {
   // console.info(product)
-  const selectCategory = shopEl.querySelector("#productCategory");
 
   selectCategory.innerHTML = `<option disabled selected>Select a product</option>`;
 
@@ -95,5 +100,64 @@ function renderProductName(product) {
         <option class="capitalize" value="${key}">${key}</option>
       `
     )}
+  `;
+  const selectCategoryOpt = selectCategory.querySelectorAll("option");
+  // console.info(selectCategoryOpt);
+
+  selectCategoryOpt.forEach((item) => {
+    item.addEventListener("click", () => {
+      const productName = item.value;
+      console.info(productName)
+      renderTheProductName(productName);
+      renderProducts(product[productName])
+    });
+  });
+}
+
+const productNameEl = shopEl.querySelector("#productName");
+
+function renderTheProductName(name) {
+  productNameEl.textContent = name;
+}
+
+function renderProducts(products) {
+  const productCards = shopEl.querySelector("#productCards");
+
+  productCards.innerHTML = `
+    ${products.map(
+      (item) => `
+        <figure>
+            <div>
+              <img src="${item.Image[0].url}?random=${item.id}" alt="" />
+            </div>
+            <figcaption>
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Name:</th>
+                    <td>${item.name}</td>
+                  </tr>
+                  <tr>
+                    <th>Brand:</th>
+                    <td>Brand Name</td>
+                  </tr>
+                  <tr>
+                    <th>Description:</th>
+                    <td>Description</td>
+                  </tr>
+                  <tr>
+                    <th>Stock</th>
+                    <td>In Stock</td>
+                  </tr>
+                  <tr>
+                    <th>Price:</th>
+                    <td>Product Price</td>
+                  </tr>
+                </tbody>
+              </table>
+            </figcaption>
+          </figure>
+      `
+    ).join("")}
   `;
 }

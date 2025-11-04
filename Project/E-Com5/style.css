@@ -13,3 +13,9 @@ i,
 a {
   cursor: pointer;
 }
+
+
+table th,table td{
+  text-align: start;
+  padding: 5px;
+}

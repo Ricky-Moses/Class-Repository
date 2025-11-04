@@ -10,10 +10,13 @@ html(lang="en")
             input(type="text", placeholder="Enter a task", name="newTask")
             input(type="submit", value="Add") 
         ul 
-            li 
-                div 1
-                div Task Name
-                div 
-                    button Update 
-                div 
-                    button Delete
+            each task in data
+                li 
+                    div=task.id
+                    div=task.value
+                    div 
+                        form(action=`/update-task?id=${task.id}`, method="POST")
+                            input(type="text", placeholder="Update", name="updatedTask")
+                            input(type="submit", value="Update")  
+                    div 
+                        button Delete

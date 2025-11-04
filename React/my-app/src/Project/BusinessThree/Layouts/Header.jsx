@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { GiPayMoney } from "react-icons/gi";
 import { FaBars } from "react-icons/fa";
 
 const menuList = ["Home", "Service", "Portfolio", "Pricing", "Team", "Contact"];
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <header className="bg-blue-500 text-white flex items-center justify-between p-5!">
-        <div className="flex items-center text-2xl font-bold">
-          <GiPayMoney />
-          <h1>Business</h1>
+      <header
+        style={{height: isOpen ? "fit-content" : "7vh"}}
+        className="bg-blue-500 text-white flex flex-col md:flex-row items-center justify-between p-5! gap-5"
+      >
+        <div className="flex items-center justify-between w-full md:w-fit">
+          <div className="flex items-center text-2xl gap-2">
+            <GiPayMoney />
+            <h1 className="font-bold">Business</h1>
+          </div>
+          <div className="flex md:hidden" onClick={() => setIsOpen(!isOpen)}>
+            <FaBars />
+          </div>
         </div>
         <nav>
-          <ul className="flex items-center gap-10">{menuList.length > 0 && menuList.map((li) => <li>{li}</li>)}</ul>
+          <ul className="flex flex-col md:flex-row items-center gap-5">
+            {menuList.map((list) => (
+              <li>{list}</li>
+            ))}
+          </ul>
         </nav>
-        <div>
-            <FaBars />
-        </div>
       </header>
     </>
   );

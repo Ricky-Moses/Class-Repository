@@ -38,7 +38,34 @@ const server = http.createServer((req, res) => {
 
     return;
   }
-  const html = pug.renderFile("./index.pug");
+
+  // Update task
+  if (req.url.startsWith("/update-task") && req.method === "POST") {
+    const param = new URL(req.url, `http://${req.headers.host}`).searchParams;
+    const taskId = Number(param.get("id"));
+    let body = "";
+    req.on("data", (chunk) => (body += chunk));
+    req.on("end", () => {
+      const params = new URLSearchParams(body);
+      const updatedTask = params.get("updatedTask");
+      const taskFounded = data.find((task) => task.id === taskId);
+
+      if (taskFounded && updatedTask) {
+        taskFounded.value = updatedTask;
+      }
+      res.writeHead(302, { location: "/" });
+      console.group("Update information");
+      console.info("Param: ", param);
+      console.info("Params: ", params);
+      console.info("Task ID: ", taskId);
+      console.info("Updated Task: ", updatedTask);
+      console.groupEnd();
+      res.end();
+    });
+
+    return;
+  }
+  const html = pug.renderFile("./index.pug", { data });
   res.writeHead(200, { "content-type": "text/html" });
   res.end(html);
 });

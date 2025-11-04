@@ -14,6 +14,7 @@ import ConditionalRenderingTwo from "./Conditional Rendering/ConditionalRenderin
 import Business from "./Project/Business/Business";
 import BusinessTwo from "./Project/BusinessTwo/BusinessTwo";
 import BusinessThree from "./Project/BusinessThree/BusinessThree";
+import { ControlledRender, UnControlledRender } from "./Render/ControlAndUnControl";
 
 const App = () => {
   const headerTitle = "React Class";
@@ -40,9 +41,12 @@ const App = () => {
       {/* <ConditionalRenderingTwo /> */}
       {/* <Business /> */}
 
-      <BusinessTwo />
+      {/* <BusinessTwo /> */}
 
       {/* <BusinessThree /> */}
+
+      <ControlledRender />
+      <UnControlledRender />
     </>
   );
 };
