@@ -15,6 +15,7 @@ import Business from "./Project/Business/Business";
 import BusinessTwo from "./Project/BusinessTwo/BusinessTwo";
 import BusinessThree from "./Project/BusinessThree/BusinessThree";
 import { ControlledRender, UnControlledRender } from "./Render/ControlAndUnControl";
+import HeaderOne from "./Component/HeaderOne";
 
 const App = () => {
   const headerTitle = "React Class";
@@ -45,8 +46,10 @@ const App = () => {
 
       {/* <BusinessThree /> */}
 
-      <ControlledRender />
-      <UnControlledRender />
+      {/* <ControlledRender /> */}
+      {/* <UnControlledRender /> */}
+      <HeaderOne />
+
     </>
   );
 };

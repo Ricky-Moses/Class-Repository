@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let num = [1, 2, 3, 4, 5];
+      //   num.splice(0, 2)
+      const copy = num.slice(0, 3);
+
+      num.forEach((currentItem, index, arr) => {
+        console.info(`${currentItem} : ${index}`);
+      });
+
+      num.map((currentItem, index) => {
+        console.info(`${currentItem} : ${index}`);
+      });
+
+      console.group("Array methods");
+      console.info("Original: ", num);
+      console.info("Copy: ", copy);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
