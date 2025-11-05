@@ -19,6 +19,12 @@ const ToDoOne = () => {
     // console.info(e.target.value);
   };
 
+  const handleDelete = (id) => {
+    console.info(id);
+
+    setTodo((prev) => prev.filter((list) => list.id !== id));
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className="m-4!">
@@ -32,12 +38,19 @@ const ToDoOne = () => {
         <input type="submit" value="Submit" />
       </form>
       <ul>
-        {todo.length > 0 && todo.map((list) => (
-            <li>
-                <span>{list.id}</span>
-                <span>{list.user}</span>
+        {todo.length > 0 &&
+          todo.map((list) => (
+            <li className="flex items-center gap-2">
+              <span>{list.id}</span>
+              <span>{list.user}</span>
+              <span>
+                <button>Edit</button>
+              </span>
+              <span>
+                <button onClick={() => handleDelete(list.id)}>Delete</button>
+              </span>
             </li>
-        ))}
+          ))}
       </ul>
     </>
   );

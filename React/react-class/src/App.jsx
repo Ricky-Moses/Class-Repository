@@ -9,6 +9,7 @@ import {
 } from "./Controlled_UnControlled/ControlledAndUnControlledOne";
 import Count from "./Controlled_UnControlled/Count";
 import ToDoOne from "./Controlled_UnControlled/ToDoOne";
+import CountOne from "./Controlled_UnControlled/CountOne";
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
       {/* <ControlledOne /> */}
       {/* <UnControlledOne /> */}
       {/* <Count /> */}
-      <ToDoOne />
+      {/* <ToDoOne /> */}
+      <CountOne />
     </>
   );
 };

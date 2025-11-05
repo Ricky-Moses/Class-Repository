@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // Array [Collection of data types] => String, Number, Null, Boolean, Function, Undefined
+
+        const arr = ["String", 1, true, null, undefined]
+        // console.info(arr)
+
+        const fruits = ["Apple", "Avacado", "Orange" ,"Mango"]
+
+        fruits[4] = "Banana" // Create
+        fruits[0] = "Strawberry"
+
+        delete fruits[4]
+
+        // Methods
+        // 1. push() - Add new element to last of the array
+        fruits.push("Pineapple")
+        // 2. pop() - Remove last element in the array
+        fruits.pop()
+        // 3. unshift() - Add new element to first of the array
+        fruits.unshift("melon")
+        // 4. shift() - Remove first element of the array
+        fruits.shift()
+
+        console.group('Fruits')
+        console.info("Original array: ", fruits)
+        console.info("First: ", fruits[0])
+        console.info("Second: ", fruits[1])
+        console.info("Four: ", fruits[4]) // Read
+        console.groupEnd();
+
+        console.group('Array Methods')
+        console.info("Push: ", fruits[5])
+        console.info("unshift: ", fruits[0])
+        console.groupEnd();
+    </script>
+</body>
+</html>
