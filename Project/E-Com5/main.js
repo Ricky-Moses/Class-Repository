@@ -7,6 +7,9 @@ const asideEl = document.querySelector("aside#cart");
 
 let products = {};
 
+// Cart database
+let cart = [];
+
 // Fetch the data.json
 async function fetchData() {
   try {
@@ -107,9 +110,9 @@ function renderProductName(product) {
   selectCategoryOpt.forEach((item) => {
     item.addEventListener("click", () => {
       const productName = item.value;
-      console.info(productName)
+      console.info(productName);
       renderTheProductName(productName);
-      renderProducts(product[productName])
+      renderProducts(product[productName]);
     });
   });
 }
@@ -124,8 +127,9 @@ function renderProducts(products) {
   const productCards = shopEl.querySelector("#productCards");
 
   productCards.innerHTML = `
-    ${products.map(
-      (item) => `
+    ${products
+      .map(
+        (item) => `
         <figure>
             <div>
               <img src="${item.Image[0].url}?random=${item.id}" alt="" />
@@ -142,8 +146,10 @@ function renderProducts(products) {
                     <td>Brand Name</td>
                   </tr>
                   <tr>
-                    <th>Description:</th>
-                    <td>Description</td>
+                    <th class="flex">Description:</th>
+                    <td >
+                      <p class="line-clamp-1">${item.description}</p>
+                    </td>
                   </tr>
                   <tr>
                     <th>Stock</th>
@@ -153,11 +159,39 @@ function renderProducts(products) {
                     <th>Price:</th>
                     <td>Product Price</td>
                   </tr>
+                  <tr>
+                    <td>
+                      <button id="addToCart" data-cartitem=${encodeURIComponent(
+                        JSON.stringify(item)
+                      )} class="outline w-full ">Add</button>
+                    </td>
+                    <td>
+                      <button id="viewCartItem" class="outline w-full ">View</button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </figcaption>
           </figure>
       `
-    ).join("")}
+      )
+      .join("")}
   `;
+
+  const addToCart = shopEl.querySelectorAll("#addToCart");
+
+  addToCart.forEach((item) => {
+    item.addEventListener("click", () => {
+      const cartData = JSON.parse(decodeURIComponent(item.dataset.cartitem));
+      console.info(cartData);
+    });
+  });
+
+  const viewCartItem = shopEl.querySelectorAll("#viewCartItem");
+
+  viewCartItem.forEach((view) => {
+    view.addEventListener("click", () => {
+      navigatePage("view");
+    });
+  });
 }

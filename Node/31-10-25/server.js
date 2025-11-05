@@ -61,6 +61,12 @@ function rqListener(req, res) {
                           <input type="submit" value="Update">
                         </form>
                       </div>
+                      <div>
+                        <form action="/delete-task">
+                          <input type="hidden" name="taskId" value="${list.id}">
+                          <input type="submit" value="Delete">
+                        </form>
+                      </div>
                     </li>
                   `
                   )
@@ -78,17 +84,31 @@ function rqListener(req, res) {
     res.writeHead(302, { location: "/" });
     res.end();
   } else if (pathName === "/update-task") {
-    const taskId = query.taskId;
+    const taskId = Number(query.taskId);
     const updateTask = query.updatedTask;
 
-    data = data.map((task) => task.id === taskId ? {} : task)
+    const taskFounded = data.find((task) => task.id === taskId);
+
+    if (taskFounded && updateTask) {
+      taskFounded.task = updateTask;
+    }
+
     res.writeHead(302, { location: "/" });
     res.end();
 
     console.group("Update task");
-    console.info("ID: ", taskId);
+    console.info("ID: ", typeof taskId);
     console.info("Updated Task: ", updateTask);
     console.groupEnd();
+  } else if (pathName === "/delete-task") {
+    const taskId = Number(query.taskId);
+
+    if (taskId) {
+      data = data.filter((list) => list.id !== taskId);
+    }
+
+    res.writeHead(302, { location: "/" });
+    res.end();
   } else {
     res.writeHead(404);
     res.write(`<h1>404 Not Found</h1>`);

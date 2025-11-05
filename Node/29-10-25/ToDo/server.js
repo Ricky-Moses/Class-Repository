@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 
 const PORT = 3000;
-const data = [];
+let data = [];
 
 const server = http.createServer((req, res) => {
   const filePath = path.join(__dirname, req.url);
@@ -63,6 +63,16 @@ const server = http.createServer((req, res) => {
       res.end();
     });
 
+    return;
+  } else if (req.url.startsWith("/delete-task") && req.method === "POST") {
+    const param = new URL(req.url, `http://${req.headers.host}`).searchParams;
+    const taskId = Number(param.get("id"));
+
+    if (taskId) {
+      data = data.filter((task) => task.id !== taskId);
+    }
+    res.writeHead(302, { location: "/" });
+    res.end();
     return;
   }
   const html = pug.renderFile("./index.pug", { data });
