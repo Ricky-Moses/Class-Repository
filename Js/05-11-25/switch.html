@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Switch
+
+      let day = 6;
+
+      // switch(){
+      //     case (condition)
+      // }
+
+      //   switch (day) {
+      //     case 1:
+      //       console.info("Day 1");
+      //       break;
+      //     case 2:
+      //       console.info("Day 2");
+      //       break;
+      //     case 3:
+      //       console.info("Day 3");
+      //       break;
+      //     case 4:
+      //       console.info("Day 4");
+      //       break;
+      //     case 5:
+      //       console.info("Day 5");
+      //       break;
+      //     default:
+      //         console.info("Invalid day")
+      //   }
+
+      let num1 = parseInt(prompt("Enter a number 1"));
+      let num2 = parseInt(prompt("Enter a number 2"));
+
+      let op = prompt("Enter a operator (+, -, *, /, %)");
+      let result;
+
+      if (num1 && num2) {
+        // if(op === "+")
+        switch (op) {
+          case "+":
+            result = num1 + num2;
+            break;
+        }
+      } else {
+        result = "Please enter a number 1 & 2";
+      }
+
+      console.info(result);
+    </script>
+  </body>
+</html>
