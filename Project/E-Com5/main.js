@@ -181,9 +181,20 @@ function renderProducts(products) {
   const addToCart = shopEl.querySelectorAll("#addToCart");
 
   addToCart.forEach((item) => {
-    item.addEventListener("click", () => {
+    item.addEventListener("click", (e) => {
+      e.stopPropagation();
       const cartData = JSON.parse(decodeURIComponent(item.dataset.cartitem));
-      console.info(cartData);
+      const isCartExist = cart.some((i) => i.id === cartData.id);
+      // console.info(isCartExist)
+
+      if (isCartExist) {
+        alert("Already cart exist!");
+        return;
+      } else {
+        cart.push(cartData);
+        console.info(cartData);
+        cartItems(cart);
+      }
     });
   });
 
@@ -194,4 +205,37 @@ function renderProducts(products) {
       navigatePage("view");
     });
   });
+}
+
+function cartItems(cart) {
+  const viewCart = asideEl.querySelector("#cartItems");
+
+  viewCart.innerHTML = `
+    ${
+      cart.length > 0 &&
+      cart.map(
+        (item, idx) => `
+        <ul>
+          <li class="flex items-center gap-2">
+            <div>${idx + 1}</div>
+            <div>
+              <img src="${item.Image[0].url}?random=${item.id}" alt="">
+            </div>
+            <div>
+              <p>${item.name}</p>
+              <div>
+                <button>+</button>
+                <span>0</span>
+                <button>-</button>
+              </div>
+            </div>
+            <div>
+              <button>Delete</button>
+            </div>
+          </li>
+        </ul>
+      `
+      )
+    }
+  `;
 }
