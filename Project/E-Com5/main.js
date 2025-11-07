@@ -8,7 +8,7 @@ const asideEl = document.querySelector("aside#cart");
 let products = {};
 
 // Cart database
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("Cart")) || [];
 
 // Fetch the data.json
 async function fetchData() {
@@ -192,8 +192,9 @@ function renderProducts(products) {
         return;
       } else {
         cart.push(cartData);
-        console.info(cartData);
+        // console.info(cartData);
         cartItems(cart);
+        localStorage.setItem("Cart", JSON.stringify(cart));
       }
     });
   });
@@ -213,29 +214,47 @@ function cartItems(cart) {
   viewCart.innerHTML = `
     ${
       cart.length > 0 &&
-      cart.map(
-        (item, idx) => `
-        <ul>
-          <li class="flex items-center gap-2">
+      cart
+        .map(
+          (item, idx) => `
+          <li class="flex items-center justify-between gap-2">
             <div>${idx + 1}</div>
-            <div>
+            <div class="w-2/6">
               <img src="${item.Image[0].url}?random=${item.id}" alt="">
             </div>
             <div>
               <p>${item.name}</p>
-              <div>
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
+              <div class="flex items-center gap-2 mt-2">
+                <button class="px-2 outline" onClick="handleIncrease(${
+                  item.id
+                })">+</button>
+                <span>${item.qty || 1}</span>
+                <button class="px-2 outline">-</button>
               </div>
+            </div>
+            <div>
+              <p>₹ 17000/-</p>
             </div>
             <div>
               <button>Delete</button>
             </div>
           </li>
-        </ul>
       `
-      )
+        )
+        .join("")
     }
   `;
 }
+
+// Handle Increase
+function handleIncrease(id) {
+  // console.info(id)
+  cart = cart.map((item) =>
+    item.id === id ? { ...item, qty: (item.qty || 1) + 1 } : item
+  );
+
+  localStorage.setItem("Cart", JSON.stringify(cart));
+  cartItems(cart);
+}
+
+cartItems(cart);
