@@ -11,6 +11,7 @@ import Count from "./Controlled_UnControlled/Count";
 import ToDoOne from "./Controlled_UnControlled/ToDoOne";
 import CountOne from "./Controlled_UnControlled/CountOne";
 import ToDoAppOne from "./Project/ToDoAppOne";
+import ToDoAppTwo from "./Project/ToDoAppTwo";
 
 const App = () => {
   return (
@@ -22,7 +23,8 @@ const App = () => {
       {/* <Count /> */}
       {/* <ToDoOne /> */}
       {/* <CountOne /> */}
-      <ToDoAppOne />
+      {/* <ToDoAppOne /> */}
+      <ToDoAppTwo />
     </>
   );
 };
