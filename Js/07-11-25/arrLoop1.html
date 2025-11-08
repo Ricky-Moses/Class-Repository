@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let num = [3, 1, 5, 10, 9, 4, 2, 6, 7, 8];
+      // 1. forEach()
+      // 2. map()
+      // 3. filter()
+      // 4. reduce()
+      // 5. sort()
+
+      //   num[0] = num[0] + num[0]
+
+      //   num.forEach((curr, idx, arr) => {
+      //     console.info(`${curr} : ${idx} : ${arr}`)
+      //     arr[idx] = curr + curr
+      //   });
+
+      //   const copyMap = num.map((curr, idx) => {
+      //    return curr + curr;
+      //   });
+
+    //   const evenNum = num.filter((num) => {
+    //     return num % 2 === 1;
+    //   });
+
+    // const reduceNum = num.reduce((acc, curr) => {
+    //     return acc + curr
+    // }, 0)
+    num.sort((a, b) => {
+        return a - b
+    })
+      console.group("Array");
+      console.info("Original array: ", num);
+    //   console.info("Copy: ", copyMap);
+    //   console.info("Filter: ", evenNum)
+    // console.info("Reduce: ", reduceNum)
+      console.groupEnd();
+    </script>
+  </body>
+</html>
