@@ -166,7 +166,9 @@ function renderProducts(products) {
                       )} class="outline w-full ">Add</button>
                     </td>
                     <td>
-                      <button id="viewCartItem" class="outline w-full ">View</button>
+                      <button id="viewCartItem" data-view=${encodeURIComponent(
+                        JSON.stringify(item)
+                      )} class="outline w-full ">View</button>
                     </td>
                   </tr>
                 </tbody>
@@ -204,6 +206,9 @@ function renderProducts(products) {
   viewCartItem.forEach((view) => {
     view.addEventListener("click", () => {
       navigatePage("view");
+      const viewItem = view.dataset.view;
+      // console.info(viewItem);
+      viewDetails(JSON.parse(decodeURIComponent(viewItem)));
     });
   });
 }
@@ -225,18 +230,20 @@ function cartItems(cart) {
             <div>
               <p>${item.name}</p>
               <div class="flex items-center gap-2 mt-2">
-                <button class="px-2 outline" onClick="handleIncrease(${
+                <button class="px-2 outline" onclick="handleIncrease(${
                   item.id
                 })">+</button>
                 <span>${item.qty || 1}</span>
-                <button class="px-2 outline">-</button>
+                <button class="px-2 outline" onclick="handleDecrease(${
+                  item.id
+                })">-</button>
               </div>
             </div>
             <div>
-              <p>₹ 17000/-</p>
+              <p>₹ ${(item.price * (item.qty || 1)).toFixed(2)}/-</p>
             </div>
             <div>
-              <button>Delete</button>
+              <button onclick="handleDelete(${item.id})">Delete</button>
             </div>
           </li>
       `
@@ -244,6 +251,7 @@ function cartItems(cart) {
         .join("")
     }
   `;
+  totalPriceFunc();
 }
 
 // Handle Increase
@@ -255,6 +263,40 @@ function handleIncrease(id) {
 
   localStorage.setItem("Cart", JSON.stringify(cart));
   cartItems(cart);
+  totalPriceFunc();
 }
 
+// Handle Increase
+function handleDecrease(id) {
+  // console.info(id)
+  cart = cart.map((item) =>
+    item.id === id ? { ...item, qty: (item.qty || 1) - 1 } : item
+  );
+
+  localStorage.setItem("Cart", JSON.stringify(cart));
+  cartItems(cart);
+  totalPriceFunc();
+}
+
+function handleDelete(id) {
+  cart = cart.filter((item) => item.id !== id);
+  localStorage.setItem("Cart", JSON.stringify(cart));
+  cartItems(cart);
+  totalPriceFunc();
+}
+
+function totalPriceFunc() {
+  const totalPrice = asideEl.querySelector("#totalPrice");
+
+  const total = cart.reduce((acc, item) => {
+    return acc + item.price * (item.qty || 1);
+  }, 0);
+
+  totalPrice.textContent = `Total Price: ${total.toFixed(2)}`;
+}
+
+// View Details function
+function viewDetails(item) {
+  console.info(item);
+}
 cartItems(cart);
