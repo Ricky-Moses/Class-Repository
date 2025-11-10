@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+      const obj = {
+        name: "Ricky Moses",
+        age: 21,
+        job: "Trainer",
+        details: {
+          state: "Tamil Nadu",
+          city: "Dindigul",
+        },
+        getData: function(){
+            document.querySelector("table tbody").innerHTML = `
+                <tr>
+                    <th>Name: </th>
+                    <td>${name}</td>  
+                </tr>
+                <tr>
+                    <th>Age: </th>
+                    <td>${age}</td>  
+                </tr>
+                <tr>
+                    <th>Job: </th>
+                    <td>${job}</td>  
+                </tr>
+            `
+        }
+      };
+
+      const {
+        name,
+        age,
+        job,
+        details: { state, city },
+      } = obj;
+
+      obj.getData()
+
+      console.group("User Information");
+      console.info("Name: ", name);
+      console.info("Age: ", age);
+      console.info("Job: ", job);
+      console.info("State: ", state);
+      console.info("City: ", city);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
