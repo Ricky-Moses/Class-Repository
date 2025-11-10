@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,12 +10,19 @@ const Header = () => {
         </div>
         <nav>
           <ul className="flex items-center gap-2">
-            <li>Home</li>
-            <li>About</li>
-            <li>Skill</li>
+            <li>
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li>
+              <Link to={"/about"}>About</Link>
+            </li>
+            <li>
+              <Link to={"/skill"}>Skill</Link>
+            </li>
           </ul>
         </nav>
       </header>
+      <Outlet />
     </>
   );
 };

@@ -7,9 +7,7 @@
   </head>
   <body>
     <table>
-        <tbody>
-
-        </tbody>
+      <tbody></tbody>
     </table>
     <script>
       const obj = {
@@ -20,40 +18,40 @@
           state: "Tamil Nadu",
           city: "Dindigul",
         },
-        getData: function(){
-            document.querySelector("table tbody").innerHTML = `
+        getData: function () {
+          document.querySelector("table tbody").innerHTML = `
                 <tr>
                     <th>Name: </th>
-                    <td>${name}</td>  
+                    <td>${this.name}</td>  
                 </tr>
                 <tr>
                     <th>Age: </th>
-                    <td>${age}</td>  
+                    <td>${this.age}</td>  
                 </tr>
                 <tr>
                     <th>Job: </th>
-                    <td>${job}</td>  
+                    <td>${this.job}</td>  
                 </tr>
-            `
-        }
+            `;
+        },
       };
 
-      const {
-        name,
-        age,
-        job,
-        details: { state, city },
-      } = obj;
+      //   const {
+      //     name,
+      //     age,
+      //     job,
+      //     details: { state, city },
+      //   } = obj;
 
-      obj.getData()
+      obj.getData();
 
-      console.group("User Information");
-      console.info("Name: ", name);
-      console.info("Age: ", age);
-      console.info("Job: ", job);
-      console.info("State: ", state);
-      console.info("City: ", city);
-      console.groupEnd();
+      //   console.group("User Information");
+      //   console.info("Name: ", name);
+      //   console.info("Age: ", age);
+      //   console.info("Job: ", job);
+      //   console.info("State: ", state);
+      //   console.info("City: ", city);
+      //   console.groupEnd();
     </script>
   </body>
 </html>
