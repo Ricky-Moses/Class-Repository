@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table></table>
+    <script>
+      class Student {
+        constructor(stuName, age, id, section) {
+          this.stuName = stuName;
+          this.age = age;
+          this.id = id;
+          this.section = section;
+        }
+
+        getData() {
+          console.group("Student information");
+          console.info("Name: ", this.stuName);
+          console.info("Age: ", this.age);
+          console.info("Id: ", this.id);
+          console.info("Section: ", this.section);
+          console.groupEnd();
+        }
+      }
+
+    //   const UserOne = new Student("Ricky", 21, 46, "K");
+    //   const UserTwo = new Student("Ricky", 21, 46, "E");
+    //   UserOne.getData();
+    //   UserTwo.getData()
+
+    const User = [
+        new Student("Ricky", 21, 46, "K"),
+        new Student("Ricky", 21, 46, "A"),
+        new Student("Ricky", 21, 46, "B"),
+        new Student("Ricky", 21, 46, "C"),
+    ]
+
+    User.forEach((user) => user.getData())
+    </script>
+  </body>
+</html>

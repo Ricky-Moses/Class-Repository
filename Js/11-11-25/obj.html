@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // {key: value} pairs
+        const obj = {
+            user: "Ricky",
+            age: 21,
+            job: "Trainer"
+        }
+
+        // CRUD
+
+        // Create
+        obj.id = 1
+
+        // Update
+        obj.age = 40
+
+        // Delete
+        delete obj.id
+
+        // Inspecting object
+        console.info("Keys: ", Object.keys(obj))
+        console.info("Values: ", Object.values(obj))
+        console.info("Entries: ", Object.entries(obj))
+        console.info("isObject: ", Object.hasOwn(obj, "job"))
+
+        console.info(obj)
+   </script>
+</body>
+</html>

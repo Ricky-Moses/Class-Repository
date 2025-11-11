@@ -1,50 +1,34 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import {
-//   Controlled,
-//   UnControlled,
-// } from "./Controlled_UnControlled/ControlledAndUnControlled";
-// import {
-//   ControlledOne,
-//   UnControlledOne,
-// } from "./Controlled_UnControlled/ControlledAndUnControlledOne";
-// import Count from "./Controlled_UnControlled/Count";
-// import ToDoOne from "./Controlled_UnControlled/ToDoOne";
-// import CountOne from "./Controlled_UnControlled/CountOne";
-// import ToDoAppOne from "./Project/ToDoAppOne";
-import ToDoAppTwo from "./Project/ToDoAppTwo";
-// import ToDoAppThree from "./Project/ToDoAppThree";
-// import UseReducerOne from "./Hooks/UseReducerOne";
-import Header from "./SAP-1/Header";
-import Home from "./SAP-1/Pages/Home";
-import About from "./SAP-1/Pages/About";
-import Skill from "./SAP-1/Pages/Skill";
-import NotFound from "./SAP-1/Error/NotFound";
+
+
+import HeaderOne from "./SPA-2/HeaderOne";
+import Home from "./SPA-2/Pages/Home";
+import About from "./SPA-2/Pages/About";
+import Skill from "./SPA-2/Pages/Skill";
+import Project from "./SPA-2/Pages/Project";
+import Contact from "./SPA-2/Pages/Contact";
+import NotFound from "./SPA-2/Error/NotFound";
+import AboutOne from "./SPA-2/About/AboutOne";
 
 const App = () => {
   return (
     <>
-      {/* <Controlled /> */}
-      {/* <UnControlled /> */}
-      {/* <ControlledOne /> */}
-      {/* <UnControlledOne /> */}
-      {/* <Count /> */}
-      {/* <ToDoOne /> */}
-      {/* <CountOne /> */}
-      {/* <ToDoAppOne /> */}
-      <ToDoAppTwo />
-      {/* <ToDoAppThree /> */}
-      {/* <UseReducerOne /> */}
-      {/* <BrowserRouter>
+
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Header />}>
+          <Route path="/" element={<HeaderOne />}>
             <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />}>
+              <Route path="/about/img_1" element={<AboutOne />} />
+            </Route>
             <Route path="/skill" element={<Skill />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/project" element={<Project />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   );
 };
