@@ -12,6 +12,7 @@ import ProductHeaderOne from "./SPA-3/ProductHeaderOne";
 import Gadgets from "./SPA-3/Pages/Gadgets";
 import Lights from "./SPA-3/Pages/Lights";
 import FetchApiOne from "./API/FetchApiOne";
+import FetchOne from "./API/FetchOne";
 
 const App = () => {
   return (
@@ -31,7 +32,7 @@ const App = () => {
         </Routes>
       </BrowserRouter> */}
 
-      <FetchApiOne>
+      {/* <FetchApiOne>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<ProductHeaderOne />}>
@@ -41,7 +42,8 @@ const App = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
-      </FetchApiOne>
+      </FetchApiOne> */}
+      <FetchOne />
     </>
   );
 };

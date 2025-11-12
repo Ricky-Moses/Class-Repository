@@ -3,7 +3,7 @@ import { GlobalContextOne } from "../../Context/GlobalContextOne";
 
 const Gadgets = () => {
   const { store } = useContext(GlobalContextOne);
-  console.info(store);
+  console.info(store)
   return <div>Gadgets</div>;
 };
 
