@@ -36,14 +36,28 @@ function reqResFunc(req, res) {
                     <ul>
                         ${
                           data.length > 0 &&
-                          data.map(
-                            (list, idx) => `
+                          data
+                            .map(
+                              (list, idx) => `
                                 <li>
                                     <div>${idx + 1}</div>
                                     <div>${list}</div>
+                                    <div>
+                                      <form action="/update-task">
+                                        <input type="hidden" name="index" value=${idx}>
+                                        <input type="text" name="updateTask" placeholder="Update task">
+                                        <input type="submit" value="Submit">
+                                      </form>
+                                    </div>
+                                    <div>
+                                      <a href="/delete-task?index=${idx}">
+                                        <button>Delete</button>
+                                      </a>
+                                    </div>
                                 </li>
                             `
-                          ).join("")
+                            )
+                            .join("")
                         }
                     </ul>
                 </main>
@@ -51,7 +65,9 @@ function reqResFunc(req, res) {
             </html>
         `);
     res.end();
-  } else if (pathName === "/new-task") {
+  }
+  // Create
+  else if (pathName === "/new-task") {
     const task = query.task;
 
     if (task) {
@@ -61,12 +77,38 @@ function reqResFunc(req, res) {
     res.end();
     // console.info(task);
   }
+  // Update task
+  else if (pathName === "/update-task") {
+    const index = query.index;
+    const updatedTask = query.updateTask;
 
-  console.group("Request Information");
-  console.info("URL: ", parsedUrl);
-  console.info("Pathname: ", pathName);
-  console.info("Query: ", query);
-  console.groupEnd();
+    if (index && updatedTask) {
+      data[index] = updatedTask;
+    }
+
+    res.writeHead(302, { location: "/" });
+    res.end();
+
+    console.group("Update Information");
+    console.info("Index: ", index);
+    console.info("update task: ", updatedTask);
+    console.groupEnd();
+  } else if (pathName === "/delete-task") {
+    const index = query.index;
+
+    if (index) {
+      data.splice(index, 1);
+    }
+
+    res.writeHead(302, { location: "/" });
+    res.end();
+  }
+
+  // console.group("Request Information");
+  // console.info("URL: ", parsedUrl);
+  // console.info("Pathname: ", pathName);
+  // console.info("Query: ", query);
+  // console.groupEnd();
 }
 
 const server = HTTP.createServer(reqResFunc);
