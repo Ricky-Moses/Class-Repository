@@ -19,7 +19,7 @@ const FetchApiOne = ({ children }) => {
     fetchData();
   }, []);
   return (
-    <GlobalContextOne.Provider value={store}>
+    <GlobalContextOne.Provider value={{store}}>
       {children}
     </GlobalContextOne.Provider>
   );
