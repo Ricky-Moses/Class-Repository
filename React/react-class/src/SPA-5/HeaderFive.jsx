@@ -1,5 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 
 const HeaderFive = () => {
   return (
@@ -10,9 +10,33 @@ const HeaderFive = () => {
         </div>
         <nav>
           <ul className="flex items-center gap-10">
-            <li>Home</li>
-            <li>About</li>
-            <li>Skill</li>
+            <li>
+              <NavLink
+                to={"/"}
+                style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
+                className={({ isActive }) => (isActive ? "underline" : "")}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={"/about"}
+                style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
+                className={({ isActive }) => (isActive ? "underline" : "")}
+              >
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={"/skill"}
+                style={({ isActive }) => ({ color: isActive ? "red" : "blue" })}
+                className={({ isActive }) => (isActive ? "underline" : "")}
+              >
+                Skill
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </header>
