@@ -1,10 +1,11 @@
 import React from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HeaderFive from "./SPA-5/HeaderFive";
-import Home from "./SPA-5/Pages/Home";
-import About from "./SPA-5/Pages/About";
-import Skill from "./SPA-5/Pages/Skill";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FetchTwo from "./API/FetchTwo";
+// import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import HeaderFive from "./SPA-5/HeaderFive";
+// import Home from "./SPA-5/Pages/Home";
+// import About from "./SPA-5/Pages/About";
+// import Skill from "./SPA-5/Pages/Skill";
 // import HeaderOne from "./SPA-2/HeaderOne";
 // import Home from "./SPA-2/Pages/Home";
 // import About from "./SPA-2/Pages/About";
@@ -24,25 +25,27 @@ import Skill from "./SPA-5/Pages/Skill";
 // import Skill from "./SPA-4/Pages/Skill";
 // import Project from "./SPA-4/Pages/Project";
 // import Contact from "./SPA-4/Pages/Contact";
+// import AboutImg from "./SPA-4/About/AboutImg";
+// import AboutContent from "./SPA-4/About/AboutContent";
 
 const App = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HeaderFive />,
-      children: [
-        { path: "", element: <Home /> },
-        {
-          path: "about",
-          element: <About />,
-        },
-        {
-          path: "skill",
-          element: <Skill />,
-        },
-      ],
-    },
-  ]);
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <HeaderFive />,
+  //     children: [
+  //       { path: "", element: <Home /> },
+  //       {
+  //         path: "about",
+  //         element: <About />,
+  //       },
+  //       {
+  //         path: "skill",
+  //         element: <Skill />,
+  //       },
+  //     ],
+  //   },
+  // ]);
   return (
     <>
       {/* <BrowserRouter>
@@ -77,7 +80,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HeaderFour />}>
             <Route index element={<Home />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />}>
+              <Route path="/about/img" element={<AboutImg />} />
+              <Route path="/about/text" element={<AboutContent />} />
+            </Route>
             <Route path="/skill" element={<Skill />} />
             <Route path="/project" element={<Project />} />
             <Route path="/contact" element={<Contact />} />
@@ -85,7 +91,8 @@ const App = () => {
         </Routes>
       </BrowserRouter> */}
 
-      <RouterProvider router={router} />
+      {/* <RouterProvider router={router} /> */}
+      <FetchTwo />
     </>
   );
 };
