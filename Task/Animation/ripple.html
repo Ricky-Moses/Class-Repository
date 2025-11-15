@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripple</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            position: relative;
+            height: 100vh;
+        }
+        .ripple{
+            width: 10px;
+            height: 10px;
+            background: #87ceeb;
+            border-radius: 50%;
+            animation: ripple 2s  ease-in-out infinite alternate;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .ripple.delay{
+            width: 10px;
+            height: 10px;
+            background: #87ceeb50;
+            border-radius: 50%;
+            animation: ripple 2s 1s  ease-in-out infinite alternate;
+        }
+        @keyframes ripple {
+            0%{
+                transform: scale(0);
+                /* opacity: 0; */
+            }
+            100%{
+                transform: scale(50);
+                /* opacity: 1; */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ripple"></div>
+    <div class="ripple delay"></div>
+</body>
+</html>

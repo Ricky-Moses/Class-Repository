@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        position: relative;
+        height: 100vh;
+      }
+
+      h1{
+        text-align: center;
+        margin: 20px;
+        font-variant: small-caps;
+      }
+
+      div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+      .ripple {
+        background: #87ceeb10;
+        transform: scale(0);
+        animation: ripple 5s linear infinite;
+      }
+
+      .ripple.one{
+        background: #87ceeb30;
+        animation: ripple 5s 1s linear infinite;
+      }
+      .ripple.two{
+        background: #87ceeb50;
+        animation: ripple 5s 2s linear infinite;
+      }
+
+      .ripple.three{
+        background: #87ceeb70;
+        animation: ripple 5s 3s linear infinite;
+      }
+
+      .ripple.four{
+        background: #87ceeb90;
+        animation: ripple 5s 4s linear infinite;
+      }
+
+      @keyframes ripple {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(50);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ripple Animation</h1>
+    <div class="ripple"></div>
+    <div class="ripple one"></div>
+    <div class="ripple two"></div>
+    <div class="ripple three"></div>
+    <div class="ripple four"></div>
+  </body>
+</html>
