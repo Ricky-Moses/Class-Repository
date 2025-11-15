@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   class Section {
+      //     constructor(name) {
+      //       this.name = name;
+      //     }
+      //   }
+
+      //   class Student extends Section {
+      //     constructor(name, id) {
+      //       super(name);
+      //       this.id = id;
+      //     }
+
+      //     getData(){
+      //         console.info(`Name: ${this.name}, id: ${this.id}`)
+      //     }
+      //   }
+
+      //   const User = new Student("Ricky", 1)
+      //   User.getData()
+
+      class Animal {
+        sound() {
+          return "Animal Sounds";
+        }
+      }
+
+      class Dog extends Animal {
+        sound() {
+          return "Bark Bark";
+        }
+      }
+
+      class Cat extends Animal {
+        sound() {
+          return "Meow Meow";
+        }
+      }
+
+      const animal = new Animal();
+      const dog = new Dog()
+      const cat = new Cat()
+      console.info(animal.sound());
+      console.info(dog.sound());
+      console.info(cat.sound());
+    </script>
+  </body>
+</html>

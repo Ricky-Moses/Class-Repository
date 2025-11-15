@@ -1,6 +1,11 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import FetchTwo from "./API/FetchTwo";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import FetchTwo from "./API/FetchTwo";
+// import HeaderSix from "./SPA-6/HeaderSix";
+// import Home from "./SPA-6/Pages/Home";
+// import About from "./SPA-6/Pages/About";
+// import Skill from "./SPA-6/Pages/Skill";
+// import NotFound from "./SPA-6/Error/NotFound";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import HeaderFive from "./SPA-5/HeaderFive";
 // import Home from "./SPA-5/Pages/Home";
@@ -27,6 +32,10 @@ import FetchTwo from "./API/FetchTwo";
 // import Contact from "./SPA-4/Pages/Contact";
 // import AboutImg from "./SPA-4/About/AboutImg";
 // import AboutContent from "./SPA-4/About/AboutContent";
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import HeaderSeven from "./SPA-7/HeaderSeven";
+import Home from "./SPA-7/Pages/Home";
+import About from "./SPA-7/Pages/About";
 
 const App = () => {
   // const router = createBrowserRouter([
@@ -46,53 +55,96 @@ const App = () => {
   //     ],
   //   },
   // ]);
+
+  // const pathRouter = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <HeaderSix />,
+  //     errorElement: <NotFound />,
+  //     children: [
+  //       {
+  //         path: "/",
+  //         element: <Home />
+  //       },
+  //       {
+  //         path: "about",
+  //         element: <About />
+  //       },
+  //       {
+  //         path: "skill",
+  //         element: <Skill />
+  //       }
+  //     ]
+  //   },
+  // ]);
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HeaderSeven />,
+      children: [
+        {
+          path: "/",
+          element: <Home />
+        },
+        {
+          path: "about",
+          element: <About />
+        }
+      ]
+    }
+  ])
   return (
+    // <>
+    //   {/* <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/" element={<HeaderOne />}>
+    //         <Route index element={<Home />} />
+    //         <Route path="/about" element={<About />}>
+    //           <Route path="/about/img_1" element={<AboutOne />} />
+    //         </Route>
+    //         <Route path="/skill" element={<Skill />} />
+    //         <Route path="/project" element={<Project />} />
+    //         <Route path="/contact" element={<Contact />} />
+    //       </Route>
+    //       <Route path="*" element={<NotFound />} />
+    //     </Routes>
+    //   </BrowserRouter> */}
+
+    //   {/* <FetchApiOne>
+    //     <BrowserRouter>
+    //       <Routes>
+    //         <Route path="/" element={<ProductHeaderOne />}>
+    //           <Route index element={<Gadgets />} />
+    //           <Route path="/lights" element={<Lights />} />
+    //         </Route>
+    //         <Route path="*" element={<NotFound />} />
+    //       </Routes>
+    //     </BrowserRouter>
+    //   </FetchApiOne> */}
+    //   {/* <FetchOne /> */}
+
+    //   {/* <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/" element={<HeaderFour />}>
+    //         <Route index element={<Home />} />
+    //         <Route path="/about" element={<About />}>
+    //           <Route path="/about/img" element={<AboutImg />} />
+    //           <Route path="/about/text" element={<AboutContent />} />
+    //         </Route>
+    //         <Route path="/skill" element={<Skill />} />
+    //         <Route path="/project" element={<Project />} />
+    //         <Route path="/contact" element={<Contact />} />
+    //       </Route>
+    //     </Routes>
+    //   </BrowserRouter> */}
+
+    //   {/* <RouterProvider router={router} /> */}
+    //   {/* <FetchTwo /> */}
+    //   {/* <HeaderSix /> */}
+    //   <RouterProvider router={pathRouter} />
+    // </>
     <>
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HeaderOne />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />}>
-              <Route path="/about/img_1" element={<AboutOne />} />
-            </Route>
-            <Route path="/skill" element={<Skill />} />
-            <Route path="/project" element={<Project />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter> */}
-
-      {/* <FetchApiOne>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<ProductHeaderOne />}>
-              <Route index element={<Gadgets />} />
-              <Route path="/lights" element={<Lights />} />
-            </Route>
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </FetchApiOne> */}
-      {/* <FetchOne /> */}
-
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HeaderFour />}>
-            <Route index element={<Home />} />
-            <Route path="/about" element={<About />}>
-              <Route path="/about/img" element={<AboutImg />} />
-              <Route path="/about/text" element={<AboutContent />} />
-            </Route>
-            <Route path="/skill" element={<Skill />} />
-            <Route path="/project" element={<Project />} />
-            <Route path="/contact" element={<Contact />} />
-          </Route>
-        </Routes>
-      </BrowserRouter> */}
-
       {/* <RouterProvider router={router} /> */}
-      <FetchTwo />
     </>
   );
 };

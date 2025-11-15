@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <h1></h1>
+  <h1></h1>
+  <h1></h1>
+  <h1></h1>
+  <h1></h1>
+  <body>
+    <script>
+      //   const obj = {
+      //     name: "Ricky",
+      //     age: 21,
+      //     job: "Trainer",
+      //   };
+
+      //   Destructuring
+
+      //   const { name, age, job } = obj;
+
+      //   console.info(name);
+      //   console.info(age);
+      //   console.info(job);
+
+      // DOM(Document Object Model)
+      const h1El = Array.from(document.getElementsByTagName("h1"))
+      //   h1El.textContent = "This content is given by JS DOM"
+      //   h1El.style.background = "red"
+        h1El.forEach((el, idx) => {
+            el.textContent = `This content is given by JS DOM: ${idx}`
+            if(idx === 0){
+                el.style.background = "red"
+            }
+        })
+     
+      console.info(h1El);
+    </script>
+  </body>
+</html>

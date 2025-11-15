@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      table th,
+      table td {
+        padding: 5px;
+        text-align: start;
+      }
+
+      table th {
+        width: 30%;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="h-dvh grid grid-cols-2 p-2 gap-2">
+      <!-- Section form -->
+      <section id="formSection" class="grid place-items-center py-5">
+        <form
+          class="bg-rose-100 lg:w-5/6 xl:w-4/6 h-full p-3 rounded-2xl hover:shadow-2xl"
+        >
+          <table class="w-full">
+            <tbody>
+              <tr>
+                <th>Name:</th>
+                <td>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter a name"
+                    class="w-full h-10 px-2 bg-white rounded-xl"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Father's Name:</th>
+                <td>
+                  <input
+                    type="text"
+                    name="father-name"
+                    placeholder="Enter a father's name"
+                    class="w-full h-10 px-2 bg-white rounded-xl"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>DOB:</th>
+                <td>
+                  <input
+                    type="date"
+                    name="dob"
+                    placeholder="Date of birth"
+                    class="w-full h-10 px-2 bg-white rounded-xl"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Email:</th>
+                <td>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter an email"
+                    class="w-full h-10 px-2 bg-white rounded-xl"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Phone:</th>
+                <td>
+                  <input
+                    type="tel"
+                    name="phone"
+                    pattern="[0-9]{10}"
+                    maxlength="10"
+                    placeholder="Enter a number"
+                    class="w-full h-10 px-2 bg-white rounded-xl"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <th>Gender:</th>
+                <td>
+                  <input type="radio" name="gender" id="male" value="Male " />
+                  <label for="male">Male</label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    value="Female"
+                  />
+                  <label for="female">Female</label>
+                </td>
+              </tr>
+              <tr>
+                <th>Department:</th>
+                <td>
+                  <input type="checkbox" name="course" id="html" value="HTML" />
+                  <label for="html">HTML</label>
+                  <input type="checkbox" name="course" id="css" value="CSS" />
+                  <label for="css">CSS</label>
+                  <input type="checkbox" name="course" id="js" value="JS" />
+                  <label for="js">JS</label>
+                  <input
+                    type="checkbox"
+                    name="course"
+                    id="react"
+                    value="React"
+                  />
+                  <label for="react">React</label>
+                </td>
+              </tr>
+              <tr>
+                <th>Message:</th>
+                <td>
+                  <textarea
+                    name="msg"
+                    class="w-full bg-white rounded-xl max-h-20 p-3"
+                    placeholder="Message"
+                  ></textarea>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <input
+                    type="submit"
+                    value="Submit"
+                    class="w-full h-10 rounded-md bg-rose-300 shadow-xl cursor-pointer hover:shadow-none text-white"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </section>
+      <!-- Section form -->
+      <!-- Section List -->
+      <section id="listSection" class=" p-5 overflow-y-auto">
+        <table class=" w-full">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Name</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          </tbody>
+        </table>
+      </section>
+      <!-- Section List -->
+
+      <script src="main.js"></script>
+    </main>
+  </body>
+</html>

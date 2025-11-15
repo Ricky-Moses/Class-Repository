@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let day = 2;
+
+      //   switch (day) {
+      //     case 1:
+      //       console.info("Monday");
+      //       break;
+      //     case 2:
+      //       console.info("Tuesday");
+      //       break;
+      //     case 3:
+      //       console.info("Wednesday");
+      //       break;
+      //     case 4:
+      //       console.info("Thursday");
+      //       break;
+      //     case 5:
+      //       console.info("Friday");
+      //       break;
+      //     default:
+      //       console.info("Invalid Day");
+      //   }
+
+      // Ternary operator
+      let user = 15;
+
+      const isEligible = user >= 18 ? "Eligible" : "Not Eligible";
+      //   console.info(isEligible)
+
+      // for loop(Forward)
+      for (let i = 0; i <= 5; i++) {
+        // console.info(i);
+      }
+      // Backward
+      for (let i = 5; i >= 0; i--) {
+        // console.info(i);
+      }
+
+      //   Nested for loop
+      for (let i = 1; i <= 5; i++) {
+        let star = "";
+        for (let j = 1; j <= i; j++) {
+          star += "*";
+        }
+
+        // console.info(star);
+      }
+
+      // while loop
+      let a = 6;
+
+      while (a <= 5) {
+        console.info(a);
+        a++;
+      }
+
+      let b = 5;
+
+      while (b >= 0) {
+        // console.info(b)
+        b--;
+      }
+
+      // do..while
+
+      let c = 6;
+      do {
+        // console.info(c)
+        c++;
+      } while (c <= 5);
+
+      // string methods
+
+      let str = "I am learning JavaScript"
+
+      console.group('String methods')
+      console.info("length: ", str.length)
+      console.info("charAt: ", str.charAt(2))
+      console.info("charCodeAt: ", str.charCodeAt(1))
+      console.info("indexOf: ", str.indexOf("a"))
+      console.info("lastIndexOf: ", str.lastIndexOf("a"))
+      console.info("toUpperCase: ", str.toUpperCase())
+      console.info("toLowerCase: ", str.toLowerCase())
+      console.info("includes: ", str.includes("Iam"))
+      console.info("slice: ", str.slice(2, 4))
+      console.groupEnd();
+
+      let userName = prompt("Enter a name: ")
+      console.info(userName.charAt(0).toUpperCase() + userName.slice(1))
+    </script>
+  </body>
+</html>
