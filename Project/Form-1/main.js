@@ -3,6 +3,7 @@ const TABLE = document.querySelector("#listSection table");
 // console.info(TABLE)
 
 let storeObj = JSON.parse(localStorage.getItem("UserData")) || [];
+let editId = null;
 const formFunction = () => {
   const formFormObj = new FormData(FORM);
 
@@ -14,10 +15,16 @@ const formFunction = () => {
     obj[key] = value;
   }
 
-  obj.id = storeObj.length + 1;
+  if (editId !== null) {
+    storeObj = storeObj.map((list) =>
+      list.id === editId ? { ...list, ...obj } : list
+    );
+  } else {
+    obj.id = storeObj.length + 1;
 
-  //   console.info(obj);
-  storeObj.push(obj);
+    //   console.info(obj);
+    storeObj.push(obj);
+  }
   localStorage.setItem("UserData", JSON.stringify(storeObj));
   //   console.info(storeObj);
   renderList(storeObj);
@@ -66,7 +73,19 @@ renderList(storeObj);
 // Pending
 function handleEdit(id) {
   const taskFound = storeObj.find((list) => list.id === id);
-  console.info(taskFound);
+
+  const keyValues = FORM.querySelectorAll(`input[name], textarea[name]`);
+  // console.info(keyValues)
+
+  keyValues.forEach((text) => {
+    const fieldName = text.name;
+
+    if (fieldName && taskFound[fieldName]) {
+      text.value = taskFound[fieldName];
+    }
+  });
+
+  editId = id;
 }
 
 // Delete
