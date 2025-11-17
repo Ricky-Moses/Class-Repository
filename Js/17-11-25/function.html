@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Function
+
+      // 1. Function declaration
+      function greet() {
+        console.info("Welcome");
+      }
+
+      greet(); // Function call
+
+      // 2. Function Parameter and Argument
+      function greetTwo(gr) {
+        // Parameter
+        console.info(gr);
+      }
+
+      greetTwo("Welcome to Parameter and argument"); // Argument
+
+      // 3. Function default parameter
+      function defaultFunc(de = "This is default parameter") {
+        console.info(de);
+      }
+
+      defaultFunc();
+
+      // 4. Function hoisting
+      hoistFunc();
+      function hoistFunc() {
+        console.info("This is hoisting");
+      }
+
+      // 5. Function expression & Anonymous function
+      const funcExpression = function () {
+        console.info("This is function expression");
+      };
+
+      funcExpression();
+
+      // 7. Arrow function () => {}
+      const arrFunction = () => {
+        console.info("This is arrow function");
+      };
+
+      arrFunction();
+
+      // 8. IIFE (Immediate Invoke Function Expression)
+      (function Iife() {
+        console.info("This is Immediate Invoke Function Expression");
+      })();
+
+      // 9. Callback function
+      function student(name, callback) {
+        callback(name, "Pass");
+      }
+
+      function result(stuName, result) {
+        console.info(stuName, result);
+      }
+
+      student("Ricky", result); // Passing function reference instead of call
+    </script>
+  </body>
+</html>
