@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>This function is Show/Hide</h1>
+    <button id="show">Show</button>
+    <button id="hide">Hide</button>
+
+    <div id="colorChangeBtn">
+      <h1>This is Color changing function</h1>
+      <button data-color="red">Red</button>
+      <button data-color="blue">Blue</button>
+      <button data-color="pink">Pink</button>
+      <button data-color="green">Green</button>
+      <button data-color="yellow">Yellow</button>
+    </div>
+
+    <div id="addEl">
+        <button>Add Element</button>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      $("#show").click(() => {
+        $("h1").show(1000);
+      });
+      $("#hide").click(() => {
+        $("h1").hide(1000);
+      });
+
+      $("#colorChangeBtn button").click(function(){
+        const color = $(this).data().color
+
+        $("#colorChangeBtn h1").css("color", color)
+
+        console.info(color)
+      })
+
+      $("#addEl").click(() => {
+        $("<h1>").prependTo("#addEl").text("This is prepended")
+      })
+    </script>
+  </body>
+</html>
