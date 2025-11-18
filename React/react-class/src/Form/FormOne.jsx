@@ -1,7 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const FormOne = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -9,7 +11,7 @@ const FormOne = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.info(data)
+    console.info(data);
   };
   return (
     <>
@@ -60,12 +62,15 @@ const FormOne = () => {
                 </td>
               </tr>
               <tr>
-                <td className="p-2" colSpan="2">
+                <td className="p-2">
                   <input
                     className="w-full h-10 border"
                     type="submit"
                     value="Submit"
                   />
+                </td>
+                <td>
+                  <button className="w-full h-10 border" type="button" onClick={() => navigate("/list")}>View List</button>
                 </td>
               </tr>
             </tbody>

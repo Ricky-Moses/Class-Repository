@@ -1,22 +1,32 @@
-import React, { useEffect, useState } from "react";
-// import FormOne from "./Form/FormOne";
-import axios from "axios";
-
+import FormHome from "./Form/FormHome";
+import FormOne from "./Form/FormOne";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ListOne from "./Form/ListOne";
+import UserOne from "./Fetch/UserOne";
 const App = () => {
-  const [store, setStore] = useState({});
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get("http://localhost:8000/lights");
-        console.info(res.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchData();
-  }, []);
-  return <>{/* <FormOne /> */}</>;
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <FormHome />,
+      children: [
+        {
+          index: true,
+          element: <FormOne />,
+        },
+        {
+          path: "list",
+          element: <ListOne />,
+        },
+      ],
+    },
+  ]);
+  return (
+    <>
+      <UserOne>
+        <RouterProvider router={router} />
+      </UserOne>
+    </>
+  );
 };
 
 export default App;

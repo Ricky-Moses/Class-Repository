@@ -1,0 +1,6 @@
+button,
+i,
+label,
+input[type="submit"] {
+  cursor: pointer;
+}
