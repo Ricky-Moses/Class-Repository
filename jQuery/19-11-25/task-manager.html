@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      button,
+      input[type="submit"] {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="border h-dvh flex flex-col items-center gap-2">
+      <form class="border w-full flex items-center gap-3 p-2">
+        <input
+          type="text"
+          placeholder="Enter a name"
+          class="border flex-1 h-10 px-3"
+        />
+        <input
+          type="submit"
+          value="Submit"
+          class="h-10 border px-5 hover:bg-black hover:text-white"
+        />
+      </form>
+      <ul class="w-full p-2 flex-1 overflow-y-auto flex flex-col gap-3"></ul>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let store = JSON.parse(localStorage.getItem("Task")) || [];
+
+      $("main form").submit((e) => {
+        e.preventDefault();
+
+        const val = $(e.target).find("input[type='text']").val();
+        // console.info(val)
+        store = [...store, { id: store.length + 1, name: val }];
+        localStorage.setItem("Task", JSON.stringify(store));
+        // console.info(store)
+        renderTask(store);
+      });
+
+      function renderTask(store) {
+        $("main ul").html("");
+        $("main ul").html(`
+            ${
+              store.length > 0
+                ? `
+                    ${store
+                      .map(
+                        (item, idx) => `
+                        <li class="flex items-center gap-2 shadow-xl p-2">
+                            <div>${idx + 1}</div>
+                            <div class="flex-1">${item.name}</div>
+                            <div>
+                                <button
+                                class="w-15 border text-lime-400 hover:bg-lime-400 hover:text-white"
+                                >
+                                Edit
+                                </button>
+                            </div>
+                            <div>
+                                <button
+                                class="w-15 border text-orange-400 hover:bg-orange-400 hover:text-white"
+                                >
+                                Delete
+                                </button>
+                            </div>
+                        </li>
+                    `
+                      )
+                      .join("")}
+                `
+                : `
+                <li class="text-center">No Task found</li>
+            `
+            }
+        `);
+      }
+      renderTask(store);
+    </script>
+  </body>
+</html>
