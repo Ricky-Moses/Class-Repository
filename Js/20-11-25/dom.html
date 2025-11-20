@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      main {
+        height: 40vh;
+        border: solid;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Heading: 0</h1>
+    </main>
+    <button>Click</button>
+    <script>
+      // contains
+
+      // Count Function
+      const h1El = document.querySelector("h1");
+      const btn = document.querySelector("button");
+      const mainEl = document.querySelector("main");
+      let count = 0;
+
+      btn.addEventListener("click", () => {
+        count++;
+        const newH1El = document.createElement("h1");
+        newH1El.textContent = `Heading: ${count}`;
+        // console.info(count);
+        // https://picsum.photos/500/300
+        mainEl.append(newH1El);
+      });
+    </script>
+  </body>
+</html>
