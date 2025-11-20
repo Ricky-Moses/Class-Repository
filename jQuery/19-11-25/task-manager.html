@@ -13,7 +13,7 @@
     </style>
   </head>
   <body>
-    <main class="border h-dvh flex flex-col items-center gap-2">
+    <main class="border h-dvh flex flex-col items-center gap-2 p-15">
       <form class="border w-full flex items-center gap-3 p-2">
         <input
           type="text"
@@ -34,22 +34,60 @@
       integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
       crossorigin="anonymous"
     ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"
+      integrity="sha512-MSOo1aY+3pXCOCdGAYoBZ6YGI0aragoQsg1mKKBHXCYPIWxamwOE7Drh+N5CPgGI5SA9IEKJiPjdfqWFWmZtRA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script>
       let store = JSON.parse(localStorage.getItem("Task")) || [];
+      let editMode = null;
+
+      function showToast(msg, color) {
+        const $toast = $("<div>").text(`${msg}`).css({
+          position: "fixed",
+          top: "10px",
+          right: "0px",
+          backgroundColor: color,
+          color: "#fff",
+          zIndex: "1000",
+          padding: "10px 20px",
+          borderRadius: "10px",
+          opacity: "0"
+        });
+
+        $("body").append($toast);
+
+        $toast.animate({
+          opacity: 1,
+          right: "10px"
+        }).delay(1000).fadeOut(400, function(){
+          $(this).remove()
+        })
+      }
 
       $("main form").submit((e) => {
         e.preventDefault();
+        const $val = $(e.target).find("input[type='text']").val();
 
-        const val = $(e.target).find("input[type='text']").val();
-        // console.info(val)
-        store = [...store, { id: store.length + 1, name: val }];
+        if (editMode !== null) {
+          store = store.map((t) =>
+            t.id === editMode ? { ...t, name: $val } : t
+          );
+          editMode = null;
+          showToast("Task updated", "orange")
+        } else {
+          store = [...store, { id: store.length + 1, name: $val }];
+          showToast("New Task added", "greenyellow");
+        }
         localStorage.setItem("Task", JSON.stringify(store));
         // console.info(store)
         renderTask(store);
       });
 
       function renderTask(store) {
-        $("main ul").html("");
+        // $("main ul").html("");
         $("main ul").html(`
             ${
               store.length > 0
@@ -61,14 +99,14 @@
                             <div>${idx + 1}</div>
                             <div class="flex-1">${item.name}</div>
                             <div>
-                                <button
+                                <button onclick="handleEdit(${item.id})"
                                 class="w-15 border text-lime-400 hover:bg-lime-400 hover:text-white"
                                 >
                                 Edit
                                 </button>
                             </div>
                             <div>
-                                <button
+                                <button onclick="handleDelete(${item.id})"
                                 class="w-15 border text-orange-400 hover:bg-orange-400 hover:text-white"
                                 >
                                 Delete
@@ -84,8 +122,29 @@
             `
             }
         `);
+
+        $("ul li").show("drop", { direction: "up" }, 100);
       }
       renderTask(store);
+
+      // Update function
+      function handleEdit(id) {
+        const valFound = store.find((t) => t.id === id);
+
+        $("main form input[type='text']").val(valFound.name);
+
+        editMode = id;
+        showToast("Edit mode", "skyblue")
+      }
+
+      // Delete function
+      function handleDelete(id) {
+        store = store.filter((t) => t.id !== id);
+
+        localStorage.setItem("Task", JSON.stringify(store));
+        renderTask(store);
+        showToast("Task deleted", "red")
+      }
     </script>
   </body>
 </html>

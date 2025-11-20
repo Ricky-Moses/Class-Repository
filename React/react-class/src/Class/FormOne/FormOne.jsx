@@ -1,10 +1,16 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const FormOne = () => {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     console.info(data);
+  };
+
+  const handleNavigate = () => {
+    navigate("/list");
   };
   return (
     <>
@@ -29,12 +35,18 @@ const FormOne = () => {
               {...register("email")}
             />
           </div>
-          <div>
+          <div className="flex items-center gap-2">
             <input
               type="submit"
-              className="border w-full h-10 cursor-pointer hover:bg-black hover:text-white"
+              className="border flex-1 h-10 cursor-pointer hover:bg-black hover:text-white"
               value="Submit"
             />
+            <button
+              onClick={handleNavigate}
+              className="flex-1 border h-10 hover:bg-black hover:text-white"
+            >
+              View
+            </button>
           </div>
         </form>
       </section>
