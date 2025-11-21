@@ -1,53 +1,26 @@
 import express from "express";
-import bodyParser from "body-parser";
+import getUser from "./Controllers/getUser.js";
+import postUser from "./Controllers/postUser.js";
+import updateUser from "./Controllers/updateUser.js";
+import deleteUser from "./Controllers/deleteUser.js";
 
 const app = express(); // Instant server create
 const PORT = 8000;
 
-let store = []; // Mock database
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // GET - Data get from server side by client request
-app.get("/get-user", (req, res) => {
-  if (store.length <= 0) {
-    res.status(404).json({ msg: "Not data exist" });
-    return;
-  }
-  res.send({ msg: "Data successfully received", store });
-});
+app.get("/get-user", getUser);
 
 // POST - Data pass from client side to server side
-app.post("/add-user", (req, res) => {
-  // Id, name, email
-  // const { id, name, email } = req.body;
-
-  store = req.body;
-
-  res.send({ msg: "Data successfully added", store });
-});
+app.post("/add-user", postUser);
 
 // PUT - Update a data in server side
-app.put("/update-user/:id", (req, res) => {
-  const { id } = req.params;
-  const { name } = req.body;
-
-  const indexValue = store.findIndex((u) => u.id === id);
-
-  store[indexValue].name = name;
-
-  res.send({ msg: "User updated", store });
-});
+app.put("/update-user/:id", updateUser);
 
 // DELETE - Delete a data in server side
-app.delete("/delete-user/:id", (req, res) => {
-  const { id } = req.params;
-
-  store = store.filter((f) => f.id !== id);
-
-  res.send({ msg: "Data successfully deleted", store });
-});
+app.delete("/delete-user/:id", deleteUser);
 
 app.listen(PORT, () => {
   console.info(`Server running at http://localhost:${PORT}`);
