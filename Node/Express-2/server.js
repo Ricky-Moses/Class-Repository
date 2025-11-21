@@ -1,47 +1,21 @@
 import bodyParser from "body-parser";
 import express from "express";
+import getData from "./Controllers/getFile.js";
+import postData from "./Controllers/postFile.js";
+import updateData from "./Controllers/updateFile.js";
+import deleteData from "./Controllers/deleteFile.js";
 
 const app = express();
 const PORT = 8000;
 
-let data = []; // Mock database
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.get("/all-user", getData);
+app.post("/add-user", postData);
+app.put("/update-user/:id", updateData);
+app.delete("/delete-user/:id", deleteData);
 
-app.get("/all-user", (req, res) => {
-  res.json({ msg: "Data received successfully", data });
-});
-
-app.post("/add-user", (req, res) => {
-  const { id, name, email } = req.body;
-
-  data.push({ id, name, email });
-
-  res.json({ msg: "Data successfully added", data });
-});
-
-app.put("/update-user/:id", (req, res) => {
-  const { id } = req.params;
-  const { name } = req.body;
-  // console.info(id)
-  const index = data.findIndex((u) => u.id === id);
-
-  if (!index && !data[index]) {
-    res.status(404).json({ msg: "Data is not found" });
-    return;
-  }
-
-  data[index].name = name;
-  res.json({ msg: "Data updated successfully", data });
-});
-
-app.delete("/delete-user/:id", (req, res) => {
-  const { id } = req.params;
-
-  data = data.filter((u) => u.id !== id);
-  res.json({ msg: "Data deleted successfully", data });
-});
 app.listen(PORT, () => {
   console.info(`Server running at http://localhost:${PORT}`);
 });

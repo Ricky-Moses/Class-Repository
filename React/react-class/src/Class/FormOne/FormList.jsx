@@ -4,21 +4,23 @@ import { ContextApi } from "../Context/ContextApi";
 
 const FormList = () => {
   const navigate = useNavigate();
-  const { store } = useContext(ContextApi);
-  console.info(store)
+  const { store, deleteUser } = useContext(ContextApi);
+  // console.info(store)
   return (
     <>
-      <section className="p-2">
-        <ul className="border h-[80vh] overflow-y-auto p-2 flex flex-col">
-          {Array.from({ length: 50 }).map((list, idx) => (
-            <li className="flex items-center gap-2">
+      <section className="p-2 flex flex-col justify-center h-dvh">
+        <ul className="border h-[70vh] overflow-y-auto p-2 flex flex-col">
+          {store?.map((list, idx) => (
+            <li key={list.id} className="flex items-center gap-2">
               <div>{idx + 1}</div>
-              <div className="flex-1">User name</div>
+              <div className="flex-1">{list.name}</div>
               <div>
-                <button>Edit</button>
+                <button onClick={() => navigate(`/edit/${list.id}`)}>
+                  Edit
+                </button>
               </div>
               <div>
-                <button>Delete</button>
+                <button onClick={() => deleteUser(list.id)}>Delete</button>
               </div>
             </li>
           ))}
