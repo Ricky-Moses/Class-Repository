@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Color Heading</h1>
+    <div>
+      <button>Red</button>
+      <button>Blue</button>
+      <button>Yellow</button>
+      <button>Pink</button>
+      <button>Green</button>
+    </div>
+
+    <script>
+      const h1El = document.querySelector("h1");
+      const btnEls = document.querySelectorAll("button");
+
+      btnEls.forEach((btn) => {
+        console.info(btn);
+        btn.addEventListener("click", () => {
+          const colors = btn.textContent.toLowerCase();
+
+          h1El.style.color = colors
+          console.info(colors);
+        });
+      });
+      console.info(btnEls);
+    </script>
+  </body>
+</html>
