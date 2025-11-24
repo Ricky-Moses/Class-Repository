@@ -13,6 +13,10 @@ import User from "./Class/Fetch/User";
 import { Toaster } from "react-hot-toast";
 import ClassComponent from "./IntroClass/ClassComponent";
 import FunctionalComponent from "./IntroClass/FunctionalComponent";
+import HomeFormThree from "./ClassThree/HomeFormThree";
+import RegisterThree from "./ClassThree/Form/RegisterThree";
+import Fetch from "./ClassThree/Controllers/Fetch";
+import ListThree from "./ClassThree/Form/ListThree";
 
 const App = () => {
   const name = "Ricky";
@@ -55,6 +59,23 @@ const App = () => {
   //     ],
   //   },
   // ]);
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomeFormThree />,
+      children: [
+        {
+          index: true,
+          element: <RegisterThree />,
+        },
+        {
+          path: "/list",
+          element: <ListThree />,
+        },
+      ],
+    },
+  ]);
   return (
     <>
       {/* <Toaster
@@ -73,7 +94,11 @@ const App = () => {
 
       {/* <IntroOne /> */}
       {/* <ClassComponent /> */}
-      <FunctionalComponent user={name} count={count} setCount={setCount} />
+      {/* <FunctionalComponent user={name} count={count} setCount={setCount} /> */}
+
+      <Fetch>
+        <RouterProvider router={router} />
+      </Fetch>
     </>
   );
 };
