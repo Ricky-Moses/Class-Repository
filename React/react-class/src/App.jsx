@@ -1,4 +1,4 @@
-// import React from "react";
+import React, { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Form from "./ClassTwo/Form";
 // import Register from "./ClassTwo/Auth/Register";
@@ -11,28 +11,33 @@ import User from "./Class/Fetch/User";
 // import IntroOne from "./Intro/IntroOne";
 
 import { Toaster } from "react-hot-toast";
+import ClassComponent from "./IntroClass/ClassComponent";
+import FunctionalComponent from "./IntroClass/FunctionalComponent";
 
 const App = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomeForm />,
-      children: [
-        {
-          index: true,
-          element: <FormOne />,
-        },
-        {
-          path: "list",
-          element: <FormList />,
-        },
-        {
-          path: "edit/:id",
-          element: <FormOne />,
-        },
-      ],
-    },
-  ]);
+  const name = "Ricky";
+  const [count, setCount] = useState(0);
+
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <HomeForm />,
+  //     children: [
+  //       {
+  //         index: true,
+  //         element: <FormOne />,
+  //       },
+  //       {
+  //         path: "list",
+  //         element: <FormList />,
+  //       },
+  //       {
+  //         path: "edit/:id",
+  //         element: <FormOne />,
+  //       },
+  //     ],
+  //   },
+  // ]);
 
   // const router = createBrowserRouter([
   //   {
@@ -52,7 +57,7 @@ const App = () => {
   // ]);
   return (
     <>
-      <Toaster
+      {/* <Toaster
         position="top-right"
         toastOptions={{
           duration: 1000,
@@ -60,13 +65,15 @@ const App = () => {
       />
       <User>
         <RouterProvider router={router} />
-      </User>
+      </User> */}
 
       {/* <FetchUser>
         <RouterProvider router={router} />
       </FetchUser> */}
 
       {/* <IntroOne /> */}
+      {/* <ClassComponent /> */}
+      <FunctionalComponent user={name} count={count} setCount={setCount} />
     </>
   );
 };
