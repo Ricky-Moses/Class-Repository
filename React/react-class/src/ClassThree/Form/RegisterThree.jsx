@@ -1,14 +1,23 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { GlobalContext } from "../Context/GlobalContext";
 
 const RegisterThree = () => {
-  const { register, handleSubmit } = useForm();
-  const { store, addUser } = useContext(GlobalContext);
+  const { store, addUser, updateUser } = useContext(GlobalContext);
   const navigate = useNavigate();
+  const { id } = useParams();
+  const editId = store.find((u) => u.id === id);
+  //   console.info(id)
+  const { register, handleSubmit } = useForm({
+    defaultValues: editId || {},
+  });
   const handleOnSubmit = async (data) => {
-    await addUser({...data, id: String(store.length + 1)});
+    if (editId) {
+        await updateUser(id, data)
+    } else {
+      await addUser({ ...data, id: String(store.length + 1) });
+    }
   };
   return (
     <>

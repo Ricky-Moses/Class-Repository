@@ -73,6 +73,10 @@ const App = () => {
           path: "/list",
           element: <ListThree />,
         },
+        {
+          path: "/edit/:id",
+          element: <RegisterThree />,
+        },
       ],
     },
   ]);
