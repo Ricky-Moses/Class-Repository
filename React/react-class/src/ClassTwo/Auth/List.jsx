@@ -4,7 +4,7 @@ import GlobalApi from "../Context/GlobalApi";
 
 const List = () => {
   const navigate = useNavigate();
-  const {store} = useContext(GlobalApi)
+  const { store, deleteUser } = useContext(GlobalApi);
   return (
     <>
       <section className="h-dvh flex flex-col p-5 gap-3">
@@ -14,10 +14,12 @@ const List = () => {
               <div>{idx + 1}</div>
               <div className="flex-1">{list.name}</div>
               <div>
-                <button>Edit</button>
+                <button onClick={() => navigate(`/edit/${list.id}`)}>
+                  Edit
+                </button>
               </div>
               <div>
-                <button>Delete</button>
+                <button onClick={() => deleteUser(list.id)}>Delete</button>
               </div>
             </li>
           ))}

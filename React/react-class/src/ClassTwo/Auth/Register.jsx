@@ -1,17 +1,29 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import GlobalApi from "../Context/GlobalApi";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { store, addUser, updateUser } = useContext(GlobalApi);
+  const { id } = useParams();
 
+  const editForm = store.find((u) => u.id === id);
+  const { register, handleSubmit } = useForm({
+    defaultValues: editForm ?? {},
+  });
+
+  console.info(editForm);
   const handleNavigate = () => {
     navigate("/list");
   };
 
-  const onSubmit = (data) => {
-    console.info(data);
+  const onSubmit = async (data) => {
+    if (editForm) {
+      await updateUser(id, data);
+    } else {
+      await addUser({ ...data, id: String(store.length + 1) });
+    }
   };
   return (
     <>
@@ -39,6 +51,7 @@ const Register = () => {
           <div className="flex items-center gap-3">
             <input
               type="submit"
+              onClick={handleNavigate}
               className="border flex-1 h-10"
               value="Submit"
             />

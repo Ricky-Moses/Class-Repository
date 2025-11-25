@@ -14,7 +14,7 @@ const RegisterThree = () => {
   });
   const handleOnSubmit = async (data) => {
     if (editId) {
-        await updateUser(id, data)
+      await updateUser(id, data);
     } else {
       await addUser({ ...data, id: String(store.length + 1) });
     }
