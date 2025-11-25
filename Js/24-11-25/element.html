@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Heading Color</h1>
+    <button>Red</button>
+    <button>Blue</button>
+    <button>Green</button>
+    <button>Yellow</button>
+    <button>Orange</button>
+
+    <script>
+      const h1El = document.querySelector("h1");
+      const btnEl = document.querySelectorAll("button");
+
+      btnEl.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const colors = btn.textContent.toLowerCase();
+
+          h1El.style.color = colors
+          console.info(colors);
+        });
+      });
+      console.info(btnEl);
+    </script>
+  </body>
+</html>

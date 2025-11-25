@@ -1,3 +1,9 @@
 {
-  "user": []
+  "user": [
+    {
+      "id": "1",
+      "name": "Ricky Moses",
+      "email": "rickymoses@gmail.com"
+    }
+  ]
 }
