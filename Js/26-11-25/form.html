@@ -10,13 +10,19 @@
       <input type="text" name="" placeholder="Enter a task" id="taskInput" />
       <input type="submit" value="Submit" />
     </form>
+    <ul></ul>
     <script>
       const formEl = document.querySelector("form");
+      //   const store = []
 
       formEl.addEventListener("submit", (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const inputEl = document.querySelector("#taskInput");
-        console.info(inputEl.value);
+        // store.push(inputEl.value)
+
+        const ulEl = document.querySelector("ul");
+
+        ulEl.innerHTML += `<li>${inputEl.value}</li>`;
       });
     </script>
   </body>
