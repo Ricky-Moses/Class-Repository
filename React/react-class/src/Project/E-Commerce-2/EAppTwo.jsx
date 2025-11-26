@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import Shop from "./Pages/Shop";
 import About from "./Pages/About";
 import Profile from "./Pages/Profile";
+import FetchApi from "./API/FetchApi";
 
 const EAppTwo = () => {
   const router = createBrowserRouter([
@@ -13,27 +14,29 @@ const EAppTwo = () => {
       element: <Layouts />,
       children: [
         {
-            index: true,
-            element: <Home />
+          index: true,
+          element: <Home />,
         },
         {
-            path: "shop",
-            element: <Shop />
+          path: "shop",
+          element: <Shop />,
         },
         {
-            path: "about",
-            element: <About />
+          path: "about",
+          element: <About />,
         },
         {
-            path: "profile",
-            element: <Profile />
-        }
-      ]
+          path: "profile",
+          element: <Profile />,
+        },
+      ],
     },
   ]);
   return (
     <>
-      <RouterProvider router={router} />
+      <FetchApi>
+        <RouterProvider router={router} />
+      </FetchApi>
     </>
   );
 };
