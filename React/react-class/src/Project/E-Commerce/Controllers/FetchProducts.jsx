@@ -3,7 +3,7 @@ import axios from "axios";
 import { GlobalContext } from "../Context/GlobalContext";
 
 const FetchProducts = ({ children }) => {
-  const [store, setStore] = useState();
+  const [store, setStore] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {

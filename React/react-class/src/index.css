@@ -12,3 +12,7 @@ li,
 a {
   cursor: pointer;
 }
+
+table td{
+  padding: 5px;
+}

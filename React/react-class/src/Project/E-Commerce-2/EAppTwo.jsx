@@ -5,7 +5,7 @@ import Home from "./Pages/Home";
 import Shop from "./Pages/Shop";
 import About from "./Pages/About";
 import Profile from "./Pages/Profile";
-import FetchApi from "./API/FetchApi";
+import GlobalProvider from "./Global/GlobalProvider";
 
 const EAppTwo = () => {
   const router = createBrowserRouter([
@@ -34,9 +34,9 @@ const EAppTwo = () => {
   ]);
   return (
     <>
-      <FetchApi>
+      <GlobalProvider>
         <RouterProvider router={router} />
-      </FetchApi>
+      </GlobalProvider>
     </>
   );
 };

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>#FFFFFF</h1>
+    <button>Add to Element</button>
+
+    <script>
+      const btn = document.querySelector("button");
+
+      const colorStr = "ABCDEF1234567890".split("");
+      console.info(colorStr)
+
+      btn.addEventListener("click", () => {
+        let color = "#";
+        for (let i = 1; i <= 6; i++) {
+          const random = Math.floor(Math.random() * 16);
+          color += colorStr[random];
+        }
+
+        document.querySelector("body").style.backgroundColor = color;
+        document.querySelector("h1").textContent = color;
+      });
+    </script>
+  </body>
+</html>
