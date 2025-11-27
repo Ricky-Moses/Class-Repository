@@ -4,6 +4,7 @@ import EAppTwo from "./Project/E-Commerce-2/EAppTwo";
 // import CardOne from "./Component/CardOne";
 import EApp from "./Project/E-Commerce/EApp";
 import UseEffectOne from "./Hooks/UseEffectOne";
+import EAppThree from "./Project/E-Commerce-3/EAppThree";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Form from "./ClassTwo/Form";
 // import Register from "./ClassTwo/Auth/Register";
@@ -38,9 +39,11 @@ const App = () => {
         <RouterProvider router={router} />
       </FetchUser> */}
 
-      <EApp />
+      {/* <EApp /> */}
 
       {/* <EAppTwo /> */}
+
+      <EAppThree />
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 
