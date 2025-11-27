@@ -16,6 +16,8 @@ const Register = async (req, res) => {
       return res.status(409).send({ msg: "User already exists!" });
     }
 
+    console.info(existingUser);
+
     // Convert password into hash password
     const hashPassword = await bcrypt.hash(password, 10);
 
@@ -29,7 +31,7 @@ const Register = async (req, res) => {
     res.status(201).send({ msg: "New user Registered" });
   } catch (err) {
     console.error(err);
-    res.send(500).send({ msg: "Internal Server Error" });
+    res.status(500).send({ msg: "Internal Server Error" });
   }
 };
 

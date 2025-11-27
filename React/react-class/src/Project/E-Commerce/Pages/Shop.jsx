@@ -6,12 +6,19 @@ const Shop = () => {
   const { store } = useContext(GlobalContext);
   // const firstKey = Object.keys(store)[0];
   const [currentProduct, setCurrentProduct] = useState([]);
+  const [currentProductTitle, setCurrentProductTitle] = useState("");
 
-  // useEffect(() => {
-  //   setCurrentProduct(store[firstKey]);
-  // }, []);
+  useEffect(() => {
+    const storeKeys = Object.keys(store);
+    if (storeKeys.length > 0) {
+      const firstKey = storeKeys[0];
+      setCurrentProduct(store[firstKey]);
+      setCurrentProductTitle(firstKey)
+    }
+  }, [store]);
   const handleItem = (data) => {
-    setCurrentProduct(data);
+    setCurrentProduct(store[data]);
+    setCurrentProductTitle(data);
   };
 
   // console.info(currentProduct);
@@ -25,13 +32,16 @@ const Shop = () => {
               <li
                 key={idx}
                 className="capitalize"
-                onClick={() => handleItem(store[item])}
+                onClick={() => handleItem(item)}
               >
-                {item.split("_")}
+                {item.split("_").join(" ")}
               </li>
             ))}
           </ul>
         </nav>
+        <div className="text-center p-1">
+          <h1 className="font-bold text-2xl capitalize">{currentProductTitle.split("_").join(" ")}</h1>
+        </div>
       </section>
       {currentProduct.length > 0 && <Card product={currentProduct} />}
     </>

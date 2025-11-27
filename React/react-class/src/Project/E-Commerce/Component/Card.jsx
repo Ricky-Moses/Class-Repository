@@ -1,7 +1,6 @@
 import React from "react";
 
 const Card = ({ product }) => {
-  console.info(product);
   return (
     <>
       <section className="grid grid-cols-4 gap-4 p-3">

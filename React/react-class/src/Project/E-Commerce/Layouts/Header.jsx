@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Cart from "./Cart";
 
 const Header = () => {
   return (
@@ -34,6 +35,7 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </header>
+      <Cart />
     </>
   );
 };

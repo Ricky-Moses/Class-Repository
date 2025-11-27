@@ -38,9 +38,9 @@ const App = () => {
         <RouterProvider router={router} />
       </FetchUser> */}
 
-      {/* <EApp /> */}
+      <EApp />
 
-      <EAppTwo />
+      {/* <EAppTwo /> */}
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 

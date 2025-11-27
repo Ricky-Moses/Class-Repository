@@ -11,6 +11,8 @@
       <input type="submit" , value="Submit" />
     </form>
 
+    <ul></ul>
+
     <script>
       const formEl = document.querySelector("form");
       const storeObj = [];
@@ -21,8 +23,14 @@
         const inputVal = formEl.querySelector(`input[type="text"]`).value;
 
         storeObj.push({ id: storeObj.length + 1, name: inputVal });
-        console.info(storeObj);
+        // console.info(storeObj);
+        renderTask(storeObj) // Argument
       });
+
+      function renderTask(task){ // Parameter
+        console.info(task)
+        const ulEl = document.querySelector("ul")
+      }
     </script>
   </body>
 </html>
