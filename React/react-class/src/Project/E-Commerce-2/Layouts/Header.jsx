@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { IoMdCart } from "react-icons/io";
+import { GlobalContext } from "../Context/Context";
+import Cart from "./Cart";
 
 const Header = () => {
+  const { isCartOpen, setIsCartOpen } = useContext(GlobalContext);
   return (
     <>
       <header className="flex items-center justify-between p-5">
         <div>
           <h1 className="text-2xl font-bold">
-            <NavLink to={"/"} className={({ isActive }) => (isActive ? "text-amber-600" : "")}>E-App-Two</NavLink>
+            <NavLink
+              to={"/"}
+              className={({ isActive }) => (isActive ? "text-amber-600" : "")}
+            >
+              E-App-Two
+            </NavLink>
           </h1>
         </div>
         <form className=" w-1/3">
@@ -52,9 +61,12 @@ const Header = () => {
           </ul>
         </nav>
         <ul>
-          <li>Cart</li>
+          <li onClick={() => setIsCartOpen(!isCartOpen)}>
+            <IoMdCart />
+          </li>
         </ul>
       </header>
+      {isCartOpen && <Cart />}
     </>
   );
 };

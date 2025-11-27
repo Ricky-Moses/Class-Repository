@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { GlobalContext } from "../Context/Context";
 
-const FetchApi = ({ children }) => {
+const GlobalProvider = ({ children }) => {
   const [store, setStore] = useState({});
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,11 +15,11 @@ const FetchApi = ({ children }) => {
   }, []);
   return (
     <>
-      <GlobalContext.Provider value={{ store }}>
+      <GlobalContext.Provider value={{ store, isCartOpen, setIsCartOpen }}>
         {children}
       </GlobalContext.Provider>
     </>
   );
 };
 
-export default FetchApi;
+export default GlobalProvider;

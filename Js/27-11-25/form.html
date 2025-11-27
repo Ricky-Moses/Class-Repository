@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" placeholder="Enter a task" id="" />
+      <input type="submit" , value="Submit" />
+    </form>
+
+    <script>
+      const formEl = document.querySelector("form");
+      const storeObj = [];
+
+      formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const inputVal = formEl.querySelector(`input[type="text"]`).value;
+
+        storeObj.push({ id: storeObj.length + 1, name: inputVal });
+        console.info(storeObj);
+      });
+    </script>
+  </body>
+</html>
