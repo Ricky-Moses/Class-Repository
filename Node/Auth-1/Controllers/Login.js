@@ -11,24 +11,26 @@ const Login = async (req, res) => {
     }
 
     const user = await User.findOne({ email });
-    console.info(user);
     if (!user) {
-      return res.status(404).send({ msg: "Email not found!" });
+      return res.status(404).send({ msg: "User does not exist!" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).send({ msg: "Invalid credential" });
+      return res.status(409).send({ msg: "Invalid credentials" });
     }
 
-    const token = await jwt.sign(user._id, process.env.JWT_SECRET, {
+    const token = await jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
-    res.status(200).send({ msg: "Logged successfully", token });
+    res.status(200).send({
+      msg: "User logged successfully",
+      token,
+    });
   } catch (err) {
     console.error(err);
-    res.status(500).send({ msg: "Internal Server Error" });
+    res.status(500).send({ msg: "Internal server error" });
   }
 };
 
