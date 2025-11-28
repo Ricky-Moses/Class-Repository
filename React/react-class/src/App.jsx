@@ -41,9 +41,9 @@ const App = () => {
 
       {/* <EApp /> */}
 
-      {/* <EAppTwo /> */}
+      <EAppTwo />
 
-      <EAppThree />
+      {/* <EAppThree /> */}
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 
