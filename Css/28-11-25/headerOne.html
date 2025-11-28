@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style-type: none;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        overflow: hidden;
+      }
+
+      header .head-logo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      header .head-logo i {
+        display: none;
+      }
+
+      header nav ul {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: start;
+          gap: 20px;
+          height: 8vh;
+        }
+        header .head-logo {
+          width: 100%;
+        }
+        header .head-logo i {
+          display: flex;
+        }
+
+        header nav ul {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="head-logo">
+        <h1>Header Topic</h1>
+        <i id="clickBar" class="fa-solid fa-bars"></i>
+      </div>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Skill</li>
+          <li>Project</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+    <article>
+      <p>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex corrupti
+        consequuntur molestiae enim autem qui, nisi deleniti, repellat
+        explicabo, deserunt aliquid odit quas facilis. Aperiam error veritatis
+        numquam vel, mollitia distinctio? Repudiandae nobis sequi hic debitis ut
+        aperiam ipsam nesciunt aliquid odio? Facere soluta voluptatem dolores
+        consectetur perferendis velit incidunt.
+      </p>
+    </article>
+
+    
+
+    <script>
+      const headerEl = document.querySelector("header");
+      const clickBar = headerEl.querySelector("#clickBar");
+
+      clickBar.addEventListener("click", () => {
+        headerEl.style.height =
+          headerEl.style.height === "8vh" ? "fit-content" : "8vh";
+      });
+    </script>
+  </body>
+</html>

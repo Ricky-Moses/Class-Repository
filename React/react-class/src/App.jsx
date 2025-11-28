@@ -44,12 +44,12 @@ const App = () => {
 
       {/* <EAppTwo /> */}
 
-      {/* <EAppThree /> */}
+      <EAppThree />
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 
       {/* <UseEffectOne /> */}
-      <UseEffectTwo />
+      {/* <UseEffectTwo /> */}
     </>
   );
 };
