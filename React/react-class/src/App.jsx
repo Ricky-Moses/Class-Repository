@@ -3,9 +3,7 @@ import EAppTwo from "./Project/E-Commerce-2/EAppTwo";
 // import ConditionOne from "./Condition/ConditionOne";
 // import CardOne from "./Component/CardOne";
 import EApp from "./Project/E-Commerce/EApp";
-import UseEffectOne from "./Hooks/UseEffectOne";
 import EAppThree from "./Project/E-Commerce-3/EAppThree";
-import UseEffectTwo from "./Hooks/UseEffectTwo";
 import FormOne from "./Form/FormOne";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Form from "./ClassTwo/Form";
@@ -41,11 +39,11 @@ const App = () => {
         <RouterProvider router={router} />
       </FetchUser> */}
 
-      <EApp />
+      {/* <EApp /> */}
 
       {/* <EAppTwo /> */}
 
-      {/* <EAppThree /> */}
+      <EAppThree />
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 

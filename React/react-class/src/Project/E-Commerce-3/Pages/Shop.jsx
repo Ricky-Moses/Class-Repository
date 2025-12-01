@@ -1,13 +1,24 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../Context/Context";
 import Card from "../Component/Card";
 
 const Shop = () => {
   const { store } = useContext(GlobalContext);
   const [currentProduct, setCurrentProduct] = useState([]);
+  const [currentProductTitle, setCurrentProductTitle] = useState("");
+
+  useEffect(() => {
+    const storedKey = Object.keys(store);
+    if (storedKey.length > 0) {
+      const firstKey = storedKey[0];
+      setCurrentProduct(store[firstKey]);
+      setCurrentProductTitle(firstKey);
+    }
+  }, [store]);
 
   const handleCurrentProduct = (i) => {
     setCurrentProduct(store[i]);
+    setCurrentProductTitle(i);
   };
 
   return (
@@ -26,6 +37,7 @@ const Shop = () => {
             ))}
           </ul>
         </nav>
+        <h1 className="text-2xl text-center font-bold capitalize">{currentProductTitle.split("_").join(" ")}</h1>
         <div className="grid grid-cols-4 gap-4">
           <Card product={currentProduct} />
         </div>

@@ -4,6 +4,7 @@ import { GlobalContext } from "../Context/Context";
 
 const GlobalProvider = ({ children }) => {
   const [store, setStore] = useState({});
+  const [isCartOpen, setIsCartOpen] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +16,7 @@ const GlobalProvider = ({ children }) => {
   }, []);
   return (
     <>
-      <GlobalContext.Provider value={{ store }}>
+      <GlobalContext.Provider value={{ store, isCartOpen, setIsCartOpen }}>
         {children}
       </GlobalContext.Provider>
     </>

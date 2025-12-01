@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { CgShoppingCart } from "react-icons/cg";
 import { NavLink } from "react-router-dom";
+import Cart from "./Cart";
+import { GlobalContext } from "../Context/Context";
 
 const Header = () => {
+  const { isCartOpen, setIsCartOpen } = useContext(GlobalContext);
   return (
     <>
       <header className="flex items-center justify-between p-2 px-3">
@@ -32,13 +35,12 @@ const Header = () => {
           </ul>
         </nav>
         <ul>
-          {" "}
-          {/* npm i react-icons  */}
-          <li>
+          <li onClick={() => setIsCartOpen(!isCartOpen)}>
             <CgShoppingCart />
           </li>
         </ul>
       </header>
+      {isCartOpen && <Cart />}
     </>
   );
 };
