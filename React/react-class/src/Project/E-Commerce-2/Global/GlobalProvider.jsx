@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { GlobalContext } from "../Context/Context";
 
@@ -15,11 +15,23 @@ const GlobalProvider = ({ children }) => {
     fetchData();
   }, []);
 
-  console.info(addCart);
+  // console.info(addCart);
+  const totalPrice = useMemo(() => {
+    return addCart.reduce((acc, item) => {
+      return acc + item.price * (item.qty || 1) * 88.7;
+    }, 0);
+  }, [addCart]);
   return (
     <>
       <GlobalContext.Provider
-        value={{ store, isCartOpen, setIsCartOpen, addCart, setAddCart }}
+        value={{
+          store,
+          isCartOpen,
+          setIsCartOpen,
+          addCart,
+          setAddCart,
+          totalPrice,
+        }}
       >
         {children}
       </GlobalContext.Provider>

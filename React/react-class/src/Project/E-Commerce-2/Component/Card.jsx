@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../Context/Context";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ product }) => {
-  const { addCart, setAddCart } = useContext(GlobalContext);
+  const { addCart, setAddCart, setIsCartOpen } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
   const handleAddCart = (item) => {
     const existItem = addCart.some((i) => i._id === item._id);
@@ -12,7 +14,8 @@ const Card = ({ product }) => {
       return;
     }
     setAddCart((prev) => [...prev, item]);
-    toast.success(`${item.name} has been added to cart!`)
+    toast.success(`${item.name} has been added to cart!`);
+    setIsCartOpen(true);
   };
   return (
     <>
@@ -48,7 +51,12 @@ const Card = ({ product }) => {
                 </tr>
                 <tr>
                   <td>
-                    <button className="outline w-full text-sky-400 hover:bg-sky-400 hover:text-white">
+                    <button
+                      onClick={() => {
+                        navigate(`/view/${item._id}`, { state: item });
+                      }}
+                      className="outline w-full text-sky-400 hover:bg-sky-400 hover:text-white"
+                    >
                       View
                     </button>
                   </td>

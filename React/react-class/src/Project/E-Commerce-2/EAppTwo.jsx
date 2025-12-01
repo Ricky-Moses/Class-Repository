@@ -7,6 +7,7 @@ import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import GlobalProvider from "./Global/GlobalProvider";
 import { Toaster } from "react-hot-toast";
+import View from "./Pages/View";
 
 const EAppTwo = () => {
   const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const EAppTwo = () => {
         {
           path: "profile",
           element: <Profile />,
+        },
+        {
+          path: "view/:id",
+          element: <View />,
         },
       ],
     },

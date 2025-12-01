@@ -6,6 +6,7 @@ import EApp from "./Project/E-Commerce/EApp";
 import UseEffectOne from "./Hooks/UseEffectOne";
 import EAppThree from "./Project/E-Commerce-3/EAppThree";
 import UseEffectTwo from "./Hooks/UseEffectTwo";
+import FormOne from "./Form/FormOne";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Form from "./ClassTwo/Form";
 // import Register from "./ClassTwo/Auth/Register";
@@ -42,14 +43,15 @@ const App = () => {
 
       {/* <EApp /> */}
 
-      {/* <EAppTwo /> */}
+      <EAppTwo />
 
-      <EAppThree />
+      {/* <EAppThree /> */}
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 
       {/* <UseEffectOne /> */}
       {/* <UseEffectTwo /> */}
+      {/* <FormOne /> */}
     </>
   );
 };
