@@ -41,7 +41,7 @@ const App = () => {
         <RouterProvider router={router} />
       </FetchUser> */}
 
-      {/* <EApp /> */}
+      <EApp />
 
       {/* <EAppTwo /> */}
 
@@ -51,7 +51,7 @@ const App = () => {
 
       {/* <UseEffectOne /> */}
       {/* <UseEffectTwo /> */}
-      <FormOne />
+      {/* <FormOne /> */}
     </>
   );
 };

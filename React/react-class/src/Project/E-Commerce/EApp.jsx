@@ -5,7 +5,8 @@ import Home from "./Pages/Home";
 import Shop from "./Pages/Shop";
 import About from "./Pages/About";
 import Profile from "./Pages/Profile";
-import FetchProducts from "./Controllers/FetchProducts";
+import GlobalProvider from "./Controllers/GlobalProvider";
+import { Toaster } from "react-hot-toast";
 const EApp = () => {
   const router = createBrowserRouter([
     {
@@ -33,9 +34,15 @@ const EApp = () => {
   ]);
   return (
     <>
-      <FetchProducts>
+      <Toaster
+        position="right top"
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
+      <GlobalProvider>
         <RouterProvider router={router} />
-      </FetchProducts>
+      </GlobalProvider>
     </>
   );
 };
