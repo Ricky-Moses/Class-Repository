@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <form action="">
+        <div>
+          <input type="text" name="name" id="" placeholder="Enter a name" />
+        </div>
+        <div>
+          <input type="email" name="email" id="" placeholder="Enter a email" />
+        </div>
+        <div>
+          <input type="radio" name="gender" value="Male" id="" />
+          <label for="">Male</label>
+          <input type="radio" name="gender" value="Female" id="" />
+          <label for="">Female</label>
+        </div>
+        <div>
+          <textarea
+            name="message"
+            id=""
+            placeholder="Enter a message"
+          ></textarea>
+        </div>
+        <div>
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    </main>
+
+    <script>
+      const formEl = document.querySelector("form");
+
+      formEl.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const formFormate = new FormData(formEl);
+
+        const obj = {};
+
+        for (let [key, value] of formFormate.entries()) {
+          // console.info(`${key}: ${value}`)
+          obj[key] = value;
+        }
+        console.info(obj);
+      });
+    </script>
+  </body>
+</html>
