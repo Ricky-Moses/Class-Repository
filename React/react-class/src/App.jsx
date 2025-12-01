@@ -43,7 +43,7 @@ const App = () => {
 
       {/* <EApp /> */}
 
-      <EAppTwo />
+      {/* <EAppTwo /> */}
 
       {/* <EAppThree /> */}
       {/* <ConditionOne /> */}
@@ -51,7 +51,7 @@ const App = () => {
 
       {/* <UseEffectOne /> */}
       {/* <UseEffectTwo /> */}
-      {/* <FormOne /> */}
+      <FormOne />
     </>
   );
 };
