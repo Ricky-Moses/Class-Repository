@@ -5,6 +5,7 @@ import EAppTwo from "./Project/E-Commerce-2/EAppTwo";
 import EApp from "./Project/E-Commerce/EApp";
 import EAppThree from "./Project/E-Commerce-3/EAppThree";
 import FormOne from "./Form/FormOne";
+import FormTwo from "./Form/FormTwo";
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Form from "./ClassTwo/Form";
 // import Register from "./ClassTwo/Auth/Register";
@@ -43,13 +44,14 @@ const App = () => {
 
       {/* <EAppTwo /> */}
 
-      <EAppThree />
+      {/* <EAppThree /> */}
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 
       {/* <UseEffectOne /> */}
       {/* <UseEffectTwo /> */}
       {/* <FormOne /> */}
+      <FormTwo />
     </>
   );
 };
