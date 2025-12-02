@@ -5,6 +5,7 @@ const FormOne = () => {
   const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
 
+
   const handleChange = (e) => {
     setInput(e.target.value);
   };
