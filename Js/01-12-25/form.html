@@ -39,15 +39,15 @@
       formEl.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const formFormate = new FormData(formEl);
+        const formFormate = new FormData(formEl)
 
-        const obj = {};
+        const obj = {}
 
-        for (let [key, value] of formFormate.entries()) {
-          // console.info(`${key}: ${value}`)
-          obj[key] = value;
+        for(let [key, value] of formFormate.entries()){
+          obj[key] = value
         }
-        console.info(obj);
+
+        console.info(obj)
       });
     </script>
   </body>
