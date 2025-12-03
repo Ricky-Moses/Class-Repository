@@ -10,5 +10,11 @@
       "name": "Ricky",
       "email": "rickymoses@gmail.com"
     }
+    ,
+    {
+      "id": "3",
+      "name": "Lucy",
+      "email": "lucy@gmail.com"
+    }
   ]
 }

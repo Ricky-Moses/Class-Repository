@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-const FormTwo = () => {
+const FormOne = () => {
   const [store, setStore] = useState([]);
   const {
     register,
@@ -74,4 +74,4 @@ const FormTwo = () => {
   );
 };
 
-export default FormTwo;
+export default FormOne;
