@@ -4,7 +4,7 @@ import FormOne from "./Project/FormOne/FormOne";
 // import ConditionOne from "./Condition/ConditionOne";
 // import CardOne from "./Component/CardOne";
 // import EApp from "./Project/E-Commerce/EApp";
-// import EAppThree from "./Project/E-Commerce-3/EAppThree";
+import EAppThree from "./Project/E-Commerce-3/EAppThree";
 // import FormOne from "./Form/FormOne";
 // import FormTwo from "./Form/FormTwo";
 // import GrandParent from "./Prop/GrandParent";
@@ -46,7 +46,7 @@ const App = () => {
 
       {/* <EAppTwo /> */}
 
-      {/* <EAppThree /> */}
+      <EAppThree />
       {/* <ConditionOne /> */}
       {/* <CardOne /> */}
 
@@ -56,7 +56,7 @@ const App = () => {
       {/* <FormTwo /> */}
 
       {/* <GrandParent /> */}
-        <FormOne />
+      {/* <FormOne /> */}
     </>
   );
 };

@@ -6,6 +6,7 @@ import Shop from "./Pages/Shop";
 import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import GlobalProvider from "./Global/GlobalProvider";
+import { Toaster } from "react-hot-toast";
 
 const EAppThree = () => {
   const pathRouter = createBrowserRouter([
@@ -34,8 +35,14 @@ const EAppThree = () => {
   ]);
   return (
     <>
+      <Toaster
+        position="right top"
+        toastOptions={{
+          duration: 2000,
+        }}
+      />
       <GlobalProvider>
-        <RouterProvider router={pathRouter} />  
+        <RouterProvider router={pathRouter} />
       </GlobalProvider>
     </>
   );

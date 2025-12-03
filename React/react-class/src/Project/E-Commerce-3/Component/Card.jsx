@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../Context/Context";
+import toast from "react-hot-toast";
 
 const Card = ({ product }) => {
   // console.info(product);
+  const { addCart, setAddCart } = useContext(GlobalContext);
+
+  const handleAddToCart = (data) => {
+    const existCart = addCart.some((prev) => prev._id === data._id);
+
+    if (existCart) {
+      toast.error(`${data.name}  already exist in cart!`);
+      return;
+    }
+    setAddCart((prev) => [...prev, data]);
+    toast.success(`${data.name}  added to cart successfully`);
+  };
   return (
     <>
       {product.map((item) => (
@@ -39,7 +53,12 @@ const Card = ({ product }) => {
                     <button>View</button>
                   </td>
                   <td>
-                    <button>Add To Cart</button>
+                    <button
+                      className="outline w-full text-sky-500 hover:bg-sky-500 hover:text-white"
+                      onClick={() => handleAddToCart(item)}
+                    >
+                      Add To Cart
+                    </button>
                   </td>
                 </tr>
               </tbody>
