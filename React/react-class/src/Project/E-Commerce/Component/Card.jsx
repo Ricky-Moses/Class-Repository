@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ product }) => {
-  const { addCart, setAddCart } = useContext(GlobalContext);
+  const { addCart, setAddCart, setIsCartOpen } = useContext(GlobalContext);
+  const navigate = useNavigate();
 
   const handleAddToCart = (item) => {
     const existCart = addCart.some((i) => i._id === item._id);
-    console.info(existCart);
 
     if (existCart) {
       toast.error(`${item.name} is already exist!`);
@@ -15,6 +16,11 @@ const Card = ({ product }) => {
     }
     setAddCart((prev) => [...prev, item]);
     toast.success(`${item.name} Added to cart`);
+  };
+
+  const handleView = (item) => {
+    navigate("/product", { state: item });
+    setIsCartOpen(false);
   };
   return (
     <>
@@ -62,7 +68,10 @@ const Card = ({ product }) => {
                         </button>
                       </td>
                       <td className="p-2">
-                        <button className="outline w-full text-cyan-500 hover:bg-cyan-500 hover:text-white">
+                        <button
+                          onClick={() => handleView(item)}
+                          className="outline w-full text-cyan-500 hover:bg-cyan-500 hover:text-white"
+                        >
                           View
                         </button>
                       </td>

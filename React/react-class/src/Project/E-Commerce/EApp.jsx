@@ -7,6 +7,7 @@ import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import GlobalProvider from "./Controllers/GlobalProvider";
 import { Toaster } from "react-hot-toast";
+import Product from "./Pages/Product";
 const EApp = () => {
   const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const EApp = () => {
         {
           path: "profile",
           element: <Profile />,
+        },
+        {
+          path: "product",
+          element: <Product />,
         },
       ],
     },
