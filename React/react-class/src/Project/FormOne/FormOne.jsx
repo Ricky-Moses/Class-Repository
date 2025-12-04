@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import GlobalContext from "./Context/GlobalContext";
 
 const FormOne = () => {
-  const [store, setStore] = useState([]);
+  const { store } = useContext(GlobalContext);
+  const [formData, setFormData] = useState([]);
+
+  console.info(store);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const handleFormSubmit = (data) => {
-    
-  };
+  const handleFormSubmit = (data) => {};
   return (
     <>
       <section className="grid grid-cols-2 h-dvh gap-3">

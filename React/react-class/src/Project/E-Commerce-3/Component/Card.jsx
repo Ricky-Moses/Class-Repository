@@ -9,10 +9,9 @@ const Card = ({ product }) => {
   const handleAddToCart = (data) => {
     const existCart = addCart.some((prev) => prev._id === data._id);
 
-    if (existCart) {
-      toast.error(`${data.name}  already exist in cart!`);
-      return;
-    }
+
+    
+    
     setAddCart((prev) => [...prev, data]);
     toast.success(`${data.name}  added to cart successfully`);
   };

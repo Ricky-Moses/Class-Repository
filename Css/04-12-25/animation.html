@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            position: relative;
+            height: 100vh;
+            border: solid;
+        }
+        
+        div{
+            position: absolute;
+            /* right: 0; */
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+            /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+            /* animation: zig-zag .2s linear infinite alternate; */
+        }
+
+        @keyframes zig-zag {
+            0%{
+                top: 0;
+                left: 0;
+            }
+            20%{
+                top: 80%;
+                left: 10%;
+            }
+            40%{
+                top: 0;
+                left: 20%;
+            }
+            60%{
+                top: 80%;
+                left: 30%;
+            }
+            80%{
+                top: 0;
+                left: 40%;
+            }
+            100%{
+                top: 80%;
+                left: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div></div>
+</body>
+</html>
