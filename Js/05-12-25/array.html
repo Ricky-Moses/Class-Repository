@@ -9,6 +9,43 @@
     <script>
       const num1 = [1, 2, 3, 4, 5];
       const num2 = [6, 7, 8, 9, 10];
+
+      //   Spread operator
+      const num3 = [...num1, ...num2]; // Original
+
+      // forEach()
+      num3.forEach((n, i) => {
+        console.info(n, i);
+      });
+
+      // Map
+      const copyNum = num3.map((n) => {
+        return n + n + n;
+      });
+
+      // filter
+      const evenNum = num3.filter((n) => {
+       return n % 2 === 0;
+      });
+
+      const sum = num3.reduce((a, b) => {
+      return  a + b
+      }, 0)
+
+      const fruits = ["Banana", "Apple", "Pineapple", "Mongo"]
+
+
+
+      console.group("Array");
+      // console.info(num1)
+      //   console.info(num1.concat(num2))
+      console.info(num3);
+      console.info(copyNum);
+      console.info(evenNum)
+      console.info(sum)
+      console.info(fruits.sort())
+
+      console.groupEnd();
     </script>
   </body>
 </html>
