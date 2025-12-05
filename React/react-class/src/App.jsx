@@ -3,7 +3,7 @@ import FormHomeOne from "./Project/FormOne/FormHomeOne";
 // import EAppTwo from "./Project/E-Commerce-2/EAppTwo";
 // import ConditionOne from "./Condition/ConditionOne";
 // import CardOne from "./Component/CardOne";
-// import EApp from "./Project/E-Commerce/EApp";
+import EApp from "./Project/E-Commerce/EApp";
 // import EAppThree from "./Project/E-Commerce-3/EAppThree";
 // import FormOne from "./Form/FormOne";
 // import FormTwo from "./Form/FormTwo";

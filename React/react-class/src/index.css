@@ -13,6 +13,11 @@ a {
   cursor: pointer;
 }
 
-table td{
+/* table td{
   padding: 5px;
+} */
+
+.slick-arrow::before{
+  color: #000 !important;
 }
+
