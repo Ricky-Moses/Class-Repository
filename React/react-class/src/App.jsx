@@ -1,12 +1,16 @@
 import React from "react";
 import AuthOne from "./Project/AuthOne/AuthOne";
+import { Provider } from "react-redux";
+import store from "./Project/AuthOne/Redux/Store";
 // import FormHomeOne from "./Project/FormOne/FormHomeOne";
 
 const App = () => {
   return (
     <>
       {/* <FormHomeOne /> */}
-      <AuthOne />
+      <Provider store={store}>
+        <AuthOne />
+      </Provider>
     </>
   );
 };

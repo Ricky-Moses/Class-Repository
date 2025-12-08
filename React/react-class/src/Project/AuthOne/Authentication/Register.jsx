@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { registerUser } from "../Redux/Thunk/AuthThunk";
 
 const Register = () => {
   const {
@@ -9,7 +11,10 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const dispatch = useDispatch();
+
   const handleSubmitForm = (data) => {
+    dispatch(registerUser(data));
     console.info(data);
   };
   return (
