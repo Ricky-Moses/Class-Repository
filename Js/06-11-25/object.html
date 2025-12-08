@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const num = [4, 2, 1, 5, 3];
+
+      num.sort((a, b) => {
+        return b - a;
+      });
+      //   console.info(num)
+
+      // Object {key: value} ->
+
+      const obj = {
+        name: "Ricky",
+        age: 25,
+        job: "trainer",
+        details: {
+          city: "Dindigul",
+          state: "Tamil Nadu",
+        },
+      };
+
+      // CRUD
+      obj.id = 1; // Create
+
+      obj.name = "Mike"; // Update
+
+      delete obj.age; // Delete
+
+      // Spread operator
+      const copyObj = { ...obj, email: "mike@gmail.com", age: 25 };
+
+      console.warn("For...in");
+      for (let value in copyObj) {
+        console.info("For..in:", value);
+      }
+
+      console.warn("For...of");
+      for (let [key, value] of Object.entries(copyObj)) {
+        // ["name", "mike"]
+        console.info(key, value);
+      }
+
+      
+      //   Destructuring
+      const {
+        name,
+        age,
+        email,
+        details: { city },
+      } = copyObj;
+
+      console.group("OBJ");
+      console.info("Copy name: ", name);
+      console.info("Copy age: ", age);
+      console.info("Copy email: ", email);
+      console.info("Copy city: ", city);
+
+      console.warn("Inspecting Object");
+      console.info("Key: ", Object.keys(obj));
+      console.info("Values: ", Object.values(obj));
+      console.info("entries: ", Object.entries(obj));
+
+      console.warn("Spread operator");
+      console.info(copyObj);
+      console.groupEnd();
+    </script>
+  </body>
+</html>

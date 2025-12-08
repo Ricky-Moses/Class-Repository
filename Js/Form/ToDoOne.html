@@ -6,7 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Document</title>
   </head>
-  <body class="h-dvh grid grid-cols-2">
+  <body class="h-dvh grid grid-cols-1 lg:grid-cols-2">
     <section class="border grid place-items-center">
       <form class="w-[500px] p-2 shadow-2xl">
         <h1 class="text-2xl font-bold">Registration</h1>
@@ -65,11 +65,11 @@
             </tr>
             <tr>
               <td colspan="2">
-                <input
-                  type="submit"
-                  value="Submit"
+                <button
                   class="outline w-full h-10 hover:bg-black hover:text-white cursor-pointer"
-                />
+                >
+                  Submit
+                </button>
               </td>
             </tr>
           </tbody>
@@ -100,27 +100,45 @@
         obj.id = arr.length + 1;
         arr.push(obj);
 
-        // console.info(arr);
-        renderTask(arr)
+        renderTask(arr);
+        Form.reset();
       });
 
       function renderTask(arr) {
         UL.innerHTML = `
-            ${arr.map(
-              (list, idx) => `
+            ${arr
+              .map(
+                (list, idx) => `
                 <li class="flex items-center gap-5 p-2 shadow-2xl">
                     <div>${idx + 1}</div>
                     <div class="flex-1">${list.name}</div>
                     <div>
-                        <button>Edit</button>
+                        <button onclick="handleEdit(${
+                          list.id
+                        })" class="outline w-15 text-cyan-400 hover:bg-cyan-400 hover:text-white">Edit</button>
                     </div>
                     <div>
-                        <button>Delete</button>
+                        <button class="outline w-15 text-rose-400 hover:bg-rose-400 hover:text-white">Delete</button>
                     </div>
                 </li>
             `
-            ).join("")}
+              )
+              .join("")}
         `;
+      }
+
+      function handleEdit(id) {
+        const listFound = arr.find((list) => list.id === id);
+
+        const inputBox = Form.querySelectorAll(`input`);
+
+        inputBox.forEach((input) => {
+          const fieldName = input.name;
+
+          input.value = listFound[fieldName];
+
+        });
+
       }
     </script>
   </body>
