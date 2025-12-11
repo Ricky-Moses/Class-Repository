@@ -83,7 +83,7 @@
     <script>
       const Form = document.querySelector("form");
       const UL = document.querySelector("ul");
-      const arr = [];
+      let arr = JSON.parse(localStorage.getItem("List")) || [];
 
       Form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -101,7 +101,8 @@
         arr.push(obj);
 
         renderTask(arr);
-        Form.reset();
+        localStorage.setItem("List", JSON.stringify(arr));
+        // Form.reset();
       });
 
       function renderTask(arr) {
@@ -113,7 +114,7 @@
                     <div>${idx + 1}</div>
                     <div class="flex-1">${list.name}</div>
                     <div>
-                        <button onclick="handleEdit(${
+                        <button onclick="handleUpdate(${
                           list.id
                         })" class="outline w-15 text-cyan-400 hover:bg-cyan-400 hover:text-white">Edit</button>
                     </div>
@@ -127,18 +128,21 @@
         `;
       }
 
-      function handleEdit(id) {
-        const listFound = arr.find((list) => list.id === id);
+      renderTask(arr)
 
-        const inputBox = Form.querySelectorAll(`input`);
+      // Update function
+      function handleUpdate(id) {
+        // console.info(id);
+        const listFind = arr.find((u) => u.id === id);
+        // console.info(listFind)
 
-        inputBox.forEach((input) => {
-          const fieldName = input.name;
+        const inputAll = Form.querySelectorAll("input");
 
-          input.value = listFound[fieldName];
+        inputAll.forEach((input) => {
+          const inputName = input.name;
 
+          input.value = listFind[inputName];
         });
-
       }
     </script>
   </body>

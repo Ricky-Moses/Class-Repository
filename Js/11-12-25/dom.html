@@ -9,12 +9,24 @@
     <h1>Heading 1</h1>
     <h1>Heading 2</h1>
 
+    <p class="para"></p>
+    <p class="para"></p>
+    <p class="para"></p>
+
     <script>
         const h1One = document.getElementsByTagName("h1")[0]
         h1One.textContent = "Heading is modified by JS"
         h1One.style.color = "red"
         h1One.style.backgroundColor = "cyan"
-        console.info(h1One.textContent)
+
+        const pEl = Array.from(document.getElementsByClassName("para"))
+        pEl.forEach((pTag, idx) => {
+            pTag.textContent = `Para Tag: ${idx}`
+            // pTag.style.color = "red"
+            if(idx === 0){
+                pTag.style.color = "red"
+            }
+        })
     </script>
 </body>
 </html>
