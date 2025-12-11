@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Function
+
+      // 1. Function Declaration or traditional function
+      function greet() {
+        // ...code
+
+        console.info("This is function topic");
+      }
+
+      // 2. Function call
+      greet();
+
+      // 3. Function parameter and argument
+      function greetTwo(text) {
+        // Parameter
+        console.info(text);
+      }
+
+      greetTwo("This is function parameter and argument"); // Argument
+
+      // 4. Function default parameter
+      function FuncDefault(text = "This default parameter") {
+        console.info(text);
+      }
+
+      FuncDefault();
+
+      // 5. Function expression
+      const funcExpression = function () {
+        console.info("This is function expression");
+      };
+
+      funcExpression();
+
+      // 6. Hoisting
+      funcHoist();
+      function funcHoist() {
+        console.info("This is function hoisting");
+      }
+
+      // 7. Arrow function(ES6) () => {}
+      const funcArrow = () => {
+        console.info("This is arrow function");
+      };
+
+      funcArrow();
+
+      // 8. IIFE(Immediate Invoke Function Expression)
+      (function greetThree() {
+        console.info("Immediate Invoke Function Expression");
+      })();
+    </script>
+  </body>
+</html>

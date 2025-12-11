@@ -6,6 +6,15 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Heading</h1>
+    <h1>Heading 1</h1>
+    <h1>Heading 2</h1>
+
+    <script>
+        const h1One = document.getElementsByTagName("h1")[0]
+        h1One.textContent = "Heading is modified by JS"
+        h1One.style.color = "red"
+        h1One.style.backgroundColor = "cyan"
+        console.info(h1One.textContent)
+    </script>
 </body>
 </html>
