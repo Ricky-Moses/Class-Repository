@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+a{
+    color: inherit;
+    text-decoration: none; 
+}
+
+#headerHome{
+    background-color: skyblue;
+    color: #fff;
+}
+
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+}
+
+header .head-logo{
+    display: flex;
+    align-items: center;
+}
+
+.head-logo label{
+    font-size: 3em;
+}
+
+header nav ul{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+header nav ul li.active{
+    padding: 0 5px;
+    background-color: #ffffff20;
+    border-radius: 20px;
+}
+
+#headerHome #home figure{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+#headerHome #home figure .img-container{
+    width: 25%;
+}
+
+#headerHome #home figure figcaption{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#headerHome #home figure figcaption h2{
+    font-size: 1em;
+}
+
+#headerHome #home figure figcaption h3{
+    font-size: 2em;
+}
+
+#headerHome #home figure figcaption div{
+    display: flex;
+    align-items: center;
+}
+
+#headerHome #home figure figcaption div input{
+    height: 5vh;
+    width: 40%;
+    border: none;
+    padding: 0 10px;
+}
+
+#headerHome #home figure figcaption div button{
+    height: 5vh;
+    border: none;
+    padding: 0 10px;
+    background-color: #ff4500;
+    color: #fff;
+}
