@@ -11,20 +11,40 @@
       <section class="grid place-items-center">
         <form
           action=""
-          class="flex flex-col items-center p-2 gap-5 border w-[400px] h-[40vh]"
+          class="flex flex-col items-start p-2 gap-5 w-[400px] h-[40vh]"
         >
           <input
             type="text"
+            name="fName"
             class="w-full h-10 px-2 shadow-2xl"
             placeholder="Enter a first name"
-            id="firstName"
           />
           <input
             type="text"
+            name="lName"
             class="w-full h-10 px-2 shadow-2xl"
             placeholder="Enter a last name"
-            id="lastName"
           />
+          <input
+            type="email"
+            name="email"
+            class="w-full h-10 px-2 shadow-2xl"
+            placeholder="Enter an email"
+          />
+          <input
+            type="tel"
+            name="phone"
+            class="w-full h-10 px-2 shadow-2xl"
+            placeholder="Enter a phone number"
+            pattern="[0-9]{10}"
+            maxlength="10"
+          />
+          <div>
+            <input type="radio" name="gender" value="Male" />
+            <label for="">Male</label>
+            <input type="radio" name="gender" value="Female" />
+            <label for="">Female</label>
+          </div>
           <button
             type="submit"
             class="w-full h-10 shadow-2xl hover:bg-black hover:text-white cursor-pointer rounded-2xl"
@@ -41,37 +61,92 @@
       const Form = document.querySelector("form");
       const UL = document.querySelector("ul");
 
-      const arr = [];
+      let arr = JSON.parse(localStorage.getItem("User")) || [];
+      let editId = null;
 
       Form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const fName = Form.querySelector("#firstName");
-        const lName = Form.querySelector("#lastName");
+        const newForm = new FormData(Form);
 
-        arr.push({ firstName: fName.value, lastName: lName.value });
+        const obj = {};
+
+        for (let [key, value] of newForm.entries()) {
+          // console.info(`${key}: ${value}`);
+          obj[key] = value;
+        }
+
+        if (editId !== null) {
+          arr = arr.map((list) => list.id === editId ? {...list, ...obj} : list)
+          editId = null
+        } else {
+          obj.id = arr.length + 1;
+          arr.push(obj);
+        }
         renderData(arr);
+        Form.reset();
+
+        localStorage.setItem("User", JSON.stringify(arr));
       });
 
-      function renderData(arr) {
+      // Display the task
+      function renderData(arrOfObj) {
         UL.innerHTML = `
-          ${arr.map(
-            (list, idx) => `
-            <li class="flex items-center gap-5 shadow-2xl p-2">
-              <div>${idx + 1}</div>
-              <div class="flex-1">${list.firstName} ${list.lastName}</div>
-              <div>
-                <button>Edit</button>
-              </div>
-              <div>
-                <button>Delete</button>
-              </div>
-          </li>
+          ${
+            arrOfObj.length > 0
+              ? `
+            ${arrOfObj
+              .map(
+                (list, idx) => `
+                <li class="flex items-center gap-5 p-2 shadow-2xl">
+                  <div>${idx + 1}</div>
+                  <div class="flex-1">${list.fName} ${list.lName}</div>
+                  <div>
+                    <button
+                      onclick="handleUpdate(${list.id})"
+                      class="text-lime-500 outline w-15 hover:bg-lime-500 hover:text-white"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      class="text-rose-500 outline w-15 hover:bg-rose-500 hover:text-white"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+            `
+              )
+              .join("")}
           `
-          ).join("")}
+              : `<li class="text-xl font-bold text-center">No Data Added</li>`
+          }
         `;
       }
-      // console.info(Form)
+
+      renderData(arr);
+
+      // Update
+      function handleUpdate(id) {
+        // console.info(id);
+        const listFound = arr.find((u) => u.id === id);
+
+        const inputAll = Form.querySelectorAll(`input`);
+        // console.info(inputAll)
+
+        inputAll.forEach((input) => {
+          // console.info(input)
+          const keyName = input.name;
+
+          input.value = listFound[keyName];
+        });
+
+        editId = id;
+
+        // console.info(listFound);
+      }
     </script>
   </body>
 </html>
