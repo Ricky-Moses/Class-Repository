@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // Array
+        const arr = ["String", 12, true, null, undefined, function(){}, [], {}]
+
+        const fruits = ["Apple", "Banana", "Cherry", "Dragon"]
+
+        // Update
+        fruits[0] = "Avacado"
+
+        // Create
+        fruits[4] = "Elantha palam"
+
+
+        // Delete
+        delete fruits[4]
+
+        
+        console.group('Array')
+        console.info(fruits)
+        console.groupEnd();
+    </script>
+</body>
+</html>

@@ -85,6 +85,8 @@
       const UL = document.querySelector("ul");
       let arr = JSON.parse(localStorage.getItem("List")) || [];
 
+      let editId = null;
+
       Form.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -97,12 +99,20 @@
           obj[key] = value;
         }
 
-        obj.id = arr.length + 1;
-        arr.push(obj);
+        if (editId !== null) {
+          arr = arr.map((list) =>
+            list.id === editId ? { ...list, ...obj } : list
+          );
+
+          editId = null;
+        } else {
+          obj.id = arr.length + 1;
+          arr.push(obj);
+        }
 
         renderTask(arr);
         localStorage.setItem("List", JSON.stringify(arr));
-        // Form.reset();
+        Form.reset();
       });
 
       function renderTask(arr) {
@@ -119,7 +129,9 @@
                         })" class="outline w-15 text-cyan-400 hover:bg-cyan-400 hover:text-white">Edit</button>
                     </div>
                     <div>
-                        <button class="outline w-15 text-rose-400 hover:bg-rose-400 hover:text-white">Delete</button>
+                        <button onclick="handleDelete(${
+                          list.id
+                        })" class="outline w-15 text-rose-400 hover:bg-rose-400 hover:text-white">Delete</button>
                     </div>
                 </li>
             `
@@ -128,7 +140,7 @@
         `;
       }
 
-      renderTask(arr)
+      renderTask(arr);
 
       // Update function
       function handleUpdate(id) {
@@ -143,6 +155,14 @@
 
           input.value = listFind[inputName];
         });
+
+        editId = id;
+      }
+
+      function handleDelete(id) {
+        arr = arr.filter((list) => list.id !== id);
+        renderTask(arr);
+        localStorage.setItem("List", JSON.stringify(arr));
       }
     </script>
   </body>
