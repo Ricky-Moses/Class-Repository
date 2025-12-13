@@ -9,93 +9,121 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-a{
-    color: inherit;
-    text-decoration: none; 
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-#headerHome{
-    background-color: skyblue;
-    color: #fff;
+#headerHome {
+  background-color: skyblue;
+  color: #fff;
+  padding-bottom: 80px;
 }
 
-
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 50px;
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 50px;
 }
 
-header .head-logo{
-    display: flex;
-    align-items: center;
+header .head-logo {
+  display: flex;
+  align-items: center;
 }
 
-.head-logo label{
-    font-size: 3em;
+.head-logo label {
+  font-size: 3em;
 }
 
-header nav ul{
-    display: flex;
-    align-items: center;
-    gap: 40px;
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
-header nav ul li.active{
-    padding: 0 5px;
-    background-color: #ffffff20;
-    border-radius: 20px;
+header nav ul li.active {
+  padding: 0 5px;
+  background-color: #ffffff20;
+  border-radius: 20px;
 }
 
-#headerHome #home figure{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
+#headerHome #home figure {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
 }
-#headerHome #home figure .img-container{
-    width: 25%;
-}
-
-#headerHome #home figure figcaption{
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+#headerHome #home figure .img-container {
+  width: 25%;
+  /* overflow: hidden; */
+  position: relative;
 }
 
-#headerHome #home figure figcaption h2{
-    font-size: 1em;
+#headerHome #home figure .img-container img {
+  border-radius: 20px;
 }
 
-#headerHome #home figure figcaption h3{
-    font-size: 2em;
+#headerHome #home figure .img-container .price {
+  background-color: cornflowerblue;
+  position: absolute;
+  top: 15px;
+  padding: 0 10px;
+  right: 15px;
+  border-radius: 20px;
+  /* z-index: 10; */
+}
+#headerHome #home figure .img-container .discount {
+  background-color: orangered;
+  position: absolute;
+  bottom: -15px;
+  left: -15px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.5em;
 }
 
-#headerHome #home figure figcaption div{
-    display: flex;
-    align-items: center;
+#headerHome #home figure figcaption {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-#headerHome #home figure figcaption div input{
-    height: 5vh;
-    width: 40%;
-    border: none;
-    padding: 0 10px;
+#headerHome #home figure figcaption h2 {
+  font-size: 1em;
 }
 
-#headerHome #home figure figcaption div button{
-    height: 5vh;
-    border: none;
-    padding: 0 10px;
-    background-color: #ff4500;
-    color: #fff;
+#headerHome #home figure figcaption h3 {
+  font-size: 2em;
+}
+
+#headerHome #home figure figcaption div {
+  display: flex;
+  align-items: center;
+}
+
+#headerHome #home figure figcaption div input {
+  height: 5vh;
+  width: 40%;
+  border: none;
+  padding: 0 10px;
+}
+
+#headerHome #home figure figcaption div button {
+  height: 5vh;
+  border: none;
+  padding: 0 10px;
+  background-color: #ff4500;
+  color: #fff;
 }

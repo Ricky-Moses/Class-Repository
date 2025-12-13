@@ -2,9 +2,15 @@
   "user": [
     {
       "id": "1",
-      "name": "Ricky",
-      "email": "abc@gmail.com",
-      "phone": 9384958660
+      "name": "Ricky Moses",
+      "email": "rickymoses@gmail.com",
+      "phone": "0971879189"
+    },
+    {
+      "id": "2",
+      "name": "Ricky Moses",
+      "email": "rickymoses@gmail.com",
+      "phone": "0971879189"
     }
   ]
 }

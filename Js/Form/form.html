@@ -77,14 +77,16 @@
         }
 
         if (editId !== null) {
-          arr = arr.map((list) => list.id === editId ? {...list, ...obj} : list)
-          editId = null
+          arr = arr.map((list) =>
+            list.id === editId ? { ...list, ...obj } : list
+          );
+          editId = null;
         } else {
           obj.id = arr.length + 1;
           arr.push(obj);
         }
         renderData(arr);
-        Form.reset();
+        // Form.reset();
 
         localStorage.setItem("User", JSON.stringify(arr));
       });
@@ -111,6 +113,7 @@
                   </div>
                   <div>
                     <button
+                    onclick="handleDelete(${list.id})"
                       class="text-rose-500 outline w-15 hover:bg-rose-500 hover:text-white"
                     >
                       Delete
@@ -146,6 +149,12 @@
         editId = id;
 
         // console.info(listFound);
+      }
+
+      function handleDelete(id) {
+        arr = arr.filter((list) => list.id !== id);
+        renderData(arr);
+        localStorage.setItem("User", JSON.stringify(arr));
       }
     </script>
   </body>

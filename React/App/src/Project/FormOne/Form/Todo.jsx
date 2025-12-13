@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import GlobalContext from "../Context/GlobalContext";
 
 const Todo = () => {
   const {
@@ -8,8 +9,10 @@ const Todo = () => {
     formState: { errors },
   } = useForm();
 
+  const { store, addUser } = useContext(GlobalContext);
+
   const handleFormSubmit = (data) => {
-    console.info(data);
+    addUser({ ...data, id: String(store.length + 1) });
   };
   return (
     <>

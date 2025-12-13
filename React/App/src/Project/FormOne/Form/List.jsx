@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import GlobalContext from "../Context/GlobalContext";
 
 const List = () => {
-  const { store } = useContext(GlobalContext);
+  const { store, deleteUser } = useContext(GlobalContext);
   return (
     <>
       <section className="">
@@ -13,10 +13,17 @@ const List = () => {
                 <div className="">{idx + 1}</div>
                 <div className="flex-1">{list.name}</div>
                 <div className="">
-                  <button>Edit</button>
+                  <button className="outline text-lime-500 hover:bg-lime-500 hover:text-white px-5">
+                    Edit
+                  </button>
                 </div>
                 <div className="">
-                  <button>Delete</button>
+                  <button
+                    onClick={() => deleteUser(list.id)}
+                    className="outline text-rose-500 hover:bg-rose-500 hover:text-white px-5"
+                  >
+                    Delete
+                  </button>
                 </div>
               </li>
             ))
