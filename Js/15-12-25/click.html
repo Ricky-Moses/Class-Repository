@@ -1,25 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-    <h1>Count: 0</h1>
+    <style>
+      div {
+        border: solid;
+        height: 50vh;
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 5px;
+        gap: 10px;
+      }
+
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
     <button>Click</button>
 
     <script>
-        const h1El = document.querySelector("h1")
-        const btn = document.querySelector("button")
+      const divEl = document.querySelector("div");
+      const btn = document.querySelector("button");
 
-        let count = 0;
-        btn.addEventListener("click", () => {
-            count++
-            // h1El.style.color = "red"
-            h1El.textContent = `Count: ${count}`
-        })
+      let count = 0;
+      btn.addEventListener("click", () => {
+        count++;
+        const imgEl = document.createElement("img");
+
+        imgEl.src = `https://picsum.photos/500/300?random=${count}`;
+
+        divEl.append(imgEl);
+      });
     </script>
-</body>
+  </body>
 </html>

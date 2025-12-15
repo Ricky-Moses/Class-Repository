@@ -1,8 +1,9 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Header = () => {
-  const token = localStorage.getItem("Token") || null;
+  const { token } = useSelector((state) => state.auth);
   return (
     <>
       <header className="flex items-center justify-between p-2 px-10">
@@ -14,7 +15,9 @@ const Header = () => {
             {!token && (
               <>
                 <li>
-                  <button>Sign In/Up</button>
+                  <button>
+                    <NavLink to={"/register"}>Sign In/Up</NavLink>
+                  </button>
                 </li>
               </>
             )}

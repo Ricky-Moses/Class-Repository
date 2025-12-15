@@ -8,12 +8,12 @@ import GlobalProvider from "./Project/FormOne/Global/GlobalProvider";
 const App = () => {
   return (
     <>
-      <GlobalProvider>
+      {/* <GlobalProvider>
         <FormOne />
-      </GlobalProvider>
-      {/* <Provider store={store}>
+      </GlobalProvider> */}
+      <Provider store={store}>
         <AuthOne />
-      </Provider> */}
+      </Provider>
     </>
   );
 };

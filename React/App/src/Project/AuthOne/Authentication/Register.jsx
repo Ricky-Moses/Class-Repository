@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../Redux/Thunk/AuthThunk";
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
@@ -9,7 +10,7 @@ const Register = () => {
 
   const submitForm = (data) => {
     dispatch(registerUser(data));
-    console.info(data)
+    console.info(data);
   };
   return (
     <>
@@ -39,6 +40,11 @@ const Register = () => {
               placeholder="Enter a password"
               {...register("password")}
             />
+          </div>
+          <div>
+            <p>
+              Are you member ? <NavLink to={"/login"}>Login</NavLink>
+            </p>
           </div>
           <div>
             <button className="w-full h-10 outline">Register</button>
