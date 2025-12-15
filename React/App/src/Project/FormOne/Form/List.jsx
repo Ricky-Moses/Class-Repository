@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import GlobalContext from "../Context/GlobalContext";
 
-const List = () => {
+const List = ({ handleEdit }) => {
   const { store, deleteUser } = useContext(GlobalContext);
   return (
     <>
@@ -13,7 +13,10 @@ const List = () => {
                 <div className="">{idx + 1}</div>
                 <div className="flex-1">{list.name}</div>
                 <div className="">
-                  <button className="outline text-lime-500 hover:bg-lime-500 hover:text-white px-5">
+                  <button
+                    onClick={() => handleEdit(list)}
+                    className="outline text-lime-500 hover:bg-lime-500 hover:text-white px-5"
+                  >
                     Edit
                   </button>
                 </div>

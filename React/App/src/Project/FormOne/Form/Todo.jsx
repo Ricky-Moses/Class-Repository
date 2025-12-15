@@ -1,18 +1,34 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import GlobalContext from "../Context/GlobalContext";
 
-const Todo = () => {
+const Todo = ({ editObj, setEditObj }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
+    reset,
   } = useForm();
 
-  const { store, addUser } = useContext(GlobalContext);
+  const { addUser, updateUser } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (editObj?.id) {
+      setValue("name", editObj?.name);
+      setValue("email", editObj?.email);
+      setValue("phone", editObj?.phone);
+    }
+  }, [editObj, setValue]);
 
   const handleFormSubmit = (data) => {
-    addUser({ ...data, id: String(store.length + 1) });
+    if (editObj?.id) {
+      updateUser(data, editObj?.id);
+      setEditObj({});
+    } else {
+      addUser(data);
+    }
+    reset();
   };
   return (
     <>

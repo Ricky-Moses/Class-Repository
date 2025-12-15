@@ -1,35 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-
+  </head>
+  <body>
     <script>
-        // Array
-        const arr = ["String", 12, true, null, undefined, function(){}, [], {}]
+      // Array
+      const arr = ["String", 12, true, null, undefined, function () {}, [], {}];
 
-        const fruits = ["Apple", "Banana", "Cherry", "Dragon"]
+      const fruits = ["Apple", "Banana", "Cherry", "Dragon"];
 
-        // Update
-        fruits[0] = "Avacado"
+      // Update
+      fruits[0] = "Avacado";
 
-        // Create
-        fruits[4] = "Elantha palam"
+      // Create
+      fruits[4] = "Elantha palam";
 
+      // Delete
+      delete fruits[4];
 
-        // Delete
-        delete fruits[4]
+      // Methods
 
-        
+      // push()
+      fruits.push("Elantha palam");
+      fruits.push("Elantha palam");
 
-        
-        console.group('Array')
-        console.info(fruits)
-        console.groupEnd();
+      // pop()
+      fruits.pop();
+
+      // unshift()
+      fruits.unshift("Apple");
+
+      // shift()
+      fruits.shift();
+
+      console.group("Array");
+      console.info(fruits);
+      console.groupEnd();
+
+      console.group("Loop methods");
+      let num = [1, 2, 3, 4, 5];
+
+      num.forEach((n, i, a) => {
+        // console.info(n, i, a)
+        // a[i] = n + n;
+      });
+
+      const copyValue = num.map((n, i) => {
+        // console.info(n, i)
+       return n + n;
+      });
+
+      console.info("Original: ", num);
+      console.info("Copy: ", copyValue)
+      console.groupEnd();
     </script>
-</body>
+  </body>
 </html>
