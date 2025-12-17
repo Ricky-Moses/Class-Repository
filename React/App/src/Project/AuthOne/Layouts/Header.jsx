@@ -25,7 +25,9 @@ const Header = () => {
             {token && (
               <>
                 <li>
-                  <button>Profile</button>
+                  <button>
+                    <NavLink to={"/profile"}>Profile</NavLink>
+                  </button>
                 </li>
               </>
             )}

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, registerUser } from "../Thunk/AuthThunk";
+import { getProfile, loginUser, registerUser } from "../Thunk/AuthThunk";
 
 const token = localStorage.getItem("Token") || null;
 
@@ -34,10 +34,22 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.token = action?.payload?.token
+        state.token = action?.payload?.token;
         localStorage.setItem("Token", action?.payload?.token);
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action?.payload;
+      })
+      // PROFILE
+      .addCase(getProfile.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getProfile.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action?.payload?.user
+      })
+      .addCase(getProfile.rejected, (state, action) => {
         state.loading = false;
         state.error = action?.payload;
       });

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="border h-dvh grid grid-cols-1 lg:grid-cols-2 p-2 gap-3">
+      <section class="grid place-items-center">
+        <form
+          action=""
+          class="flex flex-col items-start p-2 gap-5 w-[400px] h-[40vh]"
+        >
+          <input
+            type="text"
+            name="fName"
+            class="w-full h-10 px-2 shadow-2xl"
+            placeholder="Enter a first name"
+          />
+          <input
+            type="text"
+            name="lName"
+            class="w-full h-10 px-2 shadow-2xl"
+            placeholder="Enter a last name"
+          />
+          <input
+            type="email"
+            name="email"
+            class="w-full h-10 px-2 shadow-2xl"
+            placeholder="Enter an email"
+          />
+          <input
+            type="tel"
+            name="phone"
+            class="w-full h-10 px-2 shadow-2xl"
+            placeholder="Enter a phone number"
+            pattern="[0-9]{10}"
+            maxlength="10"
+          />
+          <div>
+            <input type="radio" name="gender" value="Male" />
+            <label for="">Male</label>
+            <input type="radio" name="gender" value="Female" />
+            <label for="">Female</label>
+          </div>
+          <button
+            type="submit"
+            class="w-full h-10 shadow-2xl hover:bg-black hover:text-white cursor-pointer rounded-2xl"
+          >
+            Submit
+          </button>
+        </form>
+      </section>
+      <section class="border">
+        <ul class="flex flex-col gap-5 h-[50vh] overflow-y-auto p-2"></ul>
+      </section>
+    </main>
+
+    <script>
+      const Form = document.querySelector("form");
+      const Ul = document.querySelector("ul");
+
+      let arr = [];
+      let editId = null;
+      Form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const newForm = new FormData(Form);
+
+        const obj = Object.fromEntries(newForm);
+
+        if (editId !== null) {
+          arr = arr.map((list) =>
+            list.id === editId ? { ...list, ...obj } : list
+          );
+          editId = null;
+        } else {
+          obj.id = arr.length + 1;
+          arr.push(obj);
+        }
+        renderTask(arr);
+        Form.reset();
+      });
+
+      function renderTask(arr) {
+        Ul.innerHTML = ``;
+
+        Ul.innerHTML = `
+            ${
+              arr.length > 0
+                ? `
+      ${arr
+        .map(
+          (list, idx) => `
+                <li class="flex items-center gap-5 p-2 shadow-2xl">
+                  <div>${idx + 1}</div>
+                  <div class="flex-1">${list.fName} ${list.lName}</div>
+                  <div>
+                    <button
+                      onclick="handleUpdate(${list.id})"
+                      class="text-lime-500 outline w-15 hover:bg-lime-500 hover:text-white"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                    onclick="handleDelete(${list.id})"
+                      class="text-rose-500 outline w-15 hover:bg-rose-500 hover:text-white"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </li>
+      `
+        )
+        .join("")}
+            `
+                : `<li>No user data exist</li>`
+            }
+        `;
+      }
+
+      renderTask(arr);
+
+      function handleUpdate(id) {
+        const listFound = arr.find((list) => list.id === id);
+
+        const inputBox = Form.querySelectorAll("input");
+
+        inputBox.forEach((input) => {
+          const fieldName = input.name;
+
+          input.value = listFound[fieldName];
+        });
+
+        editId = id;
+      }
+
+      function handleDelete(id) {
+        arr = arr.filter((list) => list.id !== id);
+        renderTask(arr);
+      }
+    </script>
+  </body>
+</html>

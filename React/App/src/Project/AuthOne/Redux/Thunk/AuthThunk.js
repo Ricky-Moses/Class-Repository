@@ -28,3 +28,16 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
+// Profile
+export const getProfile = createAsyncThunk(
+  "auth/getProfile",
+  async (_, thunkAPI) => {
+    try {
+      const res = await apiConfig.get("/profile");
+      return res.data;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(err?.response?.data?.msg);
+    }
+  }
+);

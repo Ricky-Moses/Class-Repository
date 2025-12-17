@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import { loginUser } from "../Redux/Thunk/AuthThunk";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { token } = useSelector((state) => state.auth);
 
   const submitForm = (data) => {
     dispatch(loginUser(data));
   };
+
+  useEffect(() => {
+    if (token) navigate("/profile");
+  }, [navigate, token]);
   return (
     <>
       <section className="h-[80vh] grid place-items-center">
