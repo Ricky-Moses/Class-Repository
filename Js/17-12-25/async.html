@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="grid grid-cols-4 gap-10 p-5"></main>
+    <script>
+      const mainEl = document.querySelector("main");
+
+      async function fetchData() {
+        try {
+          const response = await fetch(
+            "https://mimic-server-api.vercel.app/movies"
+          );
+          const data = await response.json();
+          displayData(data);
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      fetchData();
+
+      function displayData(data) {
+        mainEl.innerHTML = `
+      ${data
+        .map(
+          (item) => `
+        <figure>
+            <div>
+                <img class="" src="${item.backdrop_path}" />    
+            </div>
+            <figcaption>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Title</td>    
+                            <td>${item.original_title}</td>    
+                        </tr>    
+                    </tbody>    
+                </table>    
+            </figcaption>
+        </figure>
+      `
+        )
+        .join("")}
+        `;
+      }
+    </script>
+  </body>
+</html>
