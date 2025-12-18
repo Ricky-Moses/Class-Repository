@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const obj = {
+        name: "Ricky",
+        age: 25,
+        working: true,
+      }; // {key: value} pair
+
+      // CRUD
+
+      // 1. Create
+      obj.email = "ricky@gmail.com";
+
+      // 2. Update
+      obj.working = false;
+
+      // 3. Delete
+      delete obj.email
+
+      console.group("Object");
+      console.info(obj);
+      //   console.info("name: ", obj.name)
+      console.groupEnd();
+    </script>
+  </body>
+</html>

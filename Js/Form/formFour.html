@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="h-dvh grid grid-cols-1 md:grid-cols-2 gap-5 p-3">
+      <section class="border grid place-items-center">
+        <form class="border flex flex-col gap-5 w-[400px] p-2">
+          <h1 class="text-2xl text-center font-bold">Register</h1>
+          <div>
+            <input
+              class="w-full h-10 outline px-2"
+              placeholder="Enter a name"
+              type="text"
+              name="name"
+            />
+          </div>
+          <div>
+            <input
+              class="w-full h-10 outline px-2"
+              placeholder="Enter a roll no"
+              type="tel"
+              name="rollno"
+            />
+          </div>
+          <div>
+            <input
+              class="w-full h-10 outline px-2"
+              placeholder="Enter an email"
+              type="email"
+              name="email"
+            />
+          </div>
+          <div>
+            <input
+              class="w-full h-10 outline px-2"
+              placeholder="Enter a phone"
+              type="tel"
+              name="phone"
+            />
+          </div>
+          <div>
+            <input type="radio" name="gender" value="Male" />
+            <label for="">Male</label>
+            <input type="radio" name="gender" value="Female" />
+            <label for="">Female</label>
+          </div>
+          <div>
+            <button
+              class="outline w-full h-10 text-sky-500 hover:bg-sky-500 hover:text-white cursor-pointer"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </section>
+      <section class="border"></section>
+    </main>
+
+    <script>
+      const Form = document.querySelector("form");
+
+      Form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const newForm = new FormData(Form);
+        const obj = {};
+
+        for (let [key, value] of newForm.entries()) {
+          // console.info(`${key}: ${value}`)
+          obj[key] = value;
+        }
+
+        console.info(obj);
+      });
+    </script>
+  </body>
+</html>
