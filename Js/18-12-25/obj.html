@@ -11,6 +11,10 @@
         name: "Ricky",
         age: 25,
         working: true,
+        details: {
+          city: "Dindigul",
+          state: "Tamil Nadu",
+        },
       }; // {key: value} pair
 
       // CRUD
@@ -22,11 +26,40 @@
       obj.working = false;
 
       // 3. Delete
-      delete obj.email
+      delete obj.email;
+
+      // Spread Operator
+      const copyObj = { ...obj, email: "ricky@gmail.com" };
+
+      const {
+        name,
+        age,
+        working,
+        details: { city, state },
+      } = obj;
 
       console.group("Object");
-      console.info(obj);
-      //   console.info("name: ", obj.name)
+      console.info("Original", obj);
+      console.info("Copy: ", copyObj);
+
+      console.warn("Destructuring");
+      console.info(name);
+      console.info(age);
+      console.info(working);
+      console.info(city);
+      console.info(state);
+      console.warn("Inspecting Object");
+      console.info("Keys: ", Object.keys(obj));
+      console.info("Values: ", Object.values(obj));
+      console.info("Entires: ", Object.entries(obj));
+      console.warn("For..in");
+      for (let key in copyObj) {
+        console.info(key);
+      }
+      console.warn("For...of");
+      for(let [key, value] of Object.entries(copyObj)){
+        console.info(`${key}: ${value}`)
+      }
       console.groupEnd();
     </script>
   </body>

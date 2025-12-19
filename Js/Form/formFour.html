@@ -88,10 +88,10 @@
       function renderTask(arr) {
         UL.innerHTML = `
           ${arr.map(
-            (list) => `
+            (list, idx) => `
             <li class="flex items-center gap-5">
-            <div>1</div>
-            <div class="flex-1">User name</div>
+            <div>${idx + 1}</div>
+            <div class="flex-1">${list.name}</div>
             <div>
               <button
                 class="outline text-cyan-600 hover:bg-cyan-600 hover:text-white px-3"
