@@ -8,7 +8,7 @@
   </head>
   <body>
     <main class="h-dvh grid grid-cols-1 md:grid-cols-2 gap-5 p-3">
-      <section class="border grid place-items-center">
+      <section class="grid place-items-center">
         <form class="border flex flex-col gap-5 w-[400px] p-2">
           <h1 class="text-2xl text-center font-bold">Register</h1>
           <div>
@@ -58,11 +58,15 @@
           </div>
         </form>
       </section>
-      <section class="border"></section>
+      <section class="border h-[45vh] overflow-y-auto">
+        <ul class="p-2"></ul>
+      </section>
     </main>
 
     <script>
       const Form = document.querySelector("form");
+      const UL = document.querySelector("ul");
+      const arr = [];
 
       Form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -75,8 +79,38 @@
           obj[key] = value;
         }
 
-        console.info(obj);
+        obj.id = arr.length + 1;
+
+        arr.push(obj);
+        renderTask(arr);
       });
+
+      function renderTask(arr) {
+        UL.innerHTML = `
+          ${arr.map(
+            (list) => `
+            <li class="flex items-center gap-5">
+            <div>1</div>
+            <div class="flex-1">User name</div>
+            <div>
+              <button
+                class="outline text-cyan-600 hover:bg-cyan-600 hover:text-white px-3"
+              >
+                Edit
+              </button>
+            </div>
+            <div>
+              <button
+                class="outline text-orange-600 hover:bg-orange-600 hover:text-white px-3"
+              >
+                Delete
+              </button>
+            </div>
+          </li>
+          `
+          ).join("")}
+        `;
+      }
     </script>
   </body>
 </html>
