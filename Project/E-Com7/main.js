@@ -3,12 +3,14 @@ const mainEl = document.querySelector("main");
 const asideEl = document.querySelector("aside");
 
 let dataOfObj = {};
+let arrOfCart = [];
 
 async function fetchData() {
   try {
     const res = await fetch("./asset/data.json");
     const data = await res.json();
     dataOfObj = data;
+    renderData(dataOfObj);
   } catch (err) {
     console.error(err);
   }
@@ -36,7 +38,7 @@ function showPages(pageId) {
   });
 }
 
-showPages("home");
+showPages("shop");
 
 // Click to show pages
 const listToNavigate = headerEl.querySelectorAll("ul li");
@@ -50,7 +52,6 @@ listToNavigate.forEach((list) => {
 });
 
 // Cart Page
-
 function showCart(position) {
   asideEl.classList.toggle(position);
 }
@@ -93,3 +94,109 @@ function addToCart() {
 }
 
 addToCart();
+
+// Shop page 'renderData' function
+const shopPage = mainEl.querySelector("#shop");
+function renderData(data) {
+  const ulEl = shopPage.querySelector("ul");
+
+  // const liEl = document.createElement("li");
+  // Object.keys(data).map((list) => {
+  //   liEl.textContent += list;
+  // });
+
+  // ulEl.append(liEl);
+
+  // ==== Event Handler ====
+
+  ulEl.innerHTML = `
+    ${Object.keys(data)
+      .map(
+        (list, idx) => `
+        <li class="cursor-pointer" data-list="${list}">${list
+          .split("_")
+          .join(" ")}</li>
+      `
+      )
+      .join("")}
+  `;
+
+  const liEl = ulEl.querySelectorAll("li");
+  liEl.forEach((liClick) => {
+    liClick.addEventListener("click", () => {
+      productCard(data[liClick.dataset.list]);
+    });
+  });
+}
+
+function productCard(arrOfObj) {
+  const cardContainer = shopPage.querySelector("#card");
+
+  cardContainer.innerHTML = `
+    ${arrOfObj
+      .map(
+        (cardItem) => `
+        <figure class="shadow-2xl rounded-t-2xl p-1">
+          <div class="">
+            <img src="${cardItem.images[0].url}" class="rounded-t-2xl" alt="">
+          </div>
+          <figcaption>
+            <table class="[&_td]:p-2">
+              <tbody>
+                <tr>
+                  <td>Name: </td>
+                  <td>${cardItem.name}</td>
+                </tr>
+                <tr>
+                  <td>Brand: </td>
+                  <td>${cardItem.brand}</td>
+                </tr>
+                <tr>
+                  <td>Stock: </td>
+                  <td>
+                    <p class="${
+                      cardItem.inStock ? "text-emerald-500" : "text-rose-500"
+                    }">${cardItem.availability}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Price: </td>
+                  <td>₹ ${(cardItem.price * 90).toFixed(2)}</td>
+                </tr>
+                <tr>
+                  <td class="flex">Description: </td>
+                  <td>
+                    <p class="line-clamp-1">${cardItem.description}</p>
+                  </td>
+                </tr>
+                <tr>
+                    <td>
+                      <button  class="outline w-full text-lime-500 hover:bg-lime-500 hover:text-white">View</button>
+                    </td>
+                    <td>
+                      <button id="addToCartItem" data-itemid="${
+                        cardItem.id
+                      }" class="outline w-full text-sky-500 hover:bg-sky-500 hover:text-white">Add To Cart</button>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </figcaption>
+        </figure>
+      `
+      )
+      .join("")}
+  `;
+
+  const addCartItem = cardContainer.querySelectorAll("figure #addToCartItem");
+  addCartItem.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const itemId = btn.dataset.itemid;
+
+      const cartFounded = arrOfObj.find((list) => list.id == itemId);
+
+      arrOfCart.push(cartFounded);
+      console.info(arrOfCart);
+    });
+  });
+}
