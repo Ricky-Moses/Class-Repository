@@ -3,7 +3,7 @@ const mainEl = document.querySelector("main");
 const asideEl = document.querySelector("aside");
 
 let dataOfObj = {};
-let arrOfCart = [];
+let arrOfCart = JSON.parse(localStorage.getItem("Cart")) || [];
 
 async function fetchData() {
   try {
@@ -58,9 +58,9 @@ function showCart(position) {
 
 // Cart item
 const cartUl = asideEl.querySelector("ul");
-function addToCart() {
+function addToCart(arrOfCartItems) {
   cartUl.innerHTML = `
-        ${Array.from({ length: 1 })
+        ${arrOfCartItems
           .map(
             (item, idx) => `
             <li class="flex items-center gap-2">
@@ -68,32 +68,77 @@ function addToCart() {
                     <img
                     class="w-30"
                     loading="lazy"
-                    src="https://picsum.photos/500/300?random=${idx}"
+                    src="${item.images[0].url}"
                     alt=""
                     />
                 </figure>
                 <div class="flex-1">
-                    <h1>Product Name</h1>
+                    <h1>${item.name}</h1>
                     <div class="flex items-center gap-3 mt-2">
-                    <button class="outline w-5 rounded text-slate-600 hover:bg-slate-600 hover:text-white">+</button>
-                    <span>0</span>
-                    <button class="outline w-5 rounded text-slate-600 hover:bg-slate-600 hover:text-white">-</button>
+                    <button onclick="handleIncreaseQty(${
+                      item.id
+                    })" class="outline w-5 rounded text-slate-600 hover:bg-slate-600 hover:text-white">+</button>
+                    <span>${item.qty || 1}</span>
+                    <button onclick="handleDecreaseQty(${
+                      item.id
+                    })" class="outline w-5 rounded text-slate-600 hover:bg-slate-600 hover:text-white">-</button>
                     </div>
                 </div>
                 <div>
-                    <p>₹ 17000/-</p>
+                    <p>₹ ${(item.price * (item.qty || 1) * 90).toFixed(2)}/-</p>
                 </div>
                 <div>
-                    <button class="outline rounded text-rose-500 hover:bg-rose-500 hover:text-white px-2">Remove</button>
+                    <button onclick="handleRemove(${
+                      item.id
+                    })" class="outline rounded text-rose-500 hover:bg-rose-500 hover:text-white px-2">Remove</button>
                 </div>
             </li>
         `
           )
           .join("")}
     `;
+  totalPrice();
 }
 
-addToCart();
+addToCart(arrOfCart);
+
+// Handle quantity Function
+function handleIncreaseQty(id) {
+  // console.info("Working");
+  arrOfCart = arrOfCart.map((item) =>
+    item.id === id ? { ...item, qty: (item.qty || 1) + 1 } : item
+  );
+  localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+  addToCart(arrOfCart);
+}
+function handleDecreaseQty(id) {
+  // console.info("Working");
+  arrOfCart = arrOfCart.map((item) =>
+    item.id === id ? { ...item, qty: (item.qty || 1) - 1 } : item
+  );
+  localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+  addToCart(arrOfCart);
+}
+
+// Total price function
+function totalPrice() {
+  const displayTotalPrice = asideEl.querySelector("#totalPrice");
+  // console.info(totalCart);
+  const total = arrOfCart.reduce(
+    (acc, item) => acc + item.price * (item.qty || 1) * 90,
+    0
+  );
+
+  displayTotalPrice.textContent = `₹ ${total.toFixed(2)}/-`;
+}
+
+// Handle remove cart
+function handleRemove(id) {
+  arrOfCart = arrOfCart.filter((item) => item.id !== id);
+
+  localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+  addToCart(arrOfCart);
+}
 
 // Shop page 'renderData' function
 const shopPage = mainEl.querySelector("#shop");
@@ -106,6 +151,12 @@ function renderData(data) {
   // });
 
   // ulEl.append(liEl);
+
+  // === First Object key ===
+  const firstKey = Object.keys(data)[0];
+  if (data && Object.keys(data).length > 0) {
+    productCard(data[firstKey]);
+  }
 
   // ==== Event Handler ====
 
@@ -192,11 +243,19 @@ function productCard(arrOfObj) {
   addCartItem.forEach((btn) => {
     btn.addEventListener("click", () => {
       const itemId = btn.dataset.itemid;
-
       const cartFounded = arrOfObj.find((list) => list.id == itemId);
 
+      const existCart = arrOfCart.some((cart) => cart.id === cartFounded.id);
+
+      if (existCart) {
+        alert("Cart Already Exist!");
+        return;
+      }
+
       arrOfCart.push(cartFounded);
-      console.info(arrOfCart);
+      localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+      // console.info(arrOfCart);
+      addToCart(arrOfCart);
     });
   });
 }

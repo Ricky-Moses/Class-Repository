@@ -48,11 +48,9 @@
     >
       <div class="flex items-center justify-between text-2xl">
         <h1>Cart</h1>
-        <h1>₹ 80000/-</h1>
+        <h1 id="totalPrice">₹ 80000/-</h1>
       </div>
-      <ul class="flex flex-col gap-5 mt-3 h-[80vh] overflow-y-scroll px-3">
-        
-      </ul>
+      <ul class="flex flex-col gap-5 mt-3 h-[80vh] overflow-y-scroll px-3"></ul>
     </aside>
     <!-- Cart Page -->
 
@@ -61,17 +59,20 @@
       <section id="home">Home</section>
       <section id="shop">
         <nav>
-          <ul class="flex items-center gap-10 overflow-x-scroll capitalize p-3">
-
-          </ul>
+          <ul
+            class="flex items-center gap-10 overflow-x-scroll capitalize p-3"
+          ></ul>
         </nav>
-        <div id="card" class="grid grid-cols-4 gap-5 p-2"></div>
+        <div
+          id="card"
+          class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 p-2"
+        ></div>
       </section>
       <section id="about">About</section>
       <section id="profile">Profile</section>
     </main>
     <!-- Main section -->
 
-    <script src="./main.js" type="module"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
