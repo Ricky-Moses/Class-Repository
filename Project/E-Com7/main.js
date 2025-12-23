@@ -38,7 +38,7 @@ function showPages(pageId) {
   });
 }
 
-showPages("shop");
+showPages("home");
 
 // Click to show pages
 const listToNavigate = headerEl.querySelectorAll("ul li");
@@ -222,7 +222,9 @@ function productCard(arrOfObj) {
                 </tr>
                 <tr>
                     <td>
-                      <button  class="outline w-full text-lime-500 hover:bg-lime-500 hover:text-white">View</button>
+                      <button onclick="handleView(${
+                        cardItem.id
+                      })" class="outline w-full text-lime-500 hover:bg-lime-500 hover:text-white">View</button>
                     </td>
                     <td>
                       <button id="addToCartItem" data-itemid="${
@@ -258,4 +260,67 @@ function productCard(arrOfObj) {
       addToCart(arrOfCart);
     });
   });
+}
+
+const viewPage = mainEl.querySelector("#view");
+function handleView(id) {
+  showPages("view");
+  const singleProductData = viewPage.querySelector("article");
+  // console.info(id);
+  const flattenObj = Object.values(dataOfObj).flat();
+  // console.info(flattenObj)
+
+  const foundObj = flattenObj.find((list) => list.id === id);
+
+  singleProductData.innerHTML = `
+          <figure>
+            <div>
+              <img src="${foundObj.images[0].url}" alt="" />
+            </div>
+            <figcaption>
+              <table class=" w-full [&_td]:p-2">
+                <tbody>
+                  <tr>
+                    <td>Name:</td>
+                    <td>${foundObj.name}</td>
+                  </tr>
+                  <tr>
+                    <td>Brand:</td>
+                    <td>${foundObj.brand}</td>
+                  </tr>
+                  <tr>
+                    <td>Rating:</td>
+                    <td>${foundObj.rating}</td>
+                  </tr>
+                  <tr>
+                    <td>Company:</td>
+                    <td>${foundObj.company}</td>
+                  </tr>
+                  <tr>
+                    <td>Country:</td>
+                    <td>${foundObj.country}</td>
+                  </tr>
+                  <tr>
+                    <td>Price:</td>
+                    <td>₹ ${(foundObj.price * 90).toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <td>Stock:</td>
+                    <td>${foundObj.availability}</td>
+                  </tr>
+                  <tr>
+                    <td>Export:</td>
+                    <td>${
+                      foundObj.isExport
+                        ? "Export Available"
+                        : "Export not Available"
+                    }</td>
+                  </tr>
+                </tbody>
+              </table>
+            </figcaption>
+          </figure>
+  `;
+
+  // console.info(foundObj);
 }
