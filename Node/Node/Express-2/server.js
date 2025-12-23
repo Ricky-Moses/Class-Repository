@@ -1,16 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
-import bodyParser from "body-parser";
 import connectDB from "./Config/db.js";
-import register from "./Controllers/Register.js";
+import route from "./Router/Router.js";
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.post("/register", register);
+app.use("/api", route);
 
 connectDB();
 app.listen(PORT, () => {
