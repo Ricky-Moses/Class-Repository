@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import GlobalContext from "../Context/GlobalContext";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const Card = ({ product }) => {
+const Card = ({ product = [] }) => {
+  const { addCart, setAddCart } = useContext(GlobalContext);
+  const navigate = useNavigate();
+
+  const handleAddCart = (item) => {
+    const existCart = addCart.some((cart) => cart.id === item.id);
+
+    if (existCart) {
+      toast.error(`${item.name} already exist in cart!`);
+      return;
+    }
+    setAddCart((prev) => [...prev, item]);
+    toast.success(`${item.name} added to cart!`);
+  };
   return (
     <>
       {product.length > 0 ? (
@@ -38,10 +54,22 @@ const Card = ({ product }) => {
                   </tr>
                   <tr>
                     <td>
-                        <button className="outline w-full text-sky-500 hover:bg-sky-500 hover:text-white">Add</button>
+                      <button
+                        onClick={() => handleAddCart(item)}
+                        className="outline w-full text-sky-500 hover:bg-sky-500 hover:text-white"
+                      >
+                        Add
+                      </button>
                     </td>
                     <td>
-                        <button className="outline w-full text-emerald-500 hover:bg-emerald-500 hover:text-white">View</button>
+                      <button
+                        onClick={() => {
+                          navigate("/view", { state: item });
+                        }}
+                        className="outline w-full text-emerald-500 hover:bg-emerald-500 hover:text-white"
+                      >
+                        View
+                      </button>
                     </td>
                   </tr>
                 </tbody>

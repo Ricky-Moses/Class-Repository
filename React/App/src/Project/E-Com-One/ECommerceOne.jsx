@@ -6,6 +6,7 @@ import Shop from "./Pages/Shop";
 import About from "./Pages/About";
 import Profile from "./Pages/Profile";
 import Checkout from "./Pages/Checkout";
+import View from "./Pages/View";
 
 const ECommerceOne = () => {
   const pathRouter = createBrowserRouter([
@@ -32,6 +33,10 @@ const ECommerceOne = () => {
         {
           path: "checkout",
           element: <Checkout />,
+        },
+        {
+          path: "view",
+          element: <View />,
         },
       ],
     },

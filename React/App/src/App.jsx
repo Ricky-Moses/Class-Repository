@@ -1,4 +1,5 @@
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import FormOne from "./Project/FormOne/FormOne";
 import AuthOne from "./Project/AuthOne/AuthOne";
 import { Provider } from "react-redux";
@@ -25,6 +26,12 @@ const App = () => {
 
       {/* <RouterTwo /> */}
 
+      <Toaster
+        position="top right"
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
       <GlobalProvider>
         <ECommerceOne />
       </GlobalProvider>
