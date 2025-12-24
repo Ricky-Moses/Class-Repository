@@ -5,24 +5,20 @@ const register = async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
-    // All fields required condition
     if (!name || !email || !password) {
       res.status(406).send({ msg: "All fields are required!" });
       return;
     }
 
-    // Check if user already exist
-    const existUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email });
 
-    if (existUser) {
+    if (existingUser) {
       res.status(409).send({ msg: "User already exists!" });
       return;
     }
 
-    // Convert password into hash password
     const hashPassword = await bcrypt.hash(password, 10);
 
-    // New user
     const newUser = await User.create({
       name,
       email,

@@ -6,16 +6,17 @@
     <title>Document</title>
   </head>
   <body>
-    <p class="para"></p>
-    <p class="para"></p>
-    <p class="para"></p>
-    <p class="para"></p>
-    <p class="para"></p>
+    <h1></h1>
+    <button>Click</button>
 
     <script>
-      const paraEl = Array.from(document.getElementsByClassName("para"));
-      paraEl.forEach((p) => {
-        p.textContent = 'Paragraph'
+      const h1El = document.querySelector("h1")
+      const btn = document.querySelector("button")
+
+      let count = 0
+      btn.addEventListener("click", () => {
+        count++
+        h1El.textContent = `Heading ${count}`
       })
     </script>
   </body>
