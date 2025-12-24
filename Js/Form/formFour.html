@@ -66,7 +66,7 @@
     <script>
       const Form = document.querySelector("form");
       const UL = document.querySelector("ul");
-      let arr = [];
+      let arr = JSON.parse(localStorage.getItem("User")) || [];
 
       let editId = null;
 
@@ -93,6 +93,7 @@
         }
 
         renderTask(arr);
+        localStorage.setItem("User", JSON.stringify(arr));
         Form.reset();
       });
 
@@ -127,6 +128,7 @@
         `;
       }
 
+      renderTask(arr);
       function handleEdit(id) {
         const listFound = arr.find((list) => list.id === id);
 
@@ -143,6 +145,7 @@
       function handleDelete(id) {
         arr = arr.filter((list) => list.id !== id);
         renderTask(arr);
+        localStorage.setItem("User", JSON.stringify(arr));
       }
     </script>
   </body>
