@@ -93,7 +93,7 @@
         }
 
         renderTask(arr);
-        Form.reset()
+        Form.reset();
       });
 
       function renderTask(arr) {
@@ -114,6 +114,7 @@
             </div>
             <div>
               <button
+              onclick="handleDelete(${list.id})"
                 class="outline text-orange-600 hover:bg-orange-600 hover:text-white px-3"
               >
                 Delete
@@ -137,6 +138,11 @@
           input.value = listFound[inputName];
         });
         editId = id;
+      }
+
+      function handleDelete(id) {
+        arr = arr.filter((list) => list.id !== id);
+        renderTask(arr);
       }
     </script>
   </body>
