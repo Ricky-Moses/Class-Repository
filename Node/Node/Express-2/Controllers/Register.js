@@ -32,7 +32,9 @@ const register = async (req, res) => {
       email: newUser.email,
     });
   } catch (err) {
-    console.error(err);
+    if (process.env.NODE_ENV === "development") {
+      console.error(err);
+    }
     res.status(500).send({ msg: "Internal server error" });
   }
 };

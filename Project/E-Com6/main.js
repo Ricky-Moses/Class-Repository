@@ -66,6 +66,10 @@ function renderData(data) {
   // console.info(data);
   const ulEl = shopPage.querySelector("ul");
 
+  const firstKey = Object.keys(data)[1]
+  // console.info(firstKey)
+  productCard(data[firstKey])
+
   ulEl.innerHTML = `
     ${Object.keys(data)
       .map(
@@ -91,4 +95,46 @@ function renderData(data) {
 function productCard(data) {
   console.info(data)
   const cardContainer = shopPage.querySelector("#cardContainer");
+
+  cardContainer.innerHTML = `
+    ${data && data.map((item) => `
+        <figure>
+          <div class="">
+            <img src="${item.images[0].url}" alt="">
+          </div>
+          <figcaption>
+            <table class="w-full [&_td]:p-2">
+              <tbody>
+                <tr>
+                  <td>Name: </td>
+                  <td>${item.name}</td>
+                </tr>
+                <tr>
+                  <td>Brand: </td>
+                  <td>${item.brand}</td>
+                </tr>
+                <tr>
+                  <td>Description: </td>
+                  <td>
+                    <p class="line-clamp-1">${item.description}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Price: </td>
+                  <td>${(item.price * 90).toFixed(2)}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="outline w-full text-lime-500 hover:bg-lime-500 hover:text-white">View</button>
+                  </td>
+                  <td>
+                    <button class="outline w-full text-sky-500 hover:bg-sky-500 hover:text-white">Add To Cart</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figcaption>
+        </figure>
+    `).join("")}
+  `
 }
