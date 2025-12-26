@@ -10,6 +10,7 @@ import RouterOne from "./Project/RouterOne/RouterOne";
 import RouterTwo from "./Project/RouterTwo/RouterTwo";
 import ECommerceOne from "./Project/E-Com-One/ECommerceOne";
 import GlobalProvider from "./Project/E-Com-One/Global/GlobalProvider";
+import Reducer from "./Class/Reducer";
 
 const App = () => {
   return (
@@ -32,9 +33,11 @@ const App = () => {
           duration: 3000,
         }}
       />
-      <GlobalProvider>
+      {/* <GlobalProvider>
         <ECommerceOne />
-      </GlobalProvider>
+      </GlobalProvider> */}
+
+      <Reducer />
     </>
   );
 };

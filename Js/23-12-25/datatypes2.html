@@ -45,9 +45,41 @@
         1. Arithmetic (+, -, *, /, %, **, ++, --)
       */
 
-      console.group('Arithmetic (+, -, *, /, %, **, ++, --)')
-      console.info(10 + "10") // Type coercion - Automatic datatype conversion
+      console.group("Arithmetic (+, -, *, /, %, **, ++, --)");
+      console.info(10 + "10"); // Type coercion - Automatic datatype conversion
+      let a = 1;
+      // a++
+      // console.info("Post Increment: ", a++)
+      console.info(2 ** 3)
+      console.info("Pre Increment: ", ++a);
 
+      console.groupEnd();
+
+      console.group("Assignment Operator");
+      let a1 = 10
+      a1 += 10
+      console.info(a1)
+      console.groupEnd();
+
+      console.group('Comparison Operator')
+      console.info(2 == "2")
+      console.info(2 === "2")
+
+      console.info(2 != "2")
+      console.info(2 !== "2")
+      console.groupEnd();
+
+      console.group('Truthy & Falsy')
+      console.info(!!null)
+      console.info(!!undefined)
+      console.info(!!"")
+      console.info(!!false)
+      console.groupEnd();
+
+      console.group('Logical Operator')
+      console.info(false && "This AND op")
+      console.info(true || "This OR Op")
+      console.info(!true)
       console.groupEnd();
     </script>
   </body>
