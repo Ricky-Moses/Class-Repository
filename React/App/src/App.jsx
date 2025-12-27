@@ -11,6 +11,7 @@ import RouterTwo from "./Project/RouterTwo/RouterTwo";
 import ECommerceOne from "./Project/E-Com-One/ECommerceOne";
 import GlobalProvider from "./Project/E-Com-One/Global/GlobalProvider";
 import Reducer from "./Class/Reducer";
+import Ref from "./Class/Ref";
 
 const App = () => {
   return (
@@ -37,7 +38,8 @@ const App = () => {
         <ECommerceOne />
       </GlobalProvider> */}
 
-      <Reducer />
+      {/* <Reducer /> */}
+      <Ref />
     </>
   );
 };
