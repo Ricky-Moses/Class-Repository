@@ -10,21 +10,45 @@
       let name = prompt("Enter a name");
       let mark = prompt("Enter your mark");
 
+      // console.info(name, mark)
+
+      let grade = "";
 
       if (name && mark) {
         if (mark >= 80 && mark <= 100) {
-          console.info("Grade A");
+          grade = "A";
+          console.info(`Name: ${name} \nMark: ${mark} \nGrade: ${grade}`);
         } else if (mark >= 60 && mark < 80) {
-          console.info("Grade B");
+          grade = "B";
+          console.info(`Name: ${name} \nMark: ${mark} \nGrade: ${grade}`);
         } else if (mark >= 35 && mark < 60) {
-          console.info("Grade C");
+          grade = "C";
+          console.info(`Name: ${name} \nMark: ${mark} \nGrade: ${grade}`);
         } else if (mark < 35 && mark >= 0) {
-          console.info("Grade D");
+          grade = "D";
+          console.info(`Name: ${name} \nMark: ${mark} \nGrade: ${grade}`);
         } else {
           console.info("Invalid Mark");
         }
       } else {
         console.info("Please provide required information");
+      }
+
+      switch (grade) {
+        case "A":
+          console.info(`Excellent Work!`);
+          break;
+        case "B":
+          console.info(`Very Good!`);
+          break;
+        case "C":
+          console.info("Good!");
+          break;
+        case "D":
+          console.info("Better luck next time!");
+          break;
+        default:
+          console.info("Invalid grade")
       }
     </script>
   </body>
