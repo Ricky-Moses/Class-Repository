@@ -3,7 +3,7 @@ const mainEl = document.querySelector("main");
 const asideEl = document.querySelector("aside");
 
 // Empty array for cart storing
-const arrOfCart = JSON.parse(localStorage.getItem("Cart")) || [];
+let arrOfCart = JSON.parse(localStorage.getItem("Cart")) || [];
 
 // Fetch data from 'data.json'
 async function fetchData() {
@@ -73,23 +73,68 @@ function showCartItems(cartItems) {
           <div class=" flex-1">
             <h1 class="line-clamp-1">${item.name}</h1>
             <div class="flex items-center gap-5 mt-2">
-              <button class="outline w-5 rounded hover:bg-black hover:text-white">+</button>
-              <span>0</span>
-              <button class="outline w-5 rounded hover:bg-black hover:text-white">-</button>
+              <button onclick="handleIncrease(${
+                item.id
+              })" class="outline w-5 rounded hover:bg-black hover:text-white">+</button>
+              <span>${item.qty || 1}</span>
+              <button onclick="handleDecrease(${
+                item.id
+              })" class="outline w-5 rounded hover:bg-black hover:text-white">-</button>
             </div>
           </div>
-          <div>₹ ${(item.price * 90).toFixed(2)}/-</div>
+          <div>₹ ${(item.price * 90 * (item.qty || 1)).toFixed(2)}/-</div>
           <div>
-            <button class="outline text-rose-500 hover:bg-rose-500 hover:text-white rounded px-2">Remove</button>
+            <button onclick="handleRemove(${
+              item.id
+            })" class="outline text-rose-500 hover:bg-rose-500 hover:text-white rounded px-2">Remove</button>
           </div>
         </li>
       `
       )
       .join("")}
   `;
+  totalPrice(cartItems);
 }
 
-showCartItems(arrOfCart)
+showCartItems(arrOfCart);
+
+// Handle to increase quantity
+function handleIncrease(id) {
+  // console.info(id)
+
+  arrOfCart = arrOfCart.map((item) =>
+    item.id === id ? { ...item, qty: (item.qty || 1) + 1 } : item
+  );
+
+  localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+  showCartItems(arrOfCart);
+  totalPrice(arrOfCart);
+}
+
+function handleDecrease(id) {
+  arrOfCart = arrOfCart.map((item) =>
+    item.id === id ? { ...item, qty: (item.qty || 1) - 1 } : item
+  );
+
+  localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+  showCartItems(arrOfCart);
+  totalPrice(arrOfCart);
+}
+
+function totalPrice(carts) {
+  const displayTotalPrice = asideEl.querySelector("#displayTotalPrice");
+  const total = carts.reduce((acc, items) => {
+    return acc + items.price * 90 * (items.qty || 1);
+  }, 0);
+
+  displayTotalPrice.textContent = `₹ ${total.toFixed(2)}/-`;
+}
+
+function handleRemove(id) {
+  arrOfCart = arrOfCart.filter((item) => item.id !== id);
+  localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+  showCartItems(arrOfCart);
+}
 
 // Render data (Function)
 const shopPage = mainEl.querySelector("#shop");
@@ -124,7 +169,7 @@ function renderData(data) {
 
 // Shop product card (Function)
 function productCard(data) {
-  console.info(data);
+  // console.info(data);
   const cardContainer = shopPage.querySelector("#cardContainer");
 
   cardContainer.innerHTML = `
