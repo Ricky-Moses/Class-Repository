@@ -1,31 +1,29 @@
-// console.log("Hello")
-// console.log(document);
+// HTTP
+const HTTP = require("http");
 
-const FS = require("fs");
-// console.info(FS)
-const textContent = "This is text file";
-const updateContent = "This content is updated";
+// console.info(HTTP)
 
-setTimeout(() => {
-  FS.writeFile("hello.txt", textContent, () => {
-    console.info("File successfully created");
+const Server = HTTP.createServer((req, res) => {
+  const url = req.url;
 
-    setTimeout(() => {
-      FS.readFile("hello.txt", "utf-8", (err, data) => {
-        console.info(data);
+  if (url === "/") {
+    res.writeHead(200, { "content-type": "text/html" });
+    res.write("<h1>This is a home response!</h1>");
+    res.end();
+  }
 
-        setTimeout(() => {
-          FS.writeFile("hello.txt", updateContent, () => {
-            console.info("File successfully updated");
+  if(url === "/not-found"){
+    res.writeHead(404, {"content-type" : "text/html"})
+    res.write(`<h1>Not Found</h1>`)
+    res.end()
+  }
 
-            setTimeout(() => {
-              FS.unlink("hello.txt", () => {
-                console.info("File deleted");
-              });
-            }, 2000);
-          });
-        }, 2000);
-      });
-    }, 2000);
-  });
-}, 2000);
+  console.group("Request information");
+  console.info(req.method);
+  console.info(url);
+  console.groupEnd();
+});
+
+Server.listen(3000, () => {
+  console.info(`Server running at http://localhost:3000`);
+});

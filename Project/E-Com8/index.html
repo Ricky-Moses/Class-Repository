@@ -17,7 +17,7 @@
   <body>
     <header class="flex items-center justify-between p-3">
       <div>
-        <h1 class="text-2xl font-bold">E-Kart</h1>
+        <h1 class="text-2xl font-bold cursor-pointer">E-Kart</h1>
       </div>
       <div class="w-2/6">
         <input
@@ -27,18 +27,20 @@
         />
       </div>
       <nav class="flex items-center gap-10">
-        <ul class="flex items-center gap-10">
-          <li>Shop</li>
-          <li>About</li>
-          <li>Profile</li>
+        <ul class="flex items-center gap-10 [&_li]:cursor-pointer">
+          <li data-page="shop">Shop</li>
+          <li data-page="about">About</li>
+          <li data-page="profile">Profile</li>
         </ul>
-        <ul>
-          <li>
-            <i class="fa-solid fa-cart-arrow-down"></i>
-          </li>
-        </ul>
+        <div>
+          <i class="fa-solid fa-cart-arrow-down"></i>
+        </div>
       </nav>
     </header>
+
+    <aside class="hidden fixed top-0 left-0 h-dvh w-[500px] bg-white shadow-2xl">
+
+    </aside>
 
     <main>
       <section id="home">Home</section>
@@ -46,7 +48,6 @@
       <section id="about">About</section>
       <section id="profile">Profile</section>
     </main>
-
 
     <script src="./main.js"></script>
   </body>
