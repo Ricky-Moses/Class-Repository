@@ -5,12 +5,14 @@ const asideEl = document.querySelector("aside");
 // Empty array for cart storing
 let arrOfCart = JSON.parse(localStorage.getItem("Cart")) || [];
 
+let arrOfObj = {};
 // Fetch data from 'data.json'
 async function fetchData() {
   try {
     const res = await fetch("./asset/data.json");
     const data = await res.json();
     renderData(data);
+    arrOfObj = data;
     // console.info(data);
   } catch (err) {
     console.error(err);
@@ -205,7 +207,9 @@ function productCard(data) {
                 </tr>
                 <tr>
                   <td>
-                    <button class="outline w-full text-lime-500 hover:bg-lime-500 hover:text-white">View</button>
+                    <button onclick="handleView(${
+                      item.id
+                    })" class="outline w-full text-lime-500 hover:bg-lime-500 hover:text-white">View</button>
                   </td>
                   <td>
                     <button id="addToCartBtn" data-cartid="${
@@ -240,4 +244,39 @@ function productCard(data) {
       localStorage.setItem("Cart", JSON.stringify(arrOfCart));
     });
   });
+}
+
+const viewPage = mainEl.querySelector("#view article");
+function handleView(id) {
+  // console.info(id);
+  showPages("view");
+
+  const allArrOfData = Object.values(arrOfObj).flat();
+  // console.info(allArrOfData)
+
+  const findData = allArrOfData.find((item) => item.id === id);
+
+  // console.info(findData);
+
+  viewPage.innerHTML = `
+    <figure class="w-[500px]">
+      <div>
+        <img src="${findData.images[0].url}" alt="">
+      </div>
+      <figcaption>
+        <table>
+          <tbody>
+            <tr>
+              <td>Name: </td>
+              <td>${findData.name}</td>
+            </tr>
+            <tr>
+              <td>Brand: </td>
+              <td>${findData.brand}</td>
+            </tr>
+          </tbody>
+        </table>
+      </figcaption>
+    </figure>
+  `
 }
