@@ -8,24 +8,35 @@
   </head>
   <body>
     <form class="m-10">
-      <input type="text" placeholder="Enter a name" class="outline h-10 w-100" />
-      <input type="submit" value="Submit" class="h-10 outline  px-5 text-sky-900 hover:bg-sky-900 hover:text-white">
+      <input
+        type="text"
+        placeholder="Enter a name"
+        id="inputName"
+        class="outline h-10 w-100"
+      />
+      <input
+        type="submit"
+        value="Submit"
+        class="h-10 outline px-5 text-sky-900 hover:bg-sky-900 hover:text-white"
+      />
     </form>
 
-    <ul>
-
-    </ul>
-
+    <ul></ul>
 
     <script>
-        const form = document.querySelector("form")
+      const form = document.querySelector("form");
+      const ul = document.querySelector("ul");
 
-        form.addEventListener("submit", (e) => {
-            e.preventDefault()
-            console.info("Working")
-        })
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-        // console.info(form)
+        const inputName = form.querySelector("#inputName");
+
+        ul.innerHTML += `<li>${inputName.value}</li>`;
+        // console.info(inputName.value);
+      });
+
+      // console.info(form)
     </script>
   </body>
 </html>
