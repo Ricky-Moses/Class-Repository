@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // while
+      let num1 = 6;
+      console.warn("While loop");
+
+      while (num1 <= 5) {
+        // console.info(num1);
+        num1++;
+      }
+
+      let num2 = 6;
+      console.warn("Do...While loop");
+      do {
+        //   console.info(num2)
+        num2++;
+      } while (num2 <= 5);
+
+      // String methods
+      /*
+        1. length
+        2. charAt
+        3. charCodeAt
+        4. indexOf
+        5. lastIndexOf
+        6. includes
+        7. toUpperCase
+        8. toLowerCase
+        9. slice
+      */
+      console.group("String Methods");
+      let str = "I am learning JavaScript"
+      let name = "ricky"
+      console.info("length: ", str.length)
+      console.info("charAt: ", str.charAt(1))
+      console.info("charCodeAt: ", str.charCodeAt(1))
+
+      console.info("indexOf: ", str.indexOf("a"))
+      console.info("lastIndexOf: ", str.lastIndexOf("a"))
+
+      console.info("includes: ", str.includes("I am"))
+
+      console.info("toUpperCase: ", str.toUpperCase())
+      console.info("toLowerCase: ", str.toLowerCase())
+
+      console.info("slice: ", str.slice(2, 4))
+
+    //   console.info(name.charAt(0).toUpperCase() + name.slice(1))
+    
+      console.groupEnd();
+    </script>
+  </body>
+</html>

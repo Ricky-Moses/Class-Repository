@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            1. length
+            2. charAt
+            3. charCodeAt
+            4. indexOf
+            5. lastIndexOf
+            6. includes
+            7. toUpperCase
+            8. toLowerCase
+            9. slice
+        */
+      console.group("String methods");
+      let str = "I am Learning JavaScript";
+
+      console.info("length: ", str.length)
+      console.info("charAt: ", str.charAt(0))
+
+      console.info("charCodeAt: ", str.charCodeAt(2))
+
+      console.info("indexOf: ", str.indexOf("a"))
+      console.info("lastIndexOf: ", str.lastIndexOf("a"))
+
+      console.info("includes: ", str.includes("I am"))
+
+      console.info("toUpperCase: ", str.toUpperCase())
+
+      console.info("toLowerCase: ", str.toLowerCase())
+
+      console.info("slice: ", str.slice(2, 4))
+
+      console.groupEnd();
+    </script>
+  </body>
+</html>

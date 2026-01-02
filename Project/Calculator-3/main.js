@@ -43,6 +43,7 @@ calcBtn.forEach((btn) => {
     console.group("Calculate");
     console.info("Last character: ", lastChar);
     console.info("IsOp: ", isOp);
+    console.info("ExOp: ", exOp);
     console.groupEnd();
 
     expression += btnValue;
