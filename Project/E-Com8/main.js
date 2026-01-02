@@ -3,6 +3,7 @@ const mainEl = document.querySelector("main");
 const asideEl = document.querySelector("aside");
 
 let allArrOfObj = {};
+let arrOfCart = JSON.parse(localStorage.getItem("Cart")) || [];
 // Fetch data from 'asset/data.json'
 async function fetchData() {
   try {
@@ -117,7 +118,9 @@ function productCard(products) {
                     <button class="outline text-lime-500 w-full hover:bg-lime-500 hover:text-white">View</button>
                   </td>
                   <td>
-                    <button class="outline text-sky-500 w-full hover:bg-sky-500 hover:text-white">Add To Cart</button>
+                    <button id="addToCart" data-itemid="${
+                      card.id
+                    }" class="outline text-sky-500 w-full hover:bg-sky-500 hover:text-white">Add To Cart</button>
                   </td>
                 </tr>
               </tbody>
@@ -128,4 +131,20 @@ function productCard(products) {
       )
       .join("")}
   `;
+
+  const cartBtn = cardContainer.querySelectorAll("#addToCart");
+
+  cartBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.itemid;
+      // console.info( typeof id);
+      // console.info(typeof 1)
+
+      const cartObj = products.find((f) => f.id == id);
+
+      // console.info(cartObj);
+      arrOfCart.push(cartObj);
+      localStorage.setItem("Cart", JSON.stringify(arrOfCart))
+    });
+  });
 }
