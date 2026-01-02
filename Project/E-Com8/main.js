@@ -2,6 +2,7 @@ const headerEl = document.querySelector("header");
 const mainEl = document.querySelector("main");
 const asideEl = document.querySelector("aside");
 
+let allArrOfObj = {};
 // Fetch data from 'asset/data.json'
 async function fetchData() {
   try {
@@ -9,6 +10,7 @@ async function fetchData() {
     const data = await res.json();
     // console.info(data)
     renderData(data);
+    allArrOfObj = data;
   } catch (err) {
     console.error(err);
   }
@@ -71,7 +73,59 @@ function renderData(data) {
   // console.info(shopLi)
   shopLi.forEach((li) => {
     li.addEventListener("click", () => {
-      console.info(li.dataset.key);
+      // console.info(); li.dataset.key
+      productCard(data[li.dataset.key]);
     });
   });
+}
+
+const cardContainer = shopPage.querySelector("#cardContainer");
+
+function productCard(products) {
+  // console.info(products)
+  cardContainer.innerHTML = `
+    ${products
+      .map(
+        (card) => `
+        <figure>
+          <div>
+            <img className="" src="${card.images[0].url}" />
+          </div>
+          <figcaption>
+            <table class=" w-full [&_td]:p-2">
+              <tbody>
+                <tr>
+                  <td>Name: </td>
+                  <td>${card.name}</td>
+                </tr>
+                <tr>
+                  <td>Brand: </td>
+                  <td>${card.brand}</td>
+                </tr>
+                <tr>
+                  <td>Description: </td>
+                  <td>
+                    <p class="line-clamp-1">${card.description}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Price: </td>
+                  <td>${(card.price * 90).toFixed(2)}</td>
+                </tr>
+                <tr>
+                  <td>
+                    <button class="outline text-lime-500 w-full hover:bg-lime-500 hover:text-white">View</button>
+                  </td>
+                  <td>
+                    <button class="outline text-sky-500 w-full hover:bg-sky-500 hover:text-white">Add To Cart</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </figcaption>
+        </figure>
+      `
+      )
+      .join("")}
+  `;
 }
