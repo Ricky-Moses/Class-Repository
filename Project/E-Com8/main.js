@@ -70,6 +70,10 @@ function renderData(data) {
       .join("")}
   `;
 
+  const firstKey = Object.keys(data)[0]
+  // console.info(firstKey)
+  productCard(data[firstKey])
+
   const shopLi = shopUl.querySelectorAll("li");
   // console.info(shopLi)
   shopLi.forEach((li) => {
@@ -144,7 +148,50 @@ function productCard(products) {
 
       // console.info(cartObj);
       arrOfCart.push(cartObj);
-      localStorage.setItem("Cart", JSON.stringify(arrOfCart))
+      addToCartItems(arrOfCart);
+      localStorage.setItem("Cart", JSON.stringify(arrOfCart));
     });
   });
 }
+
+const cartUl = asideEl.querySelector("ul");
+
+function addToCartItems(cartItems) {
+  cartUl.innerHTML = `
+    ${cartItems.map(
+      (item) => `
+        <li class="flex items-center justify-between gap-3">
+          <figure class="w-30">
+            <img src="${item.images[0].url}" alt="" />
+          </figure>
+          <div class="flex-1">
+            <h1 class="line-clamp-1">${item.name}</h1>
+            <div class="flex items-center gap-5 mt-2">
+              <button
+                class="outline w-5 rounded text-sky-400 hover:bg-sky-400 hover:text-white"
+              >
+                +
+              </button>
+              <span>0</span>
+              <button
+                class="outline w-5 rounded text-orange-400 hover:bg-orange-400 hover:text-white"
+              >
+                -
+              </button>
+            </div>
+          </div>
+          <div>₹ ${(item.price * 90).toFixed(2)}/-</div>
+          <div>
+            <button
+              class="outline text-red-600 hover:bg-red-600 hover:text-white rounded px-2"
+            >
+              Remove
+            </button>
+          </div>
+        </li>
+      `
+    ).join("")}
+  `;
+}
+
+addToCartItems(arrOfCart)
