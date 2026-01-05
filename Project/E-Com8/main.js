@@ -146,7 +146,14 @@ function productCard(products) {
 
       const cartObj = products.find((f) => f.id == id);
 
-      // console.info(cartObj);
+      const existCart = arrOfCart.some((item) => item.id === cartObj.id);
+      // console.info(existCart)
+
+      if (existCart) {
+        alert("Selected cart already exist!");
+        return;
+      }
+
       arrOfCart.push(cartObj);
       addToCartItems(arrOfCart);
       localStorage.setItem("Cart", JSON.stringify(arrOfCart));
@@ -157,6 +164,7 @@ function productCard(products) {
 const cartUl = asideEl.querySelector("ul");
 
 function addToCartItems(cartItems) {
+  const nofItems = asideEl.querySelector("#nOfItems");
   cartUl.innerHTML = `
     ${cartItems
       .map(
@@ -186,6 +194,7 @@ function addToCartItems(cartItems) {
           <div>₹ ${(item.price * 90 * (item.qty || 1)).toFixed(2)}/-</div>
           <div>
             <button
+            onclick="handleRemove(${item.id})"
               class="outline text-red-600 hover:bg-red-600 hover:text-white rounded px-2"
             >
               Remove
@@ -196,6 +205,8 @@ function addToCartItems(cartItems) {
       )
       .join("")}
   `;
+  totalPrice(cartItems);
+  nofItems.textContent = `${cartItems.length}`;
 }
 
 addToCartItems(arrOfCart);
@@ -216,4 +227,20 @@ function handleDecrease(id) {
   );
   addToCartItems(arrOfCart);
   localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+}
+
+function handleRemove(id) {
+  arrOfCart = arrOfCart.filter((item) => item.id !== id);
+  addToCartItems(arrOfCart);
+  localStorage.setItem("Cart", JSON.stringify(arrOfCart));
+}
+
+function totalPrice(carts) {
+  const displayTotalPrice = asideEl.querySelector("#totalPrice");
+
+  const total = carts.reduce((acc, items) => {
+    return acc + items.price * (items.qty || 1) * 90;
+  }, 0);
+
+  displayTotalPrice.textContent = `₹${total.toFixed(2)}/-`;
 }

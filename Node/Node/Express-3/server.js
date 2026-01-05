@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import ConnectDB from "./Config/db.js";
-import Register from "./Controllers/Register.js";
+import routes from "./Routes/route.js";
 
 dotenv.config();
 
@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   res.status(200).send(`<h1>This is a response give by Server</h1>`);
 });
 
-app.post("/register", Register);
+app.use("/api", routes)
 
 ConnectDB()
   .then(() => {

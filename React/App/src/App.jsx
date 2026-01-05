@@ -12,8 +12,12 @@ import ECommerceOne from "./Project/E-Com-One/ECommerceOne";
 import GlobalProvider from "./Project/E-Com-One/Global/GlobalProvider";
 import Reducer from "./Class/Reducer";
 import Ref from "./Class/Ref";
+import Intro from "./Class/Intro";
 
 const App = () => {
+  const title = "Props";
+
+  const menuList = ["Home", "About", "Skill", "Project", "Contact"];
   return (
     <>
       {/* <GlobalProvider>
@@ -39,7 +43,8 @@ const App = () => {
       </GlobalProvider> */}
 
       {/* <Reducer /> */}
-      <Ref />
+      {/* <Ref /> */}
+      <Intro title={title} menuList={menuList} />
     </>
   );
 };
