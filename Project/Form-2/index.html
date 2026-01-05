@@ -7,18 +7,37 @@
     <title>Document</title>
   </head>
   <body>
-    <form class="m-10">
+    <form class="flex flex-col items-start gap-2 m-5">
       <input
         type="text"
+        name="name"
         placeholder="Enter a name"
-        id="inputName"
-        class="outline h-10 w-100"
+        class="outline h-10 w-60 px-2"
       />
       <input
-        type="submit"
-        value="Submit"
-        class="h-10 outline px-5 text-sky-900 hover:bg-sky-900 hover:text-white"
+        type="email"
+        name="email"
+        placeholder="Enter an email"
+        class="outline h-10 w-60 px-2"
       />
+      <input
+        type="password"
+        name="password"
+        placeholder="Enter a password"
+        class="outline h-10 w-60 px-2"
+      />
+      <div>
+        <input type="radio" name="gender" value="Male" />
+        <label for="">Male</label>
+        <input type="radio" name="gender" value="Female" />
+        <label for="">Female</label>
+      </div>
+      <button
+        type="submit"
+        class="h-10 outline px-1 text-sky-900 hover:bg-sky-900 hover:text-white"
+      >
+        Submit
+      </button>
     </form>
 
     <ul></ul>
@@ -30,13 +49,17 @@
       form.addEventListener("submit", (e) => {
         e.preventDefault();
 
-        const inputName = form.querySelector("#inputName");
+        const formData = new FormData(form);
 
-        ul.innerHTML += `<li>${inputName.value}</li>`;
-        // console.info(inputName.value);
+        const obj = {};
+
+        for (let [key, value] of formData.entries()) {
+          // console.info(`${key}: ${value}`);
+          obj[key] = value;
+        }
+
+        console.info(obj);
       });
-
-      // console.info(form)
     </script>
   </body>
 </html>
