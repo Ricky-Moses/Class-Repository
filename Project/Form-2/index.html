@@ -40,11 +40,13 @@
       </button>
     </form>
 
-    <ul></ul>
+    <ul class="p-5"></ul>
 
     <script>
       const form = document.querySelector("form");
       const ul = document.querySelector("ul");
+
+      const arr = [];
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -58,8 +60,33 @@
           obj[key] = value;
         }
 
-        console.info(obj);
+        obj.id = arr.length + 1;
+
+        arr.push(obj);
+        // console.info(arr);
+        renderData(arr);
+
+        // console.info(obj);
       });
+
+      function renderData(arr) {
+        ul.innerHTML = `
+          ${arr.map(
+            (list, idx) => `
+            <li class="border flex gap-3 p-2">
+              <div>${idx + 1}</div>
+              <div class="flex-1">${list.name}</div>
+              <div>
+                <button>Edit</button>
+              </div>
+              <div>
+                <button>Delete</button>
+              </div>
+            </li>
+          `
+          ).join("")}
+        `;
+      }
     </script>
   </body>
 </html>
