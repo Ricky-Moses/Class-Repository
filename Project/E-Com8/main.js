@@ -28,7 +28,7 @@ function showPages(pageId) {
   });
 }
 
-showPages("shop");
+showPages("home");
 
 // Navigate to 'home' page
 const homePage = headerEl.querySelector("h1");
@@ -119,7 +119,9 @@ function productCard(products) {
                 </tr>
                 <tr>
                   <td>
-                    <button class="outline text-lime-500 w-full hover:bg-lime-500 hover:text-white">View</button>
+                    <button
+                    onclick="handleView(${card.id})"
+                    class="outline text-lime-500 w-full hover:bg-lime-500 hover:text-white">View</button>
                   </td>
                   <td>
                     <button id="addToCart" data-itemid="${
@@ -159,6 +161,26 @@ function productCard(products) {
       localStorage.setItem("Cart", JSON.stringify(arrOfCart));
     });
   });
+}
+
+function handleView(id) {
+  showPages("view");
+  const viewPage = mainEl.querySelector("#view article");
+  // console.info(id);
+
+  const objToArr = Object.values(allArrOfObj).flat();
+  // console.info(objToArr);
+
+  const foundObj = objToArr.find((item) => item.id === id);
+  // console.info(foundObj);
+
+  viewPage.innerHTML = `
+    <figure class="w-[500px]">
+      <div>
+        <img src="${foundObj.images[0].url}" alt="">
+      </div>
+    </figure>
+  `;
 }
 
 const cartUl = asideEl.querySelector("ul");

@@ -15,7 +15,7 @@
     <title>E-Kart</title>
   </head>
   <body>
-    <header class="flex items-center justify-between p-3">
+    <header class="flex sticky top-0 bg-white items-center justify-between p-3">
       <div>
         <h1 class="text-2xl font-bold cursor-pointer">E-Kart</h1>
       </div>
@@ -38,11 +38,17 @@
       </nav>
     </header>
 
-    <aside class="fixed top-0 left-0 h-dvh w-[500px] bg-white shadow-2xl p-2">
+    <aside
+      class="hidden fixed top-0 left-0 h-dvh w-[500px] bg-white shadow-2xl p-2"
+    >
       <div class="flex items-center justify-between text-2xl">
         <h1>
           Cart
-          <span id="nOfItems" class="text-sm bg-sky-500 rounded-2xl text-white px-2">2</span>
+          <span
+            id="nOfItems"
+            class="text-sm bg-sky-500 rounded-2xl text-white px-2"
+            >2</span
+          >
         </h1>
         <h1 id="totalPrice">₹ 80000/-</h1>
       </div>
@@ -50,7 +56,10 @@
     </aside>
 
     <main>
-      <section id="home">Home</section>
+      <section
+        id="home"
+        class="bg-[url('http://picsum.photos/500/300')] h-[90vh]"
+      ></section>
       <section id="shop">
         <nav>
           <ul class="flex items-center gap-10 px-5"></ul>
@@ -59,6 +68,9 @@
       </section>
       <section id="about">About</section>
       <section id="profile">Profile</section>
+      <section id="view">
+        <article class="flex justify-center"></article>
+      </section>
     </main>
 
     <script src="./main.js"></script>
