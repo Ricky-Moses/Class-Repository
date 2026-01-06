@@ -10,3 +10,8 @@
     # git add .
     # git commit -m "Second commit"
     # git push origin main
+
+# React command line
+    # npm create vite@latest
+    # npm install
+    # npm run dev

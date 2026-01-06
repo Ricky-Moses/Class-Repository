@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        console.group('Number methods')
+        console.info("parseInt: ", parseInt("123"))
+        console.info("parseInt: ", parseInt("abc"))
+        console.info("parseInt: ", parseInt("123abc"))
+        console.info("parseInt: ", parseInt("123.13285435"))
+
+        console.info("parseFloat: ", parseFloat("123.13254654"))
+
+        let num = 5.123465
+        console.info("toFixed: ", num.toFixed(2))
+
+        console.info("isFinite: ", isFinite(1/0))
+        console.info("isFinite: ", isFinite(Infinity))
+        
+        console.groupEnd();
+
+        console.group('Math Methods')
+        console.info("round: ", Math.round(1.4))
+        console.info("round: ", Math.round(1.6))
+        console.info("round: ", Math.round(1.5))
+
+        console.info("floor: ", Math.floor(1.4))
+        console.info("floor: ", Math.floor(1.9))
+
+        console.info("ceil: ", Math.ceil(1.1))
+
+        console.info("trunc: ", Math.trunc(1.9))
+
+        console.info("max: ", Math.max(10, 50, 90))
+        console.info("min: ", Math.min(10, 50, 90))
+
+        console.info("random: ", Math.random() * 100)
+        console.groupEnd();
+    </script>
+</body>
+</html>

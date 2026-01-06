@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   function calculation(a, b, op) {
+      //     if (op === "+") {
+      //       console.info("Sum: ", a + b);
+      //     } else if (op === "-") {
+      //       console.info("Subtract: ", a - b);
+      //     }
+      //   }
+
+      //   calculation(10, 5, "-")
+      //   calculation(10, 5, "+")
+
+      // Array - Collection of datatype
+
+      //   const arr = ["String", 123, true, null, undefined, function(){}, [], {}]
+
+      //   console.info(arr)
+
+      const fruits = ["Apple", "Banana", "Cherry"];
+
+      // CRUD
+      // Create
+      fruits[3] = "Dragon fruit";
+
+      // Update
+      fruits[0] = "Avacado";
+
+      // Delete
+      delete fruits[3];
+
+      console.group("Array");
+      // Array methods
+
+      // push()
+      fruits.push("Dragon fruit");
+      fruits.push("Elantha palam");
+
+      // pop()
+      fruits.pop();
+
+      // unshift()
+      fruits.unshift("Apple");
+
+      // shift()
+      fruits.shift()
+
+      console.info(fruits);
+      console.groupEnd();
+    </script>
+  </body>
+</html>

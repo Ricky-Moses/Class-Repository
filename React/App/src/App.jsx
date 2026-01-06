@@ -15,8 +15,7 @@ import Ref from "./Class/Ref";
 import Intro from "./Class/Intro";
 
 const App = () => {
-  const title = "Props";
-
+  const title = "Topic Props";
   const menuList = ["Home", "About", "Skill", "Project", "Contact"];
   return (
     <>
@@ -44,7 +43,7 @@ const App = () => {
 
       {/* <Reducer /> */}
       {/* <Ref /> */}
-      <Intro title={title} menuList={menuList} />
+      <Intro name={title} list={menuList} />
     </>
   );
 };
