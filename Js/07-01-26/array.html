@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Array
+      const num = [1, 2, 3, 4, 5, 6];
+
+      // forEach
+      num.forEach((currentValue, index, arr) => {
+        // arr[index] = currentValue + currentValue
+      });
+
+      // map
+      const clone = num.map((currentValue, index) => {
+        // console.info(currentValue, index)
+        return currentValue + currentValue;
+        // console.info(currentValue)
+      });
+
+      // find
+      const findVal = clone.find((val) => {
+        return val === 6;
+      });
+
+      // filter
+      const evenVal = num.filter((n) => n % 2 === 0);
+
+      
+      // 
+
+      console.group("Array");
+      console.info("Original: ", num);
+      console.info("Clone: ", clone);
+      console.info("find: ", findVal);
+      console.info("filter: ", evenVal);
+      console.groupEnd();
+    </script>
+  </body>
+</html>
