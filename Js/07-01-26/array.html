@@ -30,14 +30,27 @@
       // filter
       const evenVal = num.filter((n) => n % 2 === 0);
 
-      
-      // 
+      // reduce
+      const accVal = num.reduce((a, b) => {
+        return a + b;
+      }, 0);
+
+      const fruits = ["Cherry", "Grapes", "Pineapple", "Apple", "Banana"];
+      const mixedNum = [2, 4, 6, 1, 5, 3];
+      // sort
+      fruits.sort();
+      mixedNum.sort((a, b) => {
+        return a - b;
+      });
 
       console.group("Array");
       console.info("Original: ", num);
       console.info("Clone: ", clone);
       console.info("find: ", findVal);
       console.info("filter: ", evenVal);
+      console.info("reduce: ", accVal);
+      console.info("fruits: ", fruits);
+      console.info("mixedNum: ", mixedNum);
       console.groupEnd();
     </script>
   </body>

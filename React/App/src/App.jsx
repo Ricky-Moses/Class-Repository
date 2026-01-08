@@ -12,6 +12,9 @@ import React from "react";
 // import Ref from "./Class/Ref";
 // import Intro from "./Class/Intro";
 import AuthTwo from "./Project/AuthTwo/AuthTwo";
+import { Provider } from "react-redux";
+import store from "./Project/AuthTwo/Redux/Store";
+import { Toaster } from "react-hot-toast";
 import Hook from "./Class/Hook";
 import Effect from "./Class/Effect";
 
@@ -37,10 +40,13 @@ const App = () => {
       {/* <Ref /> */}
       {/* <Intro name={title} list={menuList} /> */}
 
-      {/* <AuthTwo /> */}
+      <Toaster position="top right" toastOptions={{ duration: 3000 }} />
+      <Provider store={store}>
+        <AuthTwo />
+      </Provider>
 
       {/* <Hook /> */}
-      <Effect />
+      {/* <Effect /> */}
     </>
   );
 };

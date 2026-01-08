@@ -1,14 +1,24 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { RegisterUser } from "../Redux/Thunk/AuthThunk";
+import toast from "react-hot-toast";
 const Register = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const dispatch = useDispatch();
+  const { loading} = useSelector((state) => state.auth);
 
   const submitForm = (data) => {
-    console.info(data);
+    // console.info(data);
+    try {
+      dispatch(RegisterUser(data));
+    } catch (err) {
+      throw new Error(err);
+    }
   };
   return (
     <>
@@ -54,9 +64,15 @@ const Register = () => {
             />
             {errors.password && <p>{errors.password.message}</p>}
           </fieldset>
-          <button type="submit" className="btn btn-info">
-            Register
-          </button>
+          {loading ? (
+            <button type="button" className="btn btn-info" disabled>
+              <span className="loading loading-bars loading-md"></span> loading
+            </button>
+          ) : (
+            <button type="submit" className="btn btn-info">
+              Register
+            </button>
+          )}
         </form>
       </section>
     </>

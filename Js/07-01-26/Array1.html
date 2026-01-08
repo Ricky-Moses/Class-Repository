@@ -8,12 +8,41 @@
   <body>
     <script>
       // Array - Collection of datatype
-    //   const arr = ["String", 123, null, true, undefined, [], () => {}, {}]
+      //   const arr = ["String", 123, null, true, undefined, [], () => {}, {}]
 
-    
+      const fruits = ["Apple", "Banana", "Cherry"];
 
-      console.group('Array')
-    //   console.info(arr)
+      // CREATE
+      fruits[3] = "Dragon fruits";
+
+      // UPDATE
+      fruits[0] = "Avacado";
+
+      // DELETE
+      //   delete fruits[3]
+
+      console.group("Array");
+      //   console.info(arr)
+
+      // METHODS
+
+      // push()
+      fruits.push("Elantha palam");
+      fruits.push("Fresh fruits");
+
+      // pop()
+      fruits.pop();
+      fruits.pop();
+
+      // unshift()
+      fruits.unshift("Apple");
+      fruits.unshift("Graph");
+
+      // shift()
+      fruits.shift()
+      fruits.shift()
+
+      console.info(fruits);
       console.groupEnd();
     </script>
   </body>
