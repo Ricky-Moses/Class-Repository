@@ -11,12 +11,15 @@ import React from "react";
 // import Reducer from "./Class/Reducer";
 // import Ref from "./Class/Ref";
 // import Intro from "./Class/Intro";
-import AuthTwo from "./Project/AuthTwo/AuthTwo";
-import { Provider } from "react-redux";
-import store from "./Project/AuthTwo/Redux/Store";
-import { Toaster } from "react-hot-toast";
+// import AuthTwo from "./Project/AuthTwo/AuthTwo";
+// import { Provider } from "react-redux";
+// import store from "./Project/AuthTwo/Redux/Store";
+// import { Toaster } from "react-hot-toast";
 import Hook from "./Class/Hook";
 import Effect from "./Class/Effect";
+import FetchOne from "./Class/FetchOne";
+import ConditionalRendering from "./Class/ConditionalRendering";
+import ClickImg from "./Class/ClickImg";
 
 const App = () => {
   return (
@@ -40,13 +43,16 @@ const App = () => {
       {/* <Ref /> */}
       {/* <Intro name={title} list={menuList} /> */}
 
-      <Toaster position="top right" toastOptions={{ duration: 3000 }} />
+      {/* <Toaster position="top right" toastOptions={{ duration: 3000 }} />
       <Provider store={store}>
         <AuthTwo />
-      </Provider>
+      </Provider> */}
 
       {/* <Hook /> */}
       {/* <Effect /> */}
+      {/* <FetchOne /> */}
+      {/* <ConditionalRendering /> */}
+      <ClickImg />
     </>
   );
 };
