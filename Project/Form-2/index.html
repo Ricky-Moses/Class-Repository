@@ -46,7 +46,8 @@
       const form = document.querySelector("form");
       const ul = document.querySelector("ul");
 
-      const arr = [];
+      let arr = [];
+      let editId = null;
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -60,9 +61,15 @@
           obj[key] = value;
         }
 
-        obj.id = arr.length + 1;
-
-        arr.push(obj);
+        if (editId !== null) {
+          arr = arr.map((list) =>
+            list.id === editId ? { ...list, ...obj } : list
+          );
+          editId = null;
+        } else {
+          obj.id = arr.length + 1;
+          arr.push(obj);
+        }
         // console.info(arr);
         renderData(arr);
 
@@ -71,21 +78,44 @@
 
       function renderData(arr) {
         ul.innerHTML = `
-          ${arr.map(
-            (list, idx) => `
+          ${arr
+            .map(
+              (list, idx) => `
             <li class="border flex gap-3 p-2">
               <div>${idx + 1}</div>
               <div class="flex-1">${list.name}</div>
               <div>
-                <button>Edit</button>
+                <button onclick="handleEdit(${
+                  list.id
+                })" class="w-20 outline text-lime-500 hover:bg-lime-500 hover:text-white">Edit</button>
               </div>
               <div>
-                <button>Delete</button>
+                <button class="w-20 outline text-rose-500 hover:bg-rose-500 hover:text-white">Delete</button>
               </div>
             </li>
           `
-          ).join("")}
+            )
+            .join("")}
         `;
+      }
+
+      function handleEdit(id) {
+        // console.info(id)
+
+        const objFound = arr.find((list) => list.id === id);
+
+        const inputBox = form.querySelectorAll("input");
+        // console.info(inputBox)
+
+        inputBox.forEach((input) => {
+          // console.info(input.name)
+          const inputName = input.name;
+
+          input.value = objFound[input.name];
+        });
+
+        editId = id;
+        // console.info(objFound);
       }
     </script>
   </body>
